@@ -52,7 +52,7 @@ public class MainFrameController implements PropertyChangeListener{
 
         @Override
         public void mousePressed(MouseEvent e) {
-            model.setPointClicked(e.getPoint());
+            model.setFirstPoint(e.getPoint());
             //System.out.println("Mouse pressed");
 
 
@@ -60,6 +60,7 @@ public class MainFrameController implements PropertyChangeListener{
 
         @Override
         public void mouseReleased(MouseEvent e) {
+            model.setSecondPoint(e.getPoint());
             //System.out.println("Mouse released");
 
 
