@@ -12,6 +12,8 @@ public class MainContainer {
 
     private JPanel ContentPanel;
     private JPanel ToolbarPanel;
+
+
     private JButton MoveToolBtn;
     private JButton PenToolBtn;
     private JButton PencilToolBtn;
@@ -20,6 +22,7 @@ public class MainContainer {
     private JButton ZoomToolBtn;
     private JButton TextToolBtn;
     private JButton ImageToolBtn;
+
     private ArrayList<JButton> buttonList;
 
 
