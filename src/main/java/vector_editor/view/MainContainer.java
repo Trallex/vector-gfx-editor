@@ -13,7 +13,6 @@ public class MainContainer {
     private JPanel ContentPanel;
     private JPanel ToolbarPanel;
 
-
     private JButton MoveToolBtn;
     private JButton PenToolBtn;
     private JButton PencilToolBtn;
@@ -27,18 +26,19 @@ public class MainContainer {
 
 
     public MainContainer() {
-        createUIComponents();
-
-        MoveToolBtn.addActionListener(System.out::println);
+        createToolbarComponents();
     }
 
-    private void createUIComponents() {
+    private void createToolbarComponents() {
         for (Component component : ToolbarPanel.getComponents()) {
             if (component instanceof JButton) {
                 ((JButton) component).setOpaque(false);
                 ((JButton) component).setContentAreaFilled(false);
                 ((JButton) component).setBorderPainted(false);
                 ((JButton) component).setFocusPainted(false);
+                // Debug for action command for every button. **EVENT DELEGATION**
+                ((JButton) component).addActionListener(e -> System.out.println(((JButton) component).getActionCommand()));
+
             } else System.out.println("Not type of JButton");
         }
     }
