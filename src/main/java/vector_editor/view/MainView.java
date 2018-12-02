@@ -33,7 +33,7 @@ public class MainView {
     }
 
     private void setupWorkspaceComponent() {
-        final WorkspaceComponent workspaceComponent = new WorkspaceComponent(600, 600);
+        final WorkspaceComponent workspaceComponent = new WorkspaceComponent(1920, 1080);
         contentPanel.add(workspaceComponent).setLocation(1, 0);
         refresh();
     }
