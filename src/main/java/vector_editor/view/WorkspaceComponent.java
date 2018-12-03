@@ -8,15 +8,35 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 public class WorkspaceComponent extends JComponent {
-    private Image image;
     private VectorGraphics vg;
     private int currentX, currentY, oldX, oldY;
+    int width, height;
 
+    @Override
+    public int getWidth() {
+        return width;
+    }
+
+    public void setWidth(int width) {
+        this.width = width;
+    }
+
+    @Override
+    public int getHeight() {
+        return height;
+    }
+
+    public void setHeight(int height) {
+        this.height = height;
+    }
 
     public WorkspaceComponent(int width, int height) {
-        setDoubleBuffered(false);
-
-        addMouseListener(new MouseAdapter() {
+        this.width = width;
+        this.height = height;
+        this.setDoubleBuffered(false);
+        this.setOpaque(false);
+        this.setPreferredSize(this.getPreferredSize());
+        this.addMouseListener(new MouseAdapter() {
             @Override
             public void mousePressed(MouseEvent e) {
                 oldX = e.getX();
@@ -38,14 +58,26 @@ public class WorkspaceComponent extends JComponent {
     }
 
     @Override
+    public Dimension getPreferredSize() {
+        return new Dimension(getWidth(), getHeight());
+    }
+
+    @Override
     protected void paintComponent(Graphics g) {
-        if (image == null) {
-            image = createImage(getSize().width, getSize().height);
-            vg = (VectorGraphics) image.getGraphics();
-            vg.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-            clear();
-        }
-        vg.drawImage(image, 0, 0, null);
+
+        vg = VectorGraphics.create(g);
+
+        Dimension dim = getSize();
+        Insets insets = getInsets();
+
+        vg.setColor(Color.white);
+        vg.fillRect(insets.left, insets.top,
+                dim.width - insets.left - insets.right,
+                dim.height - insets.top - insets.bottom);
+        vg.setColor(Color.black);
+        vg.drawLine(10.0, 10.0, this.getWidth() - 10, this.getHeight() - 10);
+
+
     }
 
     private void clear() {

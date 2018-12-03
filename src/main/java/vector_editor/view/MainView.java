@@ -6,36 +6,59 @@ import org.freehep.graphicsbase.util.export.ExportDialog;
 import javax.swing.*;
 import java.awt.*;
 
+
 public class MainView {
     private JFrame frame;
-    private JPanel workspaceComponent;
-    private JPanel contentPanel;
-    private MainContainer mainContainer;
+    private Container container;
+    private WorkspaceComponent workspaceComponent;
+    private ToolbarComponent toolbarComponent;
+    private JScrollPane scrollPane;
 
 
     public MainView() {
 
-        mainContainer = new MainContainer();
-        contentPanel = mainContainer.getContentPanel();
         frame = new JFrame("Vector TikZ Editor");
-        frame.setContentPane(contentPanel);
+        frame.setResizable(false);
+        container = frame.getContentPane();
+        container.setBackground(Color.decode("#3E3E3E"));
+        container.setLayout(new BoxLayout(container, BoxLayout.X_AXIS));
 
-        contentPanel.setLayout(new FlowLayout(20));
 
-
-        frame.setSize(1920, 1080);
+        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+        frame.setMinimumSize(new Dimension(1280, 720));
+        frame.setMaximumSize(new Dimension((int) dim.getWidth(), (int) dim.getHeight()));
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
 
+        setupToolbarComponent();
         setupMenuBar();
 
     }
 
-    private void setupWorkspaceComponent() {
-        final WorkspaceComponent workspaceComponent = new WorkspaceComponent(1920, 1080);
-        contentPanel.add(workspaceComponent).setLocation(1, 0);
+    private void setupToolbarComponent() {
+
+        toolbarComponent = new ToolbarComponent(100, frame.getMaximumSize().height);
+        container.add(toolbarComponent);
+
         refresh();
+    }
+    private void setupWorkspaceComponent() {
+
+        workspaceComponent = new WorkspaceComponent(1280, 720);
+        scrollPane = new JScrollPane(workspaceComponent, ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED, ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+        if (workspaceComponent.getPreferredSize().width < 1280 && workspaceComponent.getPreferredSize().height < 720) {
+            scrollPane.setMaximumSize(new Dimension(workspaceComponent.getWidth(), workspaceComponent.getHeight()));
+        } else {
+            scrollPane.setMaximumSize(new Dimension(1280, 720));
+        }
+        scrollPane.setBorder(BorderFactory.createEmptyBorder(25, 25, 25, 25));
+        scrollPane.setOpaque(false);
+
+        container.add(scrollPane);
+
+        refresh();
+
     }
 
     private void refresh() {
@@ -58,7 +81,7 @@ public class MainView {
         saveItem.addActionListener(
                 e -> {
                     ExportDialog export = new ExportDialog();
-                    export.showExportDialog(contentPanel, "Export view as...", workspaceComponent, "export");
+                    export.showExportDialog(container, "Export view as...", workspaceComponent, "export");
                 }
         );
 
