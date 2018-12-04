@@ -1,6 +1,7 @@
 package main.java.gui_example.ui.controller;
 
 import main.java.gui_example.Model.Rectangle;
+import main.java.gui_example.Model.Square;
 import main.java.gui_example.ui.view.MainFrame;
 
 import javax.swing.*;
@@ -9,10 +10,13 @@ import java.awt.event.*;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 
-public class MainFrameController implements PropertyChangeListener {
+public class MainFrameController implements PropertyChangeListener{
 
     private MainFrame view;
     private main.java.gui_example.Model.Rectangle model;
+    private boolean wasShiftPressed;
+    protected InputMap im = view.getRootPane().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
+    protected ActionMap ap = view.getRootPane().getActionMap();
 
     public MainFrameController(MainFrame view, Rectangle model) {
         this.view=view;
@@ -26,6 +30,14 @@ public class MainFrameController implements PropertyChangeListener {
 
         view.getDrawPanel().addMouseMotionListener(new mouseMotionListener());
         view.getDrawPanel().addMouseListener(new mouseListener());
+        im.put(KeyStroke.getKeyStroke(KeyEvent.VK_SHIFT, 0, false), "Shift Pressed");
+        ap.put("Shift Pressed", new AbstractAction() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        System.out.println("Murwa shit!");
+                    }
+                });
+                //view.getDrawPanel().addKeyListener(new keyListener());
     }
 
     @Override
@@ -41,8 +53,26 @@ public class MainFrameController implements PropertyChangeListener {
         }
     }
 
+    private class keyListener implements KeyListener {
+        @Override
+        public void keyPressed(KeyEvent evt) {
+            System.out.println(evt.getKeyCode());
+            wasShiftPressed = evt.isShiftDown();
+        }
 
-    private class mouseListener implements MouseListener {
+        @Override
+        public void keyReleased(KeyEvent evt) {
+            wasShiftPressed = false;
+        }
+
+        @Override
+        public void keyTyped(KeyEvent evt) {
+
+        }
+    }
+
+    private class mouseListener implements MouseListener{
+
 
         @Override
         public void mouseClicked(MouseEvent e) {
@@ -60,8 +90,11 @@ public class MainFrameController implements PropertyChangeListener {
 
         @Override
         public void mouseReleased(MouseEvent e) {
+            if (wasShiftPressed)
+                System.out.println("\n------------------byl");
+            else
+                System.out.println("\n------------------nie byl");
             model.setSecondPoint(e.getPoint());
-
 
 
         }

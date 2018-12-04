@@ -8,7 +8,7 @@ import java.awt.geom.Rectangle2D;
 
 public abstract class Shape implements java.awt.Shape {
     protected Point firstPoint, secondPoint;
-    double width, height;
+    protected double width, height;
     Color bgColor;
     public void paint( Graphics g ) {
 
