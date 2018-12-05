@@ -11,6 +11,7 @@ public class WorkspaceComponent extends JComponent {
     private VectorGraphics vg;
     private int currentX, currentY, oldX, oldY;
     int width, height;
+    String name;
 
     @Override
     public int getWidth() {
@@ -30,7 +31,8 @@ public class WorkspaceComponent extends JComponent {
         this.height = height;
     }
 
-    public WorkspaceComponent(int width, int height) {
+    public WorkspaceComponent(int width, int height, String name) {
+        this.name = name;
         this.width = width;
         this.height = height;
         this.setDoubleBuffered(false);

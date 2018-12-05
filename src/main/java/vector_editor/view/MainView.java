@@ -14,11 +14,13 @@ public class MainView {
     private ToolbarComponent toolbarComponent;
     private JScrollPane scrollPane;
 
+    private int workspaceWidth, workspaceHeight; // It goes to WorkspaceModel
+    private String workspaceName; // It goes to WorkspaceModel
+
 
     public MainView() {
 
         frame = new JFrame("Vector TikZ Editor");
-        frame.setResizable(false);
         container = frame.getContentPane();
         container.setBackground(Color.decode("#3E3E3E"));
         container.setLayout(new BoxLayout(container, BoxLayout.X_AXIS));
@@ -43,9 +45,10 @@ public class MainView {
 
         refresh();
     }
-    private void setupWorkspaceComponent() {
 
-        workspaceComponent = new WorkspaceComponent(1280, 720);
+    private void setupWorkspaceComponent(int workspaceWidth, int workspaceHeight, String workspaceName) {
+
+        workspaceComponent = new WorkspaceComponent(workspaceWidth, workspaceHeight, workspaceName);
         scrollPane = new JScrollPane(workspaceComponent, ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED, ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
         if (workspaceComponent.getPreferredSize().width < 1280 && workspaceComponent.getPreferredSize().height < 720) {
             scrollPane.setMaximumSize(new Dimension(workspaceComponent.getWidth(), workspaceComponent.getHeight()));
@@ -66,6 +69,27 @@ public class MainView {
         frame.repaint();
     }
 
+    private void displayNewFilePanel() {
+        JTextField widthField = new JTextField("");
+        JTextField nameField = new JTextField("");
+        JTextField heightField = new JTextField("");
+        JPanel panel = new JPanel(new GridLayout(0, 2));
+        panel.add(new JLabel("Name of your project: "));
+        panel.add(nameField);
+        panel.add(new JLabel("Width: [px]"));
+        panel.add(widthField);
+        panel.add(new JLabel("Height: [px]"));
+        panel.add(heightField);
+        int result = JOptionPane.showConfirmDialog(null, panel, "New File...",
+                JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
+        if (result == JOptionPane.OK_OPTION) {
+            workspaceWidth = Integer.parseInt(widthField.getText().trim());
+            workspaceHeight = Integer.parseInt(heightField.getText().trim());
+            workspaceName = nameField.getText().trim();
+        } else {
+            System.out.println("Cancelled");
+        }
+    }
     private void setupMenuBar() {
         JMenuBar menuBar = new JMenuBar();
 
@@ -75,7 +99,8 @@ public class MainView {
         JMenuItem saveItem = new JMenuItem("Save");
 
         newItem.addActionListener(e -> {
-            setupWorkspaceComponent();
+            displayNewFilePanel();
+            setupWorkspaceComponent(workspaceWidth, workspaceHeight, workspaceName);
         });
         //Set listeners for saveItem
         saveItem.addActionListener(
