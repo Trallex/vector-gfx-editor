@@ -1,4 +1,5 @@
-package main.java.vector_editor.view;
+package vector_editor.view;
+
 
 
 import org.freehep.graphicsbase.util.export.ExportDialog;

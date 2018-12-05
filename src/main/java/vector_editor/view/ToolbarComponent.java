@@ -1,4 +1,4 @@
-package main.java.vector_editor.view;
+package vector_editor.view;
 
 import javax.swing.*;
 import java.awt.*;
@@ -60,7 +60,7 @@ public class ToolbarComponent extends JPanel {
 
 
         buttons.forEach(jButton -> {
-            Icon icon = createImageIcon(String.format("/resources/images/%s.gif", jButton.getActionCommand()));
+            Icon icon = createImageIcon(String.format("/images/%s.gif", jButton.getActionCommand()));
             jButton.setIcon(icon);
             jButton.setPreferredSize(new Dimension(getWidth(), 60));
             this.add(jButton);
@@ -77,7 +77,7 @@ public class ToolbarComponent extends JPanel {
         try {
             return new ImageIcon(imgUrl);
         } catch (Exception ex) {
-            System.err.println("Couldn't find file" + path);
+            System.err.println("Couldn't find file " + path);
         }
         return null;
     }
