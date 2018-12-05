@@ -23,7 +23,7 @@ public class MainView {
         frame = new JFrame("Vector TikZ Editor");
         container = frame.getContentPane();
         container.setBackground(Color.decode("#3E3E3E"));
-        container.setLayout(new BoxLayout(container, BoxLayout.X_AXIS));
+        container.setLayout(new BorderLayout());
 
 
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
@@ -37,16 +37,17 @@ public class MainView {
         setupMenuBar();
 
     }
-
     private void setupToolbarComponent() {
 
         toolbarComponent = new ToolbarComponent(100, frame.getMaximumSize().height);
-        container.add(toolbarComponent);
+        container.add(toolbarComponent, BorderLayout.LINE_START);
 
         refresh();
     }
 
     private void setupWorkspaceComponent(int workspaceWidth, int workspaceHeight, String workspaceName) {
+
+        if (scrollPane != null) container.remove(scrollPane);
 
         workspaceComponent = new WorkspaceComponent(workspaceWidth, workspaceHeight, workspaceName);
         scrollPane = new JScrollPane(workspaceComponent, ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED, ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
@@ -58,10 +59,9 @@ public class MainView {
         scrollPane.setBorder(BorderFactory.createEmptyBorder(25, 25, 25, 25));
         scrollPane.setOpaque(false);
 
-        container.add(scrollPane);
+        container.add(scrollPane, BorderLayout.CENTER);
 
         refresh();
-
     }
 
     private void refresh() {
