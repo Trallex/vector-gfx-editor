@@ -18,7 +18,7 @@ public class MainView {
     private int workspaceWidth, workspaceHeight; // It goes to WorkspaceModel
     private String workspaceName; // It goes to WorkspaceModel
 
-
+//to get the view components in the controller
     public WorkspaceComponent getWorkspaceComponent() {
         return workspaceComponent;
     }
@@ -26,7 +26,7 @@ public class MainView {
     public ToolbarComponent getToolbarComponent() {
         return toolbarComponent;
     }
-
+//
     public MainView() {
 
         frame = new JFrame("Vector TikZ Editor");
@@ -44,7 +44,7 @@ public class MainView {
 
         setupToolbarComponent();
         setupMenuBar();
-        setupWorkspaceComponent(400,600,"graphics"); //initially starting workspace
+        setupWorkspaceComponent(1000,600,"graphics"); //initially starting workspace
 
     }
     private void setupToolbarComponent() {

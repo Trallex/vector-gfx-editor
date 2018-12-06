@@ -3,12 +3,14 @@ package vector_editor.model;
 import org.freehep.graphics2d.VectorGraphics;
 
 import java.awt.*;
+import java.util.ArrayList;
 
 public class Pencil extends ShapeObject {
 
     private int x, y;
     private int  x2, y2;
     private Color color;
+    private ArrayList<Point> points;
 
 
     public Pencil(int x, int y, int x2, int y2, Color c)
@@ -19,6 +21,7 @@ public class Pencil extends ShapeObject {
         this.x2 = x2;
         this.y2 = y2;
         color = c;
+        points= new ArrayList<>();
 
     }
 
@@ -84,26 +87,30 @@ public class Pencil extends ShapeObject {
     }
 
     public void addPoint(Point point){
-
+        points.add(point);
     }
     @Override
     public void draw(Graphics g) {
 
         if (g == null) return;
+        int nPoints=points.size();
+        double[] xPoints = new double[nPoints];
+        double[] yPoints = new double[nPoints];
+        for(int i=0; i<nPoints; i++){
+            xPoints[i]=points.get(i).getX();
+            yPoints[i]=points.get(i).getY();
+        }
         VectorGraphics vg = VectorGraphics.create(g);
-        //vg.drawRect(Math.min(x, x2), Math.min(y, y2), calcWidth(), calcHeight());
+        vg.drawPolyline(xPoints,yPoints,nPoints);
     }
 
     //to test
 
+
     @Override
     public String toString() {
-        return "Rectangle{" +
-                "x=" + x +
-                ", y=" + y +
-                ", x2=" + x2 +
-                ", y2=" + y2 +
-                ", color=" + color +
+        return "Pencil{" +
+                "points=" + points +
                 '}';
     }
 }

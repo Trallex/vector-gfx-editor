@@ -50,7 +50,6 @@ public class ToolbarComponent extends JPanel {
         buttons.add(TextToolBtn);
         buttons.add(BitmapToolBtn);
 
-//as actionlisteners
 
         MoveToolBtn.setActionCommand("move");
         PenToolBtn.setActionCommand("pen");
@@ -84,7 +83,7 @@ public class ToolbarComponent extends JPanel {
         }
         return null;
     }
-//new code
+//add a listener in the controller to the toolbar buttons
     public void addToolbarComponentListener(ActionListener toolbarComponentListener) {
         buttons.forEach(jButton -> jButton.addActionListener(toolbarComponentListener));
     }

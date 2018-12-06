@@ -23,8 +23,8 @@ public class MainFrameController {
         this.model = model;
 
         this.view.getToolbarComponent().addToolbarComponentListener(new ToolbarComponentListener());
-        this.view.getWorkspaceComponent().addDrawPanelMouseListener(new MouseListenerForDrawPanel());
-        this.view.getWorkspaceComponent().addDrawPanelMouseMotionListener(new MouseMotionListenerForDrawPanel());
+        this.view.getWorkspaceComponent().addWorkspaceComponentMouseListener(new MouseListenerForWorkspace());
+        this.view.getWorkspaceComponent().addWorkspaceComponentMouseMotionListener(new MouseMotionListenerForWorkspace());
 
     }
 
@@ -34,18 +34,19 @@ public class MainFrameController {
     {
         public void actionPerformed(ActionEvent e) {
             switch(e.getActionCommand()){
+                case "pencil":
+                    CurrentShape.setShapeType(ShapeEnum.PENCIL);
+                    System.out.println("PENCIL");
+                    break;
+                case "square":   //the best change the name to rectangle in the view
+                    CurrentShape.setShapeType(ShapeEnum.RECTANGLE);
+                    System.out.println("SQUARE");
+                    break;
                 case "move":
                     System.out.println("MOVE");
                     break;
                 case "pen":
                     System.out.println("PEN");
-                    break;
-                case "pencil":
-                    System.out.println("PENCIL");
-                    break;
-                case "square":
-                    CurrentShape.setShapeType(ShapeEnum.RECTANGLE);
-                    System.out.println("SQUARE");
                     break;
                 case "circle":
                     System.out.println("CIRCLE");
@@ -66,7 +67,7 @@ public class MainFrameController {
         }
     }
 
-    class MouseMotionListenerForDrawPanel implements MouseMotionListener
+    class MouseMotionListenerForWorkspace implements MouseMotionListener
     {
 
         @Override
@@ -76,6 +77,8 @@ public class MainFrameController {
             {
                 if (drawShape instanceof Pencil)
                 {
+                    System.out.println("here");
+                    System.out.println(event.getY());
                     ((Pencil) drawShape).addPoint(new Point(event.getX(), event.getY()));
                 }
 
@@ -99,7 +102,7 @@ public class MainFrameController {
 
     }
 
-    class MouseListenerForDrawPanel implements MouseListener
+    class MouseListenerForWorkspace implements MouseListener
     {
         public void mouseClicked(MouseEvent e){}
 
@@ -111,7 +114,6 @@ public class MainFrameController {
         public void mousePressed(MouseEvent e)
         {
             drawShape = getTmpShape(e.getX(), e.getY(), e.getX(), e.getY());
-            //System.out.println(drawShape.toString());
             view.getWorkspaceComponent().setTmpShape(drawShape);
             view.getWorkspaceComponent().repaint();
         }
@@ -139,12 +141,9 @@ public class MainFrameController {
             {
                 case RECTANGLE:
                     return new Rectangle(x, y, x2, y2, CurrentShape.getShapeColor());
-                case CIRCLE:
-                    //not implemented yet
                 case PENCIL:
+                    System.out.println("pencil");
                    return new Pencil(x, y, x2, y2, CurrentShape.getShapeColor());
-                case PEN:
-                    //not implemented yet
                 default:
                     break;
             }

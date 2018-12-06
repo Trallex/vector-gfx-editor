@@ -2,9 +2,9 @@ package vector_editor.model;
 
 import java.awt.*;
 
-public class CurrentShape {
+public class CurrentShape {  //the static info about current shape and color selected in a toolbar
 
-    private static ShapeEnum shapeType = ShapeEnum.RECTANGLE;
+    private static ShapeEnum shapeType = ShapeEnum.RECTANGLE;  //initial selected shape and color
     private static Color shapeColor = Color.BLACK;
 
     public static ShapeEnum getShapeType()

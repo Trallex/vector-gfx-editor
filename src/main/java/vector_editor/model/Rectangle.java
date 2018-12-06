@@ -86,6 +86,7 @@ public class Rectangle extends ShapeObject {
     public void addPoint(Point point){
 
     }
+
     @Override
     public void draw(Graphics g) {
 
