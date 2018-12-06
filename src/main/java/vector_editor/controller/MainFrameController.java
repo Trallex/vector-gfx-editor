@@ -1,11 +1,10 @@
 package vector_editor.controller;
 
-import vector_editor.model.CurrentShape;
+import vector_editor.model.*;
 import vector_editor.model.Rectangle;
-import vector_editor.model.ShapeEnum;
-import vector_editor.model.ShapeObject;
 import vector_editor.view.MainView;
 
+import java.awt.*;
 import java.awt.event.*;
 import java.util.ArrayList;
 
@@ -73,6 +72,22 @@ public class MainFrameController {
         @Override
         public void mouseDragged(MouseEvent event) //need to implement the method for the pencil
         {
+            if (!(drawShape == null))
+            {
+                if (drawShape instanceof Pencil)
+                {
+                    ((Pencil) drawShape).addPoint(new Point(event.getX(), event.getY()));
+                }
+
+                else
+                {
+                    drawShape.setX2(event.getX());
+                    drawShape.setY2(event.getY());
+                }
+                view.getWorkspaceComponent().setTmpShape(drawShape);
+                view.getWorkspaceComponent().repaint();
+            }
+
 
 
         }
@@ -95,9 +110,10 @@ public class MainFrameController {
 
         public void mousePressed(MouseEvent e)
         {
-            drawShape = getTmpShape(e.getX(), e.getY(), 14, 14);
+            drawShape = getTmpShape(e.getX(), e.getY(), e.getX(), e.getY());
             //System.out.println(drawShape.toString());
             view.getWorkspaceComponent().setTmpShape(drawShape);
+            view.getWorkspaceComponent().repaint();
         }
 
         public void mouseReleased(MouseEvent e)
@@ -124,11 +140,11 @@ public class MainFrameController {
                 case RECTANGLE:
                     return new Rectangle(x, y, x2, y2, CurrentShape.getShapeColor());
                 case CIRCLE:
-                    //return new Circle(x, y, x2, y2, StaticStuff.getShapeColor());
+                    //not implemented yet
                 case PENCIL:
-                   // return new Pencil(x, y, x2, y2, StaticStuff.getShapeColor());
+                   return new Pencil(x, y, x2, y2, CurrentShape.getShapeColor());
                 case PEN:
-                    //return new PEN(x, y, x2, y2, StaticStuff.getShapeColor());
+                    //not implemented yet
                 default:
                     break;
             }

@@ -137,12 +137,6 @@ public class WorkspaceComponent extends JComponent {
 
     public void setTmpShape(ShapeObject tmpShape) {
         this.demoShape = tmpShape;
-        if (demoShape != null) {
-            //this.demoShape.toString();
-            System.out.println(tmpShape.toString());
-            System.out.println(this.demoShape.toString());
-
-        }
     }
 
 }
