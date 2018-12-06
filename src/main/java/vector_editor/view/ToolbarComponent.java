@@ -86,8 +86,6 @@ public class ToolbarComponent extends JPanel {
     }
 //new code
     public void addToolbarComponentListener(ActionListener toolbarComponentListener) {
-        buttons.forEach(jButton -> {
-            jButton.addActionListener(toolbarComponentListener);
-        });
+        buttons.forEach(jButton -> jButton.addActionListener(toolbarComponentListener));
     }
 }

@@ -5,8 +5,6 @@ import vector_editor.model.ShapeObject;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 import java.util.ArrayList;
@@ -46,25 +44,25 @@ public class WorkspaceComponent extends JComponent {
         this.setDoubleBuffered(false);
         this.setOpaque(false);
         this.setPreferredSize(this.getPreferredSize());
-        this.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mousePressed(MouseEvent e) {
-                oldX = e.getX();
-                oldY = e.getY();
-            }
-
-            @Override
-            public void mouseDragged(MouseEvent e) {
-                currentX = e.getX();
-                currentY = e.getY();
-                if (vg != null) {
-                    vg.drawLine(oldX, oldY, currentX, currentY);
-                    repaint();
-                    oldX = currentX;
-                    oldY = currentY;
-                }
-            }
-        });
+//        this.addMouseListener(new MouseAdapter() {
+//            @Override
+//            public void mousePressed(MouseEvent e) {
+//                oldX = e.getX();
+//                oldY = e.getY();
+//            }
+//
+//            @Override
+//            public void mouseDragged(MouseEvent e) {
+//                currentX = e.getX();
+//                currentY = e.getY();
+//                if (vg != null) {
+//                    vg.drawLine(oldX, oldY, currentX, currentY);
+//                    repaint();
+//                    oldX = currentX;
+//                    oldY = currentY;
+//                }
+//            }
+//        });
     }
 
     @Override
@@ -137,9 +135,14 @@ public class WorkspaceComponent extends JComponent {
         return demoShape;
     }
 
-    public void setTmpShape(ShapeObject tmpShape)
-    {
+    public void setTmpShape(ShapeObject tmpShape) {
         this.demoShape = tmpShape;
+        if (demoShape != null) {
+            //this.demoShape.toString();
+            System.out.println(tmpShape.toString());
+            System.out.println(this.demoShape.toString());
+
+        }
     }
 
 }

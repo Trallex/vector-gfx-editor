@@ -17,6 +17,7 @@ public abstract class ShapeObject {
         color = c;
     }
 
+
     public abstract void draw(Graphics g); //render
 
     public int calcWidth()
@@ -79,6 +80,17 @@ public abstract class ShapeObject {
         this.color = color;
     }
 
+//to test
 
 
+    @Override
+    public String toString() {
+        return "ShapeObject{" +
+                "x=" + x +
+                ", y=" + y +
+                ", x2=" + x2 +
+                ", y2=" + y2 +
+                ", color=" + color +
+                '}';
+    }
 }

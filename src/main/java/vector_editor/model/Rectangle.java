@@ -14,6 +14,11 @@ public class Rectangle extends ShapeObject {
     public Rectangle(int x, int y, int x2, int y2, Color c)
     {
         super(x, y, x2, y2, c);
+        this.x = x;
+        this.y = y;
+        this.x2 = x2;
+        this.y2 = y2;
+        color = c;
 
     }
 
@@ -77,11 +82,29 @@ public class Rectangle extends ShapeObject {
     {
         this.color = color;
     }
+
+    public void addPoint(Point point){
+
+    }
     @Override
     public void draw(Graphics g) {
+
         if (g == null) return;
         VectorGraphics vg = VectorGraphics.create(g);
-        vg.drawRect(Math.min(x, x2), Math.min(y, y2), calcHeight(), calcHeight());
+        vg.drawRect(Math.min(x, x2), Math.min(y, y2), calcWidth(), calcHeight());
+    }
+
+    //to test
+
+    @Override
+    public String toString() {
+        return "Rectangle{" +
+                "x=" + x +
+                ", y=" + y +
+                ", x2=" + x2 +
+                ", y2=" + y2 +
+                ", color=" + color +
+                '}';
     }
 
 

@@ -44,6 +44,7 @@ public class MainView {
 
         setupToolbarComponent();
         setupMenuBar();
+        setupWorkspaceComponent(400,600,"graphics"); //initially starting workspace
 
     }
     private void setupToolbarComponent() {
