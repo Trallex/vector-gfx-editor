@@ -77,8 +77,6 @@ public class MainFrameController {
             {
                 if (drawShape instanceof Pencil)
                 {
-                    System.out.println("here");
-                    System.out.println(event.getY());
                     ((Pencil) drawShape).addPoint(new Point(event.getX(), event.getY()));
                 }
 
@@ -88,7 +86,7 @@ public class MainFrameController {
                     drawShape.setY2(event.getY());
                 }
                 view.getWorkspaceComponent().setTmpShape(drawShape);
-                view.getWorkspaceComponent().repaint();
+                view.getWorkspaceComponent().repaint(); // draw the shape during user's action
             }
 
 
@@ -118,13 +116,12 @@ public class MainFrameController {
             view.getWorkspaceComponent().repaint();
         }
 
-        public void mouseReleased(MouseEvent e)
+        public void mouseReleased(MouseEvent e)  //after user's action, it sets the new shape and reset the temp
         {
             if (!(drawShape == null))
             {
                 drawShape.setX2(e.getX());
                 drawShape.setY2(e.getY());
-                System.out.println(drawShape.toString());
                 ArrayList<ShapeObject> shapes = view.getWorkspaceComponent().getShapes();
                 shapes.add(drawShape);
                 view.getWorkspaceComponent().setTmpShape(null);
