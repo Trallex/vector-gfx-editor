@@ -38,7 +38,7 @@ public class MainFrameController {
                     CurrentShape.setShapeType(ShapeEnum.PENCIL);
                     System.out.println("PENCIL");
                     break;
-                case "square":   //the best change the name to rectangle in the view
+                case "rectangle":
                     CurrentShape.setShapeType(ShapeEnum.RECTANGLE);
                     System.out.println("SQUARE");
                     break;
@@ -48,7 +48,7 @@ public class MainFrameController {
                 case "pen":
                     System.out.println("PEN");
                     break;
-                case "circle":
+                case "oval":
                     System.out.println("CIRCLE");
                     break;
                 case "zoom":
@@ -142,7 +142,6 @@ public class MainFrameController {
                 case RECTANGLE:
                     return new Rectangle(x, y, x2, y2, CurrentShape.getShapeColor());
                 case PENCIL:
-                    System.out.println("pencil");
                    return new Pencil(x, y, x2, y2, CurrentShape.getShapeColor());
                 default:
                     break;

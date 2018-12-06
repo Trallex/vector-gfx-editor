@@ -54,8 +54,8 @@ public class ToolbarComponent extends JPanel {
         MoveToolBtn.setActionCommand("move");
         PenToolBtn.setActionCommand("pen");
         PencilToolBtn.setActionCommand("pencil");
-        SquareToolBtn.setActionCommand("square");
-        CircleToolBtn.setActionCommand("circle");
+        SquareToolBtn.setActionCommand("rectangle");
+        CircleToolBtn.setActionCommand("oval");
         ZoomToolBtn.setActionCommand("zoom");
         TextToolBtn.setActionCommand("text");
         BitmapToolBtn.setActionCommand("bitmap");
