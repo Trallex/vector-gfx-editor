@@ -19,6 +19,14 @@ public class MainView {
     private String workspaceName; // It goes to WorkspaceModel
 
 
+    public WorkspaceComponent getWorkspaceComponent() {
+        return workspaceComponent;
+    }
+
+    public ToolbarComponent getToolbarComponent() {
+        return toolbarComponent;
+    }
+
     public MainView() {
 
         frame = new JFrame("Vector TikZ Editor");

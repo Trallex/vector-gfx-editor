@@ -1,11 +1,15 @@
 package vector_editor.view;
 
 import org.freehep.graphics2d.VectorGraphics;
+import vector_editor.model.ShapeObject;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
+import java.util.ArrayList;
 
 public class WorkspaceComponent extends JComponent {
     private VectorGraphics vg;
@@ -13,6 +17,10 @@ public class WorkspaceComponent extends JComponent {
     int width, height;
     String name;
 
+    //new code
+    private ArrayList<ShapeObject> shapes = new ArrayList<>();
+    private ShapeObject demoShape;
+    //
     @Override
     public int getWidth() {
         return width;
@@ -64,23 +72,23 @@ public class WorkspaceComponent extends JComponent {
         return new Dimension(getWidth(), getHeight());
     }
 
-    @Override
-    protected void paintComponent(Graphics g) {
-
-        vg = VectorGraphics.create(g);
-
-        Dimension dim = getSize();
-        Insets insets = getInsets();
-
-        vg.setColor(Color.white);
-        vg.fillRect(insets.left, insets.top,
-                dim.width - insets.left - insets.right,
-                dim.height - insets.top - insets.bottom);
-        vg.setColor(Color.black);
-        vg.drawLine(10.0, 10.0, this.getWidth() - 10, this.getHeight() - 10);
-
-
-    }
+//    @Override
+//    protected void paintComponent(Graphics g) {
+//
+//        vg = VectorGraphics.create(g);
+//
+//        Dimension dim = getSize();
+//        Insets insets = getInsets();
+//
+//        vg.setColor(Color.white);
+//        vg.fillRect(insets.left, insets.top,
+//                dim.width - insets.left - insets.right,
+//                dim.height - insets.top - insets.bottom);
+//        vg.setColor(Color.black);
+//        vg.drawLine(10.0, 10.0, this.getWidth() - 10, this.getHeight() - 10);
+//
+//
+//    }
 
     private void clear() {
         vg.setPaint(Color.white);
@@ -88,4 +96,50 @@ public class WorkspaceComponent extends JComponent {
         vg.setPaint(Color.black);
         repaint();
     }
+
+    //new code
+    public void addDrawPanelMouseListener(MouseListener listenForMouse)
+    {
+        this.addMouseListener(listenForMouse);
+    }
+
+    public void addDrawPanelMouseMotionListener(MouseMotionListener listenForMouse)
+    {
+        this.addMouseMotionListener(listenForMouse);
+    }
+
+    public void paintComponent(Graphics g)
+    {
+        super.paintComponent(g);
+
+        for (ShapeObject s : shapes)
+        {
+            if (s != null)
+                s.draw(g);
+        }
+
+        if (demoShape != null)
+            demoShape.draw(g);
+    }
+
+    public ArrayList<ShapeObject> getShapes()
+    {
+        return shapes;
+    }
+
+    public void setShapes(ArrayList<ShapeObject>  shapes)
+    {
+        this.shapes = shapes;
+    }
+
+    public ShapeObject getTmpShape()
+    {
+        return demoShape;
+    }
+
+    public void setTmpShape(ShapeObject tmpShape)
+    {
+        this.demoShape = tmpShape;
+    }
+
 }
