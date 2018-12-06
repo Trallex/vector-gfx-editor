@@ -13,20 +13,22 @@ public class MainFrameController {
     //final static Logger logger = Logger.getLogger(ToolsMenu.class);
 
     private MainView view;
-    private Rectangle model; //temporary!!
+    private Model model; //temporary!!
 
     private ShapeObject drawShape;
 
-    public MainFrameController(MainView view, Rectangle model) //temporary model..
+    public MainFrameController(MainView view, Model model) //temporary model..
     {
         this.view = view;
         this.model = model;
 
         this.view.getToolbarComponent().addToolbarComponentListener(new ToolbarComponentListener());
-        this.view.getWorkspaceComponent().addWorkspaceComponentMouseListener(new MouseListenerForWorkspace());
-        this.view.getWorkspaceComponent().addWorkspaceComponentMouseMotionListener(new MouseMotionListenerForWorkspace());
+
+        view.getWorkspaceComponent().addWorkspaceComponentMouseListener(new MouseListenerForWorkspace()); //need to set listeners
+        view.getWorkspaceComponent().addWorkspaceComponentMouseMotionListener(new MouseMotionListenerForWorkspace()); //after create the new workspace
 
     }
+
 
 
 
@@ -66,6 +68,8 @@ public class MainFrameController {
 
         }
     }
+
+
 
     class MouseMotionListenerForWorkspace implements MouseMotionListener
     {

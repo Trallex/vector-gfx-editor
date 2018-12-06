@@ -18,7 +18,7 @@ public class MainView {
     private int workspaceWidth, workspaceHeight; // It goes to WorkspaceModel
     private String workspaceName; // It goes to WorkspaceModel
 
-//to get the view components in the controller
+    //to get the view components in the controller
     public WorkspaceComponent getWorkspaceComponent() {
         return workspaceComponent;
     }
@@ -26,7 +26,7 @@ public class MainView {
     public ToolbarComponent getToolbarComponent() {
         return toolbarComponent;
     }
-//
+    //
     public MainView() {
 
         frame = new JFrame("Vector TikZ Editor");
@@ -44,7 +44,7 @@ public class MainView {
 
         setupToolbarComponent();
         setupMenuBar();
-        setupWorkspaceComponent(1000,600,"graphics"); //initially starting workspace
+        setupWorkspaceComponent(1000,600,"graphics"); //temporary initial workspace
 
     }
     private void setupToolbarComponent() {
@@ -93,6 +93,8 @@ public class MainView {
         int result = JOptionPane.showConfirmDialog(null, panel, "New File...",
                 JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
         if (result == JOptionPane.OK_OPTION) {
+
+            //HERE PASS THE NEW WORKSPACE TO THE CONTROLLER!
             workspaceWidth = Integer.parseInt(widthField.getText().trim());
             workspaceHeight = Integer.parseInt(heightField.getText().trim());
             workspaceName = nameField.getText().trim();
@@ -144,3 +146,4 @@ public class MainView {
 
     }
 }
+
