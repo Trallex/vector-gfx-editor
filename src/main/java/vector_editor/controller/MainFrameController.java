@@ -1,7 +1,6 @@
 package vector_editor.controller;
 
 import vector_editor.model.*;
-import vector_editor.model.Rectangle;
 import vector_editor.view.MainView;
 
 import java.awt.*;
@@ -41,7 +40,7 @@ public class MainFrameController {
                     System.out.println("PENCIL");
                     break;
                 case "rectangle":
-                    CurrentShape.setShapeType(ShapeEnum.RECTANGLE);
+                    CurrentShape.setShapeType(ShapeEnum.SQUARE);  //temporary to test the model, need to make a key binding
                     System.out.println("SQUARE");
                     break;
                 case "move":
@@ -141,9 +140,11 @@ public class MainFrameController {
             switch (CurrentShape.getShapeType())
             {
                 case RECTANGLE:
-                    return new Rectangle(x, y, x2, y2, CurrentShape.getShapeColor());
+                    return new Square(x, y, x2, y2, CurrentShape.getShapeColor());
                 case PENCIL:
                    return new Pencil(x, y, x2, y2, CurrentShape.getShapeColor());
+                case SQUARE:
+                    return new Square(x,y,x2,y2,CurrentShape.getShapeColor());
                 default:
                     break;
             }

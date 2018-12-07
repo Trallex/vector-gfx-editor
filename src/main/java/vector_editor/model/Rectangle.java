@@ -83,9 +83,7 @@ public class Rectangle extends ShapeObject {
         this.color = color;
     }
 
-    public void addPoint(Point point){
 
-    }
 
     @Override
     public void draw(Graphics g) {

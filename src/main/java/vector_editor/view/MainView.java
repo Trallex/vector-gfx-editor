@@ -14,7 +14,7 @@ public class MainView {
     private WorkspaceComponent workspaceComponent;
     private ToolbarComponent toolbarComponent;
     private JScrollPane scrollPane;
-
+    private MenubarComponent menuBar;
     private int workspaceWidth, workspaceHeight; // It goes to WorkspaceModel
     private String workspaceName; // It goes to WorkspaceModel
 
@@ -25,6 +25,9 @@ public class MainView {
 
     public ToolbarComponent getToolbarComponent() {
         return toolbarComponent;
+    }
+    public MenubarComponent getMenubarComponent(){
+        return menuBar;
     }
     //
     public MainView() {
@@ -103,45 +106,23 @@ public class MainView {
         }
     }
     private void setupMenuBar() {
-        JMenuBar menuBar = new JMenuBar();
+        menuBar = new MenubarComponent();
 
-        JMenu fileMenu = new JMenu("File");
-
-        JMenuItem newItem = new JMenuItem("New");
-        JMenuItem saveItem = new JMenuItem("Save");
-
-        newItem.addActionListener(e -> {
+        ((MenubarComponent) menuBar).getNewFileItem().addActionListener(e -> {
             displayNewFilePanel();
             setupWorkspaceComponent(workspaceWidth, workspaceHeight, workspaceName);
         });
         //Set listeners for saveItem
-        saveItem.addActionListener(
+        ((MenubarComponent) menuBar).getSaveFileItem().addActionListener(
                 e -> {
                     ExportDialog export = new ExportDialog();
                     export.showExportDialog(container, "Export view as...", workspaceComponent, "export");
                 }
         );
 
-        JMenuItem closeItem = new JMenuItem("Close");
-
-        //Add items to fileMenu
-        fileMenu.add(newItem);
-        fileMenu.add(saveItem);
-        fileMenu.add(closeItem);
-
-        JMenu helpMenu = new JMenu("Help");
-
-        JMenuItem aboutItem = new JMenu("About");
-        //Add items to helpMenu
-        helpMenu.add(aboutItem);
-        //Add menus to menuBar
-        menuBar.add(fileMenu);
-        menuBar.add(helpMenu);
-
         frame.setJMenuBar(menuBar);
 
         refresh();
-
 
 
     }
