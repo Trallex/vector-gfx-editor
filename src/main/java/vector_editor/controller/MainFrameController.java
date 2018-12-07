@@ -1,6 +1,7 @@
 package vector_editor.controller;
 
 import vector_editor.model.*;
+import vector_editor.model.Rectangle;
 import vector_editor.view.MainView;
 
 import java.awt.*;
@@ -35,22 +36,30 @@ public class MainFrameController {
     {
         public void actionPerformed(ActionEvent e) {
             switch(e.getActionCommand()){
+                case "rectangle":
+                    CurrentShape.setShapeType(ShapeEnum.RECTANGLE);
+                    System.out.println("RECTANGLE");
+//                    temporary to test the model, need to make a key binding
+//                    CurrentShape.setShapeType(ShapeEnum.SQUARE);
+//                    System.out.println("SQUARE ");
+                    break;
                 case "pencil":
                     CurrentShape.setShapeType(ShapeEnum.PENCIL);
                     System.out.println("PENCIL");
                     break;
-                case "rectangle":
-                    CurrentShape.setShapeType(ShapeEnum.SQUARE);  //temporary to test the model, need to make a key binding
-                    System.out.println("SQUARE");
-                    break;
-                case "move":
-                    System.out.println("MOVE");
-                    break;
                 case "pen":
+                    CurrentShape.setShapeType(ShapeEnum.PEN);
                     System.out.println("PEN");
                     break;
                 case "oval":
+//                    CurrentShape.setShapeType(ShapeEnum.OVAL);
+//                    System.out.println("OVAL");
+//                    temporary to test the model, need to make a key binding
+                    CurrentShape.setShapeType(ShapeEnum.CIRCLE);
                     System.out.println("CIRCLE");
+                    break;
+                case "move":
+                    System.out.println("MOVE");
                     break;
                 case "zoom":
                     System.out.println("ZOOM");
@@ -140,11 +149,18 @@ public class MainFrameController {
             switch (CurrentShape.getShapeType())
             {
                 case RECTANGLE:
-                    return new Square(x, y, x2, y2, CurrentShape.getShapeColor());
-                case PENCIL:
-                   return new Pencil(x, y, x2, y2, CurrentShape.getShapeColor());
+                    return new Rectangle(x, y, x2, y2, CurrentShape.getShapeColor());
                 case SQUARE:
                     return new Square(x,y,x2,y2,CurrentShape.getShapeColor());
+                case OVAL:
+                    return new Oval(x,y,x2,y2,CurrentShape.getShapeColor());
+                case CIRCLE:
+                    return new Circle(x,y,x2,y2,CurrentShape.getShapeColor());
+                case PENCIL:
+                   return new Pencil(x, y, x2, y2, CurrentShape.getShapeColor());
+                case PEN:
+                    return new Pencil(x, y, x2, y2, CurrentShape.getShapeColor());
+                //return new Pen(x, y, x2, y2, CurrentShape.getShapeColor());
                 default:
                     break;
             }

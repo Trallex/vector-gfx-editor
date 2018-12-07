@@ -4,9 +4,9 @@ import java.awt.*;
 
 public abstract class ShapeObject {
 
-    private int x, y;
-    private int x2, y2;
-    private Color color;
+    protected int x, y;
+    protected int x2, y2;
+    protected Color color;
 
     public ShapeObject(int x, int y, int x2, int y2, Color c)
     {
@@ -22,12 +22,12 @@ public abstract class ShapeObject {
 
     public int calcWidth()
     {
-        return x2 - x;
+        return Math.abs(x2 - x);
     }
 
     public int calcHeight()
     {
-        return y2 - y;
+        return Math.abs(y2 - y);
     }
 
     public int getX()
