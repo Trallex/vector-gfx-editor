@@ -5,6 +5,7 @@ import vector_editor.model.Model;
 import vector_editor.model.ShapeEnum;
 import vector_editor.model.Shapes.*;
 import vector_editor.model.Shapes.Rectangle;
+import vector_editor.model.Workspace;
 import vector_editor.view.MainView;
 
 import java.awt.*;
@@ -37,6 +38,10 @@ class ContainerListenerForMainFrame implements ContainerListener{
     public void componentAdded(ContainerEvent e) {
         view.getWorkspaceComponent().addWorkspaceComponentMouseListener(new MouseListenerForWorkspace()); //need to set listeners
         view.getWorkspaceComponent().addWorkspaceComponentMouseMotionListener(new MouseMotionListenerForWorkspace()); //after create the new workspace
+       int width = view.getWorkspaceComponent().getWidth();
+       int height = view.getWorkspaceComponent().getHeight();
+       String name = view.getWorkspaceComponent().getName();
+       model.setWorkspace(new Workspace(width,height,name));
     }
 
     @Override
@@ -67,11 +72,11 @@ class ContainerListenerForMainFrame implements ContainerListener{
                     isNewShapePainted=true;
                     break;
                 case "oval":
-//                    CurrentShape.setShapeType(ShapeEnum.OVAL);
-//                    System.out.println("OVAL");
+                    CurrentShape.setShapeType(ShapeEnum.OVAL);
+                    System.out.println("OVAL");
 //                    temporary to test the model, need to make a key binding
-                    CurrentShape.setShapeType(ShapeEnum.CIRCLE);
-                    System.out.println("CIRCLE");
+//                    CurrentShape.setShapeType(ShapeEnum.CIRCLE);
+//                    System.out.println("CIRCLE");
                     isNewShapePainted=true;
                     break;
                 case "move":
@@ -108,11 +113,9 @@ class ContainerListenerForMainFrame implements ContainerListener{
                 if (drawShape instanceof Pencil)
                 {
                     ((Pencil) drawShape).addPoint(new Point(event.getX(), event.getY()));
-                    //System.out.println("Instance of pencil");
                 }
                 else
                 {
-                    //System.out.println(drawShape.toString());
                     drawShape.setX2(event.getX());
                     drawShape.setY2(event.getY());
                 }
@@ -171,6 +174,7 @@ class ContainerListenerForMainFrame implements ContainerListener{
 
 
                     shapes.add(drawShape);
+                    model.getWorkspace().addShape(drawShape);  //need to set the instance of the shape before
                     view.getWorkspaceComponent().setTmpShape(null);
                     view.getWorkspaceComponent().setShapes(shapes);
                     drawShape = null;
@@ -180,11 +184,9 @@ class ContainerListenerForMainFrame implements ContainerListener{
                 else
                 {
 
-                    //System.out.println("Instance of pen");
 
                     //checking if its a new instance of pen
                     if(((Pen) drawShape).isFirstPoint()){
-                        System.out.println("first point");
                         ((Pen) drawShape).addPoint(new Point(e.getX(), e.getY()));
 
                     }
@@ -194,12 +196,14 @@ class ContainerListenerForMainFrame implements ContainerListener{
                         Pen tempPen=(Pen)shapes.get(shapes.size()-1); //get the last Pen object and changed them
                         tempPen.addPoint(new Point(e.getX(), e.getY()));
                         shapes.remove((shapes.size()-1));
+                        model.getWorkspace().removeShape(shapes.size());
                         drawShape=tempPen;
 
                     }
                     view.getWorkspaceComponent().setTmpShape(drawShape);
                     view.getWorkspaceComponent().repaint();
                     shapes.add(drawShape);
+                    model.getWorkspace().addShape(drawShape);
                     view.getWorkspaceComponent().setTmpShape(null);
                     view.getWorkspaceComponent().setShapes(shapes);
                     isNewShapePainted=false;
@@ -207,7 +211,6 @@ class ContainerListenerForMainFrame implements ContainerListener{
                 }
 
 
-                System.out.println(shapes.size());
                 view.getWorkspaceComponent().repaint();
 
             }
@@ -229,7 +232,6 @@ class ContainerListenerForMainFrame implements ContainerListener{
                    return new Pencil(x, y, x2, y2, CurrentShape.getShapeColor());
                 case PEN:
                     return new Pen(x, y, x2, y2, CurrentShape.getShapeColor());
-                //return new Pen(x, y, x2, y2, CurrentShape.getShapeColor());
                 default:
                     break;
             }

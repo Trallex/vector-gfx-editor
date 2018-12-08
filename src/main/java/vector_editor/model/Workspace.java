@@ -18,4 +18,22 @@ public class Workspace {
         shapes=new ArrayList<>();
     }
 
+    public void addShape( ShapeObject newShape){
+        shapes.add(newShape);
+        System.out.println(this.toString());
+
+    }
+    public void removeShape(int index){
+        shapes.remove(index);
+    }
+
+    @Override
+    public String toString() {
+        return "Workspace{" +
+                "height=" + height +
+                ", width=" + width +
+                ", name='" + name + '\'' +
+                ", shapes=" + shapes +
+                '}';
+    }
 }
