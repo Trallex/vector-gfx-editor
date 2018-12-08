@@ -5,10 +5,10 @@ import org.freehep.graphics2d.VectorGraphics;
 import java.awt.*;
 import java.util.ArrayList;
 
-public class Pencil extends ShapeObject {
+public class Pencil extends ShapeObject {  //for now the separated class from Pen, had problems wth instances in the controlller
 
 
-    private ArrayList<Point> points;
+    protected ArrayList<Point> points;
 
 
     public Pencil(int x, int y, int x2, int y2, Color c)
@@ -22,6 +22,7 @@ public class Pencil extends ShapeObject {
 
     public void addPoint(Point point){
         points.add(point);
+        System.out.println(point);
     }
     @Override
     public void draw(Graphics g) {
@@ -33,9 +34,11 @@ public class Pencil extends ShapeObject {
         for(int i=0; i<nPoints; i++){
             xPoints[i]=points.get(i).getX();
             yPoints[i]=points.get(i).getY();
+            //System.out.println(i);
         }
         VectorGraphics vg = VectorGraphics.create(g);
         vg.drawPolyline(xPoints,yPoints,nPoints);
+
     }
 
 
