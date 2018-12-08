@@ -1,7 +1,7 @@
 package vector_editor.view;
 
 import org.freehep.graphics2d.VectorGraphics;
-import vector_editor.model.ShapeObject;
+import vector_editor.model.Shapes.ShapeObject;
 
 import javax.swing.*;
 import java.awt.*;

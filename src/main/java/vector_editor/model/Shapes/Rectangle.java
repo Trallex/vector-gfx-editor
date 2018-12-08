@@ -1,4 +1,4 @@
-package vector_editor.model;
+package vector_editor.model.Shapes;
 
 import org.freehep.graphics2d.VectorGraphics;
 

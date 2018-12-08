@@ -1,11 +1,11 @@
 package vector_editor.view;
 
 
-
 import org.freehep.graphicsbase.util.export.ExportDialog;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ContainerListener;
 
 
 public class MainView {
@@ -26,9 +26,6 @@ public class MainView {
     public ToolbarComponent getToolbarComponent() {
         return toolbarComponent;
     }
-    public MenubarComponent getMenubarComponent(){
-        return menuBar;
-    }
     //
     public MainView() {
 
@@ -36,7 +33,6 @@ public class MainView {
         container = frame.getContentPane();
         container.setBackground(Color.decode("#3E3E3E"));
         container.setLayout(new BorderLayout());
-
 
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         frame.setMinimumSize(new Dimension(1280, 720));
@@ -47,7 +43,7 @@ public class MainView {
 
         setupToolbarComponent();
         setupMenuBar();
-        setupWorkspaceComponent(1000,600,"graphics"); //temporary initial workspace
+        //setupWorkspaceComponent(1000,600,"graphics"); //temporary initial workspace
 
     }
     private void setupToolbarComponent() {
@@ -73,7 +69,6 @@ public class MainView {
         scrollPane.setOpaque(false);
 
         container.add(scrollPane, BorderLayout.CENTER);
-
         refresh();
     }
 
@@ -101,6 +96,7 @@ public class MainView {
             workspaceWidth = Integer.parseInt(widthField.getText().trim());
             workspaceHeight = Integer.parseInt(heightField.getText().trim());
             workspaceName = nameField.getText().trim();
+
         } else {
             System.out.println("Cancelled");
         }
@@ -124,7 +120,13 @@ public class MainView {
 
         refresh();
 
-
     }
+
+    public void addListenerToContainer(ContainerListener listener) { //listener to observe if new items were added to the container
+        //helpful when adding new Workspace
+        container.addContainerListener(listener);
+    }
+
+
 }
 

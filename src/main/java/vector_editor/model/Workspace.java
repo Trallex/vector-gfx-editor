@@ -1,5 +1,7 @@
 package vector_editor.model;
 
+import vector_editor.model.Shapes.ShapeObject;
+
 import java.util.ArrayList;
 
 public class Workspace {

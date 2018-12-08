@@ -1,7 +1,10 @@
 package vector_editor.controller;
 
-import vector_editor.model.*;
-import vector_editor.model.Rectangle;
+import vector_editor.model.CurrentShape;
+import vector_editor.model.Model;
+import vector_editor.model.ShapeEnum;
+import vector_editor.model.Shapes.*;
+import vector_editor.model.Shapes.Rectangle;
 import vector_editor.view.MainView;
 
 import java.awt.*;
@@ -9,8 +12,6 @@ import java.awt.event.*;
 import java.util.ArrayList;
 
 public class MainFrameController {
-
-    //final static Logger logger = Logger.getLogger(ToolsMenu.class);
 
     private MainView view;
     private Model model; //temporary!!
@@ -22,16 +23,25 @@ public class MainFrameController {
     {
         this.view = view;
         this.model = model;
+        this.view.addListenerToContainer(new ContainerListenerForMainFrame());
 
         this.view.getToolbarComponent().addToolbarComponentListener(new ToolbarComponentListener());
 
-        view.getWorkspaceComponent().addWorkspaceComponentMouseListener(new MouseListenerForWorkspace()); //need to set listeners
-        view.getWorkspaceComponent().addWorkspaceComponentMouseMotionListener(new MouseMotionListenerForWorkspace()); //after create the new workspace
 
     }
 
 
+class ContainerListenerForMainFrame implements ContainerListener{
+// initial solution when the new workspace is set
+    @Override
+    public void componentAdded(ContainerEvent e) {
+        view.getWorkspaceComponent().addWorkspaceComponentMouseListener(new MouseListenerForWorkspace()); //need to set listeners
+        view.getWorkspaceComponent().addWorkspaceComponentMouseMotionListener(new MouseMotionListenerForWorkspace()); //after create the new workspace
+    }
 
+    @Override
+    public void componentRemoved(ContainerEvent e) { }
+}
 
     class ToolbarComponentListener implements ActionListener
     {
@@ -185,7 +195,7 @@ public class MainFrameController {
                         tempPen.addPoint(new Point(e.getX(), e.getY()));
                         shapes.remove((shapes.size()-1));
                         drawShape=tempPen;
-                        
+
                     }
                     view.getWorkspaceComponent().setTmpShape(drawShape);
                     view.getWorkspaceComponent().repaint();
@@ -193,7 +203,6 @@ public class MainFrameController {
                     view.getWorkspaceComponent().setTmpShape(null);
                     view.getWorkspaceComponent().setShapes(shapes);
                     isNewShapePainted=false;
-
 
                 }
 

@@ -1,22 +1,33 @@
-package vector_editor.model;
+package vector_editor.model.Shapes;
 
 import org.freehep.graphics2d.VectorGraphics;
 
 import java.awt.*;
 import java.util.ArrayList;
 
-public class Pencil extends ShapeObject {  //for now the separated class from Pen, had problems wth instances in the controlller
+public class Pen extends ShapeObject {
 
 
     protected ArrayList<Point> points;
 
-    public Pencil(int x, int y, int x2, int y2, Color c)
-    {
+    public Pen(int x, int y, int x2, int y2, Color c) {
         super(x, y, x2, y2, c);
-        points= new ArrayList<>();
+        points=new ArrayList<>();
+    }
+
+    public boolean isFirstPoint() {
+        if(points.size()==0) return true;
+        return false;
 
     }
 
+
+    @Override
+    public String toString() {
+        return "Pen{" +
+                "points=" + points +
+                '}';
+    }
 
     public void addPoint(Point point){
         points.add(point);
@@ -38,6 +49,4 @@ public class Pencil extends ShapeObject {  //for now the separated class from Pe
         vg.drawPolyline(xPoints,yPoints,nPoints);
 
     }
-
-
 }
