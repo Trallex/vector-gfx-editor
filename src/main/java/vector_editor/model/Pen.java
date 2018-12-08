@@ -15,6 +15,13 @@ public class Pen extends ShapeObject {
         points=new ArrayList<>();
     }
 
+    public boolean isFirstPoint() {
+        if(points.size()==0) return true;
+        return false;
+
+    }
+
+
     @Override
     public String toString() {
         return "Pen{" +

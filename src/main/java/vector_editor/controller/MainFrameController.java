@@ -36,6 +36,7 @@ public class MainFrameController {
     class ToolbarComponentListener implements ActionListener
     {
         public void actionPerformed(ActionEvent e) {
+
             switch(e.getActionCommand()){
                 case "rectangle":
                     CurrentShape.setShapeType(ShapeEnum.RECTANGLE);
@@ -97,11 +98,11 @@ public class MainFrameController {
                 if (drawShape instanceof Pencil)
                 {
                     ((Pencil) drawShape).addPoint(new Point(event.getX(), event.getY()));
-                    System.out.println("Instance of pencil");
+                    //System.out.println("Instance of pencil");
                 }
                 else
                 {
-                    System.out.println(drawShape.toString());
+                    //System.out.println(drawShape.toString());
                     drawShape.setX2(event.getX());
                     drawShape.setY2(event.getY());
                 }
@@ -148,15 +149,17 @@ public class MainFrameController {
 
         public void mouseReleased(MouseEvent e)  //after user's action, it sets the new shape and reset the temp
         {
-            System.out.println("Mouse released");
+            //System.out.println("Mouse released");
             if (!(drawShape == null))
             {
+                ArrayList<ShapeObject> shapes = view.getWorkspaceComponent().getShapes();
+
                 if (!(drawShape instanceof Pen)) {
 
                     drawShape.setX2(e.getX());
                     drawShape.setY2(e.getY());
 
-                    ArrayList<ShapeObject> shapes = view.getWorkspaceComponent().getShapes();
+
                     shapes.add(drawShape);
                     view.getWorkspaceComponent().setTmpShape(null);
                     view.getWorkspaceComponent().setShapes(shapes);
@@ -167,13 +170,25 @@ public class MainFrameController {
                 else
                 {
 
-                    System.out.println("Instance of pen");
-                    ((Pen) drawShape).addPoint(new Point(e.getX(), e.getY()));
+                    //System.out.println("Instance of pen");
+
+                    //checking if its a new instance of pen
+                    if(((Pen) drawShape).isFirstPoint()){
+                        System.out.println("first point");
+                        ((Pen) drawShape).addPoint(new Point(e.getX(), e.getY()));
+
+                    }
+                    else //if the pen is actually used need to remove the previous shape and add new one with new points
+                    {
+
+                        Pen tempPen=(Pen)shapes.get(shapes.size()-1); //get the last Pen object and changed them
+                        tempPen.addPoint(new Point(e.getX(), e.getY()));
+                        shapes.remove((shapes.size()-1));
+                        drawShape=tempPen;
+                        
+                    }
                     view.getWorkspaceComponent().setTmpShape(drawShape);
                     view.getWorkspaceComponent().repaint();
-
-                    //need to find the solution for add the finished shape of Pen
-                    ArrayList<ShapeObject> shapes = view.getWorkspaceComponent().getShapes();
                     shapes.add(drawShape);
                     view.getWorkspaceComponent().setTmpShape(null);
                     view.getWorkspaceComponent().setShapes(shapes);
@@ -183,6 +198,7 @@ public class MainFrameController {
                 }
 
 
+                System.out.println(shapes.size());
                 view.getWorkspaceComponent().repaint();
 
             }

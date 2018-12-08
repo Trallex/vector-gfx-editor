@@ -10,14 +10,12 @@ public class Pencil extends ShapeObject {  //for now the separated class from Pe
 
     protected ArrayList<Point> points;
 
-
     public Pencil(int x, int y, int x2, int y2, Color c)
     {
         super(x, y, x2, y2, c);
         points= new ArrayList<>();
 
     }
-
 
 
     public void addPoint(Point point){
