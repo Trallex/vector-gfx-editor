@@ -6,7 +6,7 @@ import java.awt.*;
 
 public class Oval extends ShapeObject {
 
-    public Oval(int x, int y, int x2, int y2, Color c) {
+    public Oval(double x, double y, double x2, double y2, Color c) {
         super(x, y, x2, y2, c);
     }
 

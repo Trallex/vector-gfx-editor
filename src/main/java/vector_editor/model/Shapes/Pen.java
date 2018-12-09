@@ -10,7 +10,7 @@ public class Pen extends ShapeObject {
 
     protected ArrayList<Point> points;
 
-    public Pen(int x, int y, int x2, int y2, Color c) {
+    public Pen(double x, double y, double x2, double y2, Color c){
         super(x, y, x2, y2, c);
         points=new ArrayList<>();
     }

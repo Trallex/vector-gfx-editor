@@ -7,11 +7,10 @@ import java.awt.*;
 public class Rectangle extends ShapeObject {
 
 
-    public Rectangle(int x, int y, int x2, int y2, Color c)
+    public Rectangle(double x, double y, double x2, double y2, Color c)
     {
         super(x, y, x2, y2, c);
     }
-
 
 
     @Override

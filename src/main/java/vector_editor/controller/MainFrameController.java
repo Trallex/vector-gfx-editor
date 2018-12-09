@@ -54,12 +54,13 @@ class ContainerListenerForMainFrame implements ContainerListener{
 
             switch(e.getActionCommand()){
                 case "rectangle":
-                    CurrentShape.setShapeType(ShapeEnum.RECTANGLE);
-                    System.out.println("RECTANGLE");
-                    isNewShapePainted=true;
+//                    CurrentShape.setShapeType(ShapeEnum.RECTANGLE);
+//                    System.out.println("RECTANGLE");
 //                    temporary to test the model, need to make a key binding
-//                    CurrentShape.setShapeType(ShapeEnum.SQUARE);
-//                    System.out.println("SQUARE ");
+                    CurrentShape.setShapeType(ShapeEnum.SQUARE);
+                    System.out.println("SQUARE ");
+                    isNewShapePainted=true;
+
                     break;
                 case "pencil":
                     CurrentShape.setShapeType(ShapeEnum.PENCIL);
@@ -72,11 +73,11 @@ class ContainerListenerForMainFrame implements ContainerListener{
                     isNewShapePainted=true;
                     break;
                 case "oval":
-                    CurrentShape.setShapeType(ShapeEnum.OVAL);
-                    System.out.println("OVAL");
+//                    CurrentShape.setShapeType(ShapeEnum.OVAL);
+//                    System.out.println("OVAL");
 //                    temporary to test the model, need to make a key binding
-//                    CurrentShape.setShapeType(ShapeEnum.CIRCLE);
-//                    System.out.println("CIRCLE");
+                    CurrentShape.setShapeType(ShapeEnum.CIRCLE);
+                    System.out.println("CIRCLE");
                     isNewShapePainted=true;
                     break;
                 case "move":

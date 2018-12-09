@@ -4,11 +4,11 @@ import java.awt.*;
 
 public abstract class ShapeObject {
 
-    protected int x, y;
-    protected int x2, y2;
+    protected double x, y;
+    protected double x2, y2;
     protected Color color;
 
-    public ShapeObject(int x, int y, int x2, int y2, Color c)
+    public ShapeObject(double x, double y, double x2, double y2, Color c)
     {
         this.x = x;
         this.y = y;
@@ -20,17 +20,17 @@ public abstract class ShapeObject {
 
     public abstract void draw(Graphics g); //render
 
-    public int calcWidth()
+    public double calcWidth()
     {
         return Math.abs(x2 - x);
     }
 
-    public int calcHeight()
+    public double calcHeight()
     {
         return Math.abs(y2 - y);
     }
 
-    public int getX()
+    public double getX()
     {
         return x;
     }
@@ -40,7 +40,7 @@ public abstract class ShapeObject {
         this.x = x;
     }
 
-    public int getY()
+    public double getY()
     {
         return y;
     }
@@ -50,7 +50,7 @@ public abstract class ShapeObject {
         this.y = y;
     }
 
-    public int getX2()
+    public double getX2()
     {
         return x2;
     }
@@ -60,7 +60,7 @@ public abstract class ShapeObject {
         this.x2 = x2;
     }
 
-    public int getY2()
+    public double getY2()
     {
         return y2;
     }

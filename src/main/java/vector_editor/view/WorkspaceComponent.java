@@ -13,6 +13,17 @@ public class WorkspaceComponent extends JComponent {
     private VectorGraphics vg;
     private int currentX, currentY, oldX, oldY;
     int width, height;
+
+    @Override
+    public String getName() {
+        return name;
+    }
+
+    @Override
+    public void setName(String name) {
+        this.name = name;
+    }
+
     String name;
 
     //new code
