@@ -93,7 +93,6 @@ public abstract class ShapeObject {
 
     public void addPoint(Point point){
         points.add(point);
-       // System.out.println(point);
     }
 
 

@@ -18,7 +18,7 @@ public class MainFrameController {
     private Model model; //temporary!!
 
     private ShapeObject drawShape;
-    private boolean isNewShapePainted; //helpful flag while using the pen
+    private boolean isNewShapePainted; //helpful flag while using the pen, it check if the new shape will be painted
 
     public MainFrameController(MainView view, Model model) //temporary model..
     {
@@ -105,7 +105,7 @@ class ContainerListenerForMainFrame implements ContainerListener{
     {
 
         @Override
-        public void mouseDragged(MouseEvent event)
+        public void mouseDragged(MouseEvent event)  //to set points in the pencil or to paint the shapes in real time before add them to the model
         {
            // System.out.println("Mouse dragged");
 
@@ -147,7 +147,7 @@ class ContainerListenerForMainFrame implements ContainerListener{
         public void mouseExited(MouseEvent e){}
 
 
-        public void mousePressed(MouseEvent e)
+        public void mousePressed(MouseEvent e)  //when new shape is created, to set the starting point
         {
             //System.out.println("Mouse pressed");
 
@@ -161,7 +161,7 @@ class ContainerListenerForMainFrame implements ContainerListener{
 
         }
 
-        public void mouseReleased(MouseEvent e)  //after user's action, it sets the new shape and reset the temp
+        public void mouseReleased(MouseEvent e)  //after user's action, it sets the finishing point and add the shape to the model
         {
             //System.out.println("Mouse released");
             if (!(drawShape == null))
@@ -182,7 +182,7 @@ class ContainerListenerForMainFrame implements ContainerListener{
                     isNewShapePainted=true;
 
                 }
-                else
+                else  //in the case of pen update the current pen shape in the view and the model
                 {
                     //checking if its a new instance of pen
                     if(drawShape.getPoints().size()==0){
