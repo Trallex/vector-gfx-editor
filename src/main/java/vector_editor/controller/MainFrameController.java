@@ -105,7 +105,7 @@ class ContainerListenerForMainFrame implements ContainerListener{
     {
 
         @Override
-        public void mouseDragged(MouseEvent event) //need to implement the method for the pencil
+        public void mouseDragged(MouseEvent event)
         {
            // System.out.println("Mouse dragged");
 
@@ -113,7 +113,7 @@ class ContainerListenerForMainFrame implements ContainerListener{
             {
                 if (drawShape instanceof Pencil)
                 {
-                    ((Pencil) drawShape).addPoint(new Point(event.getX(), event.getY()));
+                    drawShape.addPoint(new Point(event.getX(), event.getY()));
                 }
                 else
                 {
@@ -151,7 +151,7 @@ class ContainerListenerForMainFrame implements ContainerListener{
         {
             //System.out.println("Mouse pressed");
 
-            if(isNewShapePainted) //flag which check if the previous shape was fully painted (helpful with pen)
+            if(isNewShapePainted) //flag which check if there is a new shape (helpful with pen)
             {
                 drawShape = getTmpShape(e.getX(), e.getY(), e.getX(), e.getY());
                 view.getWorkspaceComponent().setTmpShape(drawShape);
@@ -184,11 +184,9 @@ class ContainerListenerForMainFrame implements ContainerListener{
                 }
                 else
                 {
-
-
                     //checking if its a new instance of pen
-                    if(((Pen) drawShape).isFirstPoint()){
-                        ((Pen) drawShape).addPoint(new Point(e.getX(), e.getY()));
+                    if(drawShape.getPoints().size()==0){
+                        drawShape.addPoint(new Point(e.getX(), e.getY()));
 
                     }
                     else //if the pen is actually used need to remove the previous shape and add new one with new points
@@ -201,13 +199,11 @@ class ContainerListenerForMainFrame implements ContainerListener{
                         drawShape=tempPen;
 
                     }
-                    view.getWorkspaceComponent().setTmpShape(drawShape);
-                    view.getWorkspaceComponent().repaint();
                     shapes.add(drawShape);
-                    model.getWorkspace().addShape(drawShape);
-                    view.getWorkspaceComponent().setTmpShape(null);
                     view.getWorkspaceComponent().setShapes(shapes);
+                    model.getWorkspace().addShape(drawShape);
                     isNewShapePainted=false;
+                    System.out.println(view.getWorkspaceComponent().getShapes().size());
 
                 }
 

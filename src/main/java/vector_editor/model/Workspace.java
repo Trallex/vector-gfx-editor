@@ -20,13 +20,14 @@ public class Workspace {
 
     public void addShape( ShapeObject newShape){
         shapes.add(newShape);
-        System.out.println(this.toString());
+       // System.out.println(this.toString());
 
     }
     public void removeShape(int index){
         shapes.remove(index);
     }
 
+    //to test
     @Override
     public String toString() {
         return "Workspace{" +

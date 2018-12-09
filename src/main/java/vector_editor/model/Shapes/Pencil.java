@@ -8,20 +8,15 @@ import java.util.ArrayList;
 public class Pencil extends ShapeObject {  //for now the separated class from Pen, had problems wth instances in the controlller
 
 
-    protected ArrayList<Point> points;
 
     public Pencil(double x, double y, double x2, double y2, Color c)
     {
         super(x, y, x2, y2, c);
-        points= new ArrayList<>();
 
     }
 
 
-    public void addPoint(Point point){
-        points.add(point);
-        System.out.println(point);
-    }
+
     @Override
     public void draw(Graphics g) {
 
