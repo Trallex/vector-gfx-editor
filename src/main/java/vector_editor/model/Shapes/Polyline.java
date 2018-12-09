@@ -4,22 +4,14 @@ import org.freehep.graphics2d.VectorGraphics;
 
 import java.awt.*;
 
-public class Pen extends ShapeObject {
+public class Polyline extends ShapeObject {
 
-
-
-    public Pen(double x, double y, double x2, double y2, Color c){
+    public Polyline(double x, double y, double x2, double y2, Color c)
+    {
         super(x, y, x2, y2, c);
+
     }
 
-
-
-    @Override
-    public String toString() {
-        return "Pen{" +
-                "points=" + points +
-                '}';
-    }
 
 
     @Override

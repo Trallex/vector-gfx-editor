@@ -111,7 +111,7 @@ class ContainerListenerForMainFrame implements ContainerListener{
 
             if (!(drawShape == null))
             {
-                if (drawShape instanceof Pencil)
+                if (CurrentShape.getShapeType()==ShapeEnum.PENCIL )
                 {
                     drawShape.addPoint(new Point(event.getX(), event.getY()));
                 }
@@ -168,7 +168,7 @@ class ContainerListenerForMainFrame implements ContainerListener{
             {
                 ArrayList<ShapeObject> shapes = view.getWorkspaceComponent().getShapes();
 
-                if (!(drawShape instanceof Pen)) {
+                if (CurrentShape.getShapeType()!=ShapeEnum.PEN ) {
 
                     drawShape.setX2(e.getX());
                     drawShape.setY2(e.getY());
@@ -192,7 +192,7 @@ class ContainerListenerForMainFrame implements ContainerListener{
                     else //if the pen is actually used need to remove the previous shape and add new one with new points
                     {
 
-                        Pen tempPen=(Pen)shapes.get(shapes.size()-1); //get the last Pen object and changed them
+                        ShapeObject tempPen=shapes.get(shapes.size()-1); //get the last Pen object and changed them
                         tempPen.addPoint(new Point(e.getX(), e.getY()));
                         shapes.remove((shapes.size()-1));
                         model.getWorkspace().removeShape(shapes.size());
@@ -226,9 +226,9 @@ class ContainerListenerForMainFrame implements ContainerListener{
                 case CIRCLE:
                     return new Circle(x,y,x2,y2,CurrentShape.getShapeColor());
                 case PENCIL:
-                   return new Pencil(x, y, x2, y2, CurrentShape.getShapeColor());
+                   return new Polyline(x, y, x2, y2, CurrentShape.getShapeColor());
                 case PEN:
-                    return new Pen(x, y, x2, y2, CurrentShape.getShapeColor());
+                    return new Polyline(x, y, x2, y2, CurrentShape.getShapeColor());
                 default:
                     break;
             }
