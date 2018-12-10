@@ -18,14 +18,25 @@ public class MainView {
     private int workspaceWidth, workspaceHeight; // It goes to WorkspaceModel
     private String workspaceName; // It goes to WorkspaceModel
 
+
     //to get the view components in the controller
     public WorkspaceComponent getWorkspaceComponent() {
         return workspaceComponent;
     }
+
     public ToolbarComponent getToolbarComponent() {
         return toolbarComponent;
     }
 
+    public MenubarComponent getMenubarComponent() {
+        return menuBar;
+    }
+
+    public JFrame getJFrame() {
+        return frame;
+    }
+
+    //
     public MainView() {
 
         frame = new JFrame("Vector TikZ Editor");
@@ -66,6 +77,7 @@ public class MainView {
         scrollPane.setOpaque(false);
 
         container.add(scrollPane, BorderLayout.CENTER);
+
         refresh();
     }
 
@@ -98,6 +110,7 @@ public class MainView {
             System.out.println("Cancelled");
         }
     }
+
     private void setupMenuBar() {
         menuBar = new MenubarComponent();
 

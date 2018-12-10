@@ -1,14 +1,15 @@
 package vector_editor.controller;
 
+import vector_editor.model.*;
+import vector_editor.model.Shapes.*;
 import vector_editor.model.CurrentShape;
 import vector_editor.model.Model;
 import vector_editor.model.ShapeEnum;
 import vector_editor.model.Shapes.Rectangle;
-import vector_editor.model.Shapes.*;
 import vector_editor.model.Workspace;
-import vector_editor.view.ColorChooserButton;
 import vector_editor.view.MainView;
 
+import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.ArrayList;
@@ -16,10 +17,12 @@ import java.util.ArrayList;
 public class MainFrameController {
 
     private MainView view;
-    private Model model;
-
+    private Model model; //temporary!!
+    private InputMap inputMap; //key binding
+    private ActionMap actionMap; //KB
     private ShapeObject drawShape;
-    private boolean isNewShapePainted; //helpful flag while using the pen, it check if the new shape will be painted
+    private boolean isNewShapePainted; //helpful flag while using the pen
+    private boolean isShiftKeyPressed = false;
 
     private String currentAction; // REFACTOR needed, used it in Listeners to change BG Color
 
@@ -33,6 +36,28 @@ public class MainFrameController {
         this.view.getToolbarComponent().getStrokeColorBtn().addColorChangedListener(new ColorChangedListener());
         this.view.getToolbarComponent().getBackgroundColorBtn().addColorChangedListener(new ColorChangedListener());
         this.view.getToolbarComponent().getStrokeThicknessComboBox().addItemListener(new StrokeChangeListener());
+
+        //creating key binders
+        inputMap = view.getJFrame().getRootPane().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
+        actionMap = view.getJFrame().getRootPane().getActionMap();
+
+        inputMap.put(KeyStroke.getKeyStroke(KeyEvent.VK_SHIFT, InputEvent.SHIFT_DOWN_MASK, false), "shiftPressed");
+        inputMap.put(KeyStroke.getKeyStroke(KeyEvent.VK_SHIFT, 0, true), "shiftReleased");
+
+        actionMap.put("shiftPressed", new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                isShiftKeyPressed = true;
+            }
+        });
+
+        actionMap.put("shiftReleased", new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                isShiftKeyPressed = false;
+            }
+        });
+
     }
 
 
@@ -48,18 +73,18 @@ public class MainFrameController {
         }
     }
 
-class ContainerListenerForMainFrame extends ContainerAdapter{
-// initial solution when the new workspace is set
-    @Override
-    public void componentAdded(ContainerEvent e) {
-        view.getWorkspaceComponent().addWorkspaceComponentMouseListener(new MouseListenerForWorkspace()); //need to set listeners
-        view.getWorkspaceComponent().addWorkspaceComponentMouseMotionListener(new MouseMotionListenerForWorkspace()); //after create the new workspace
-       int width = view.getWorkspaceComponent().getWidth();
-       int height = view.getWorkspaceComponent().getHeight();
-       String name = view.getWorkspaceComponent().getName();
-       model.setWorkspace(new Workspace(width,height,name));
+    class ContainerListenerForMainFrame extends ContainerAdapter{
+    // initial solution when the new workspace is set
+        @Override
+        public void componentAdded(ContainerEvent e) {
+            view.getWorkspaceComponent().addWorkspaceComponentMouseListener(new MouseListenerForWorkspace()); //need to set listeners
+            view.getWorkspaceComponent().addWorkspaceComponentMouseMotionListener(new MouseMotionListenerForWorkspace()); //after create the new workspace
+           int width = view.getWorkspaceComponent().getWidth();
+           int height = view.getWorkspaceComponent().getHeight();
+           String name = view.getWorkspaceComponent().getName();
+           model.setWorkspace(new Workspace(width,height,name));
+        }
     }
-}
 
     class ToolbarComponentListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
@@ -141,8 +166,25 @@ class ContainerListenerForMainFrame extends ContainerAdapter{
                 {
                     ((Polyline)drawShape).addPoint(new Point(event.getX(), event.getY()));
                 }
-                else
-                {
+                else {
+                    if (isShiftKeyPressed) {
+                        if (drawShape instanceof Rectangle) {
+                            Square square = new Square(drawShape.getX(), drawShape.getY(), drawShape.getX2(), drawShape.getY2(), drawShape.getColor());
+                            drawShape = square;
+                        } else if (drawShape instanceof Oval) {
+                            Circle circle = new Circle(drawShape.getX(), drawShape.getY(), drawShape.getX2(), drawShape.getY2(), drawShape.getColor());
+                            drawShape = circle;
+                        }
+                    } else {
+                        if (drawShape instanceof Square) {
+                            Rectangle rectangle = new Rectangle(drawShape.getX(), drawShape.getY(), drawShape.getX(), drawShape.getY2(), drawShape.getColor());
+                            drawShape = rectangle;
+                        } else if (drawShape instanceof Circle) {
+                            Oval oval = new Oval(drawShape.getX(), drawShape.getY(), drawShape.getX2(), drawShape.getY2(), drawShape.getColor());
+                            drawShape = oval;
+                        }
+                    }
+                    //System.out.println(drawShape.toString());
                     drawShape.setX2(event.getX());
                     drawShape.setY2(event.getY());
                 }
@@ -235,6 +277,5 @@ class ContainerListenerForMainFrame extends ContainerAdapter{
             return drawShape;
         }
     }
-
 
 }
