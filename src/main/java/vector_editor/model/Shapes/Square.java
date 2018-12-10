@@ -12,15 +12,14 @@ public class Square extends Rectangle {
     {
         super(x, y, x2, y2, c);
     }
-    public double calcSide(){
-        return Math.sqrt((Math.pow(calcHeight(), 2)+Math.pow(calcWidth(),2)));
-    }
 
     @Override
     public void draw(Graphics g) {
         if (g == null) return;
+        //System.out.println("width:" +calcWidth() +" height:" +calcHeight()+" side:"+calcSide() );
+
         VectorGraphics vg = VectorGraphics.create(g);
-        vg.drawRect(Math.min(x,x2), Math.min(y,y2), calcSide(),calcSide());
+        vg.drawRect(Math.min(x,x2), Math.min(y,y2), calcHeight(),calcHeight());
 
     }
 }

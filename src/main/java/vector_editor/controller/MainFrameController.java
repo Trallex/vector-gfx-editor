@@ -32,7 +32,7 @@ public class MainFrameController {
     }
 
 
-class ContainerListenerForMainFrame implements ContainerListener{
+class ContainerListenerForMainFrame extends ContainerAdapter{
 // initial solution when the new workspace is set
     @Override
     public void componentAdded(ContainerEvent e) {
@@ -43,9 +43,6 @@ class ContainerListenerForMainFrame implements ContainerListener{
        String name = view.getWorkspaceComponent().getName();
        model.setWorkspace(new Workspace(width,height,name));
     }
-
-    @Override
-    public void componentRemoved(ContainerEvent e) { }
 }
 
     class ToolbarComponentListener implements ActionListener
@@ -101,7 +98,7 @@ class ContainerListenerForMainFrame implements ContainerListener{
 
 
 
-    class MouseMotionListenerForWorkspace implements MouseMotionListener
+    class MouseMotionListenerForWorkspace extends MouseMotionAdapter
     {
 
         @Override
@@ -124,29 +121,14 @@ class ContainerListenerForMainFrame implements ContainerListener{
                 view.getWorkspaceComponent().repaint(); // draw the shape during user's action
             }
 
-
-
         }
 
-        @Override
-        public void mouseMoved(MouseEvent arg0)
-        {
-        }
 
     }
 
-    class MouseListenerForWorkspace implements MouseListener
+    class MouseListenerForWorkspace extends MouseAdapter
     {
-        public void mouseClicked(MouseEvent e){
-           // System.out.println("Mouse clicked");
-
-        }
-
-        public void mouseEntered(MouseEvent e){}
-
-        public void mouseExited(MouseEvent e){}
-
-
+    @Override
         public void mousePressed(MouseEvent e)  //when new shape is created, to set the starting point
         {
             //System.out.println("Mouse pressed");
