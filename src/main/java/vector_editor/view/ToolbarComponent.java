@@ -2,6 +2,7 @@ package vector_editor.view;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionListener;
 import java.net.URL;
 import java.util.ArrayList;
 
@@ -49,11 +50,12 @@ public class ToolbarComponent extends JPanel {
         buttons.add(TextToolBtn);
         buttons.add(BitmapToolBtn);
 
+
         MoveToolBtn.setActionCommand("move");
         PenToolBtn.setActionCommand("pen");
         PencilToolBtn.setActionCommand("pencil");
-        SquareToolBtn.setActionCommand("square");
-        CircleToolBtn.setActionCommand("circle");
+        SquareToolBtn.setActionCommand("rectangle");
+        CircleToolBtn.setActionCommand("oval");
         ZoomToolBtn.setActionCommand("zoom");
         TextToolBtn.setActionCommand("text");
         BitmapToolBtn.setActionCommand("bitmap");
@@ -80,5 +82,9 @@ public class ToolbarComponent extends JPanel {
             System.err.println("Couldn't find file " + path);
         }
         return null;
+    }
+//add a listener in the controller to the toolbar buttons
+    public void addToolbarComponentListener(ActionListener toolbarComponentListener) {
+        buttons.forEach(jButton -> jButton.addActionListener(toolbarComponentListener));
     }
 }

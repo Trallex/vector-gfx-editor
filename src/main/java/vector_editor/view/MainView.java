@@ -1,11 +1,11 @@
 package vector_editor.view;
 
 
-
 import org.freehep.graphicsbase.util.export.ExportDialog;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ContainerListener;
 
 
 public class MainView {
@@ -14,10 +14,17 @@ public class MainView {
     private WorkspaceComponent workspaceComponent;
     private ToolbarComponent toolbarComponent;
     private JScrollPane scrollPane;
-
+    private MenubarComponent menuBar;
     private int workspaceWidth, workspaceHeight; // It goes to WorkspaceModel
     private String workspaceName; // It goes to WorkspaceModel
 
+    //to get the view components in the controller
+    public WorkspaceComponent getWorkspaceComponent() {
+        return workspaceComponent;
+    }
+    public ToolbarComponent getToolbarComponent() {
+        return toolbarComponent;
+    }
 
     public MainView() {
 
@@ -25,7 +32,6 @@ public class MainView {
         container = frame.getContentPane();
         container.setBackground(Color.decode("#3E3E3E"));
         container.setLayout(new BorderLayout());
-
 
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         frame.setMinimumSize(new Dimension(1280, 720));
@@ -36,7 +42,6 @@ public class MainView {
 
         setupToolbarComponent();
         setupMenuBar();
-
     }
     private void setupToolbarComponent() {
 
@@ -61,7 +66,6 @@ public class MainView {
         scrollPane.setOpaque(false);
 
         container.add(scrollPane, BorderLayout.CENTER);
-
         refresh();
     }
 
@@ -71,9 +75,9 @@ public class MainView {
     }
 
     private void displayNewFilePanel() {
-        JTextField widthField = new JTextField("");
-        JTextField nameField = new JTextField("");
-        JTextField heightField = new JTextField("");
+        JTextField widthField = new JTextField("1280");
+        JTextField nameField = new JTextField("test");
+        JTextField heightField = new JTextField("720");
         JPanel panel = new JPanel(new GridLayout(0, 2));
         panel.add(new JLabel("Name of your project: "));
         panel.add(nameField);
@@ -84,15 +88,18 @@ public class MainView {
         int result = JOptionPane.showConfirmDialog(null, panel, "New File...",
                 JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
         if (result == JOptionPane.OK_OPTION) {
+
+            //HERE PASS THE NEW WORKSPACE TO THE CONTROLLER!
             workspaceWidth = Integer.parseInt(widthField.getText().trim());
             workspaceHeight = Integer.parseInt(heightField.getText().trim());
             workspaceName = nameField.getText().trim();
+
         } else {
             System.out.println("Cancelled");
         }
     }
     private void setupMenuBar() {
-        JMenuBar menuBar = new MenubarComponent();
+        menuBar = new MenubarComponent();
 
         ((MenubarComponent) menuBar).getNewFileItem().addActionListener(e -> {
             displayNewFilePanel();
@@ -110,7 +117,13 @@ public class MainView {
 
         refresh();
 
-
-
     }
+
+    public void addListenerToContainer(ContainerListener listener) { //listener to observe if new items were added to the container
+        //helpful when adding new Workspace
+        container.addContainerListener(listener);
+    }
+
+
 }
+

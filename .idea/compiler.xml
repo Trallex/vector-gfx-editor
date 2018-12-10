@@ -9,7 +9,7 @@
         <module name="vector-gfx-editor" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel target="8">
+    <bytecodeTargetLevel>
       <module name="vector-gfx-editor" target="1.8" />
     </bytecodeTargetLevel>
   </component>

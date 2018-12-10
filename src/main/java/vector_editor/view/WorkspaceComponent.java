@@ -1,18 +1,35 @@
 package vector_editor.view;
 
 import org.freehep.graphics2d.VectorGraphics;
+import vector_editor.model.Shapes.ShapeObject;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
+import java.util.ArrayList;
 
 public class WorkspaceComponent extends JComponent {
     private VectorGraphics vg;
     private int currentX, currentY, oldX, oldY;
     int width, height;
+
+    @Override
+    public String getName() {
+        return name;
+    }
+
+    @Override
+    public void setName(String name) {
+        this.name = name;
+    }
+
     String name;
 
+    //new code
+    private ArrayList<ShapeObject> shapes = new ArrayList<>();
+    private ShapeObject demoShape;
+    //
     @Override
     public int getWidth() {
         return width;
@@ -38,25 +55,7 @@ public class WorkspaceComponent extends JComponent {
         this.setDoubleBuffered(false);
         this.setOpaque(false);
         this.setPreferredSize(this.getPreferredSize());
-        this.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mousePressed(MouseEvent e) {
-                oldX = e.getX();
-                oldY = e.getY();
-            }
 
-            @Override
-            public void mouseDragged(MouseEvent e) {
-                currentX = e.getX();
-                currentY = e.getY();
-                if (vg != null) {
-                    vg.drawLine(oldX, oldY, currentX, currentY);
-                    repaint();
-                    oldX = currentX;
-                    oldY = currentY;
-                }
-            }
-        });
     }
 
     @Override
@@ -64,23 +63,7 @@ public class WorkspaceComponent extends JComponent {
         return new Dimension(getWidth(), getHeight());
     }
 
-    @Override
-    protected void paintComponent(Graphics g) {
 
-        vg = VectorGraphics.create(g);
-
-        Dimension dim = getSize();
-        Insets insets = getInsets();
-
-        vg.setColor(Color.white);
-        vg.fillRect(insets.left, insets.top,
-                dim.width - insets.left - insets.right,
-                dim.height - insets.top - insets.bottom);
-        vg.setColor(Color.black);
-        vg.drawLine(10.0, 10.0, this.getWidth() - 10, this.getHeight() - 10);
-
-
-    }
 
     private void clear() {
         vg.setPaint(Color.white);
@@ -88,4 +71,48 @@ public class WorkspaceComponent extends JComponent {
         vg.setPaint(Color.black);
         repaint();
     }
+
+    //add mouse listeners to the workspace in the controller
+    public void addWorkspaceComponentMouseListener(MouseListener listenForMouse)
+    {
+        this.addMouseListener(listenForMouse);
+    }
+
+    public void addWorkspaceComponentMouseMotionListener(MouseMotionListener listenForMouse)
+    {
+        this.addMouseMotionListener(listenForMouse);
+    }
+
+    public void paintComponent(Graphics g)
+    {
+        super.paintComponent(g);
+
+        for (ShapeObject s : shapes)
+        {
+            if (s != null)
+                s.draw(g);
+        }
+
+        if (demoShape != null) demoShape.draw(g);   //paint component during drawing
+    }
+
+    public ArrayList<ShapeObject> getShapes()
+    {
+        return shapes;
+    }
+
+    public void setShapes(ArrayList<ShapeObject>  shapes)
+    {
+        this.shapes = shapes;
+    }
+
+    public ShapeObject getTmpShape()
+    {
+        return demoShape;
+    }
+
+    public void setTmpShape(ShapeObject tmpShape) {  // temporary shape set during drawing
+        this.demoShape = tmpShape;
+    }
+
 }
