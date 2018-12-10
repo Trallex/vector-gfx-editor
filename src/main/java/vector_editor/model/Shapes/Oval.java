@@ -6,8 +6,8 @@ import java.awt.*;
 
 public class Oval extends ShapeObject {
 
-    public Oval(double x, double y, double x2, double y2, Color c) {
-        super(x, y, x2, y2, c);
+    public Oval(double x, double y, double x2, double y2, Color backgroundColor, Color borderColor) {
+        super(x, y, x2, y2, backgroundColor, borderColor);
     }
 
     @Override

@@ -6,9 +6,9 @@ import java.awt.*;
 
 public class Square extends Rectangle {
 
-    public Square(double x, double y, double x2, double y2, Color c)
+    public Square(double x, double y, double x2, double y2, Color backgroundColor, Color borderColor)
     {
-        super(x, y, x2, y2, c);
+        super(x, y, x2, y2, backgroundColor, borderColor);
     }
 
     @Override

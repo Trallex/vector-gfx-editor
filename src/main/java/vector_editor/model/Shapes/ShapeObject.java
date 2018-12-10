@@ -6,15 +6,17 @@ public abstract class ShapeObject {
 
     protected double x, y;
     protected double x2, y2;
-    protected Color color;
+    protected Color backgroundColor;
+    protected Color borderColor;
 
-    public ShapeObject(double x, double y, double x2, double y2, Color c)
+    public ShapeObject(double x, double y, double x2, double y2, Color backgroundColor, Color borderColor)
     {
         this.x = x;
         this.y = y;
         this.x2 = x2;
         this.y2 = y2;
-        color = c;
+        this.backgroundColor = backgroundColor;
+        this.borderColor = borderColor;
     }
 
 
@@ -70,14 +72,20 @@ public abstract class ShapeObject {
         this.y2 = y2;
     }
 
-    public Color getColor()
-    {
-        return color;
+    public Color getBackgroundColor() {
+        return backgroundColor;
     }
 
-    public void setColor(Color color)
-    {
-        this.color = color;
+    public void setBackgroundColor(Color backgroundColor) {
+        this.backgroundColor = backgroundColor;
+    }
+
+    public Color getBorderColor() {
+        return borderColor;
+    }
+
+    public void setBorderColor(Color borderColor) {
+        this.borderColor = borderColor;
     }
 
 
@@ -89,7 +97,8 @@ public abstract class ShapeObject {
                 ", y=" + y +
                 ", x2=" + x2 +
                 ", y2=" + y2 +
-                ", color=" + color +
+                ", BGcolor=" + backgroundColor +
+                ", BorderColor=" + borderColor +
                 '}';
     }
 }

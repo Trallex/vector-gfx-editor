@@ -3,8 +3,8 @@ package vector_editor.controller;
 import vector_editor.model.CurrentShape;
 import vector_editor.model.Model;
 import vector_editor.model.ShapeEnum;
-import vector_editor.model.Shapes.*;
 import vector_editor.model.Shapes.Rectangle;
+import vector_editor.model.Shapes.*;
 import vector_editor.model.Workspace;
 import vector_editor.view.MainView;
 
@@ -184,17 +184,17 @@ class ContainerListenerForMainFrame extends ContainerAdapter{
             switch (CurrentShape.getShapeType())
             {
                 case RECTANGLE:
-                    return new Rectangle(x, y, x2, y2, CurrentShape.getShapeColor());
+                    return new Rectangle(x, y, x2, y2, CurrentShape.getBacgroundColor(), CurrentShape.getBorderColor());
                 case SQUARE:
-                    return new Square(x,y,x2,y2,CurrentShape.getShapeColor());
+                    return new Square(x, y, x2, y2, CurrentShape.getBacgroundColor(), CurrentShape.getBorderColor());
                 case OVAL:
-                    return new Oval(x,y,x2,y2,CurrentShape.getShapeColor());
+                    return new Oval(x, y, x2, y2, CurrentShape.getBacgroundColor(), CurrentShape.getBorderColor());
                 case CIRCLE:
-                    return new Circle(x,y,x2,y2,CurrentShape.getShapeColor());
+                    return new Circle(x, y, x2, y2, CurrentShape.getBacgroundColor(), CurrentShape.getBorderColor());
                 case PENCIL:
-                   return new Polyline(x, y, x2, y2, CurrentShape.getShapeColor());
+                    return new Polyline(x, y, x2, y2, CurrentShape.getBacgroundColor(), CurrentShape.getBorderColor());
                 case PEN:
-                    return new Polyline(x, y, x2, y2, CurrentShape.getShapeColor());
+                    return new Polyline(x, y, x2, y2, CurrentShape.getBacgroundColor(), CurrentShape.getBorderColor());
                 default:
                     break;
             }

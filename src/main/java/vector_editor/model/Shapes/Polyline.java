@@ -9,9 +9,9 @@ public class Polyline extends ShapeObject {
 
     private ArrayList<Point> points;
 
-    public Polyline(double x, double y, double x2, double y2, Color c)
+    public Polyline(double x, double y, double x2, double y2, Color backgroundColor, Color borderColor)
     {
-        super(x, y, x2, y2, c);
+        super(x, y, x2, y2, backgroundColor, borderColor);
         points=new ArrayList<>();
     }
 
