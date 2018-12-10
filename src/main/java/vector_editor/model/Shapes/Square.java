@@ -13,13 +13,31 @@ public class Square extends Rectangle {
         super(x, y, x2, y2, c);
     }
 
+
+    @Override
+    public double calcHeight() {
+        return  Math.max(super.calcHeight(), super.calcWidth());
+    }
+    @Override
+    public double calcWidth() {
+        return  Math.max(super.calcHeight(), super.calcWidth());
+    }
+
+
     @Override
     public void draw(Graphics g) {
         if (g == null) return;
-        //System.out.println("width:" +calcWidth() +" height:" +calcHeight()+" side:"+calcSide() );
+
+        //change the starting point of drawing depends on user's behave
+        double startX = getX() > getX2() ? getX() - calcWidth() : getX();
+        double startY = getY() > getY2() ? getY() - calcWidth() : getY();
+
+        double width = calcWidth();
+        double height = width;
 
         VectorGraphics vg = VectorGraphics.create(g);
-        vg.drawRect(Math.min(x,x2), Math.min(y,y2), calcHeight(),calcHeight());
+        vg.drawRect(startX,startY,width,height);
+
 
     }
 }
