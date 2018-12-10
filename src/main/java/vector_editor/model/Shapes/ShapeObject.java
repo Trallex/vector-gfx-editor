@@ -1,17 +1,12 @@
 package vector_editor.model.Shapes;
 
 import java.awt.*;
-import java.util.ArrayList;
 
 public abstract class ShapeObject {
 
     protected double x, y;
     protected double x2, y2;
     protected Color color;
-    protected ArrayList<Point> points;
-
-
-
 
     public ShapeObject(double x, double y, double x2, double y2, Color c)
     {
@@ -20,13 +15,10 @@ public abstract class ShapeObject {
         this.x2 = x2;
         this.y2 = y2;
         color = c;
-        points=new ArrayList<>();
     }
 
 
-    public abstract void draw(Graphics g); //render
-
-
+    public abstract void draw(Graphics g);
 
     public double calcWidth()
     {
@@ -87,18 +79,9 @@ public abstract class ShapeObject {
     {
         this.color = color;
     }
-    public ArrayList<Point> getPoints() {
-        return points;
-    }
-
-    public void addPoint(Point point){
-        points.add(point);
-    }
 
 
 //to test
-
-
     @Override
     public String toString() {
         return "ShapeObject{" +

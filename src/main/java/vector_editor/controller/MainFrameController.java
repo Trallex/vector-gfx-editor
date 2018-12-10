@@ -15,7 +15,7 @@ import java.util.ArrayList;
 public class MainFrameController {
 
     private MainView view;
-    private Model model; //temporary!!
+    private Model model;
 
     private ShapeObject drawShape;
     private boolean isNewShapePainted; //helpful flag while using the pen, it check if the new shape will be painted
@@ -25,10 +25,7 @@ public class MainFrameController {
         this.view = view;
         this.model = model;
         this.view.addListenerToContainer(new ContainerListenerForMainFrame());
-
         this.view.getToolbarComponent().addToolbarComponentListener(new ToolbarComponentListener());
-
-
     }
 
 
@@ -104,13 +101,11 @@ class ContainerListenerForMainFrame extends ContainerAdapter{
         @Override
         public void mouseDragged(MouseEvent event)  //to set points in the pencil or to paint the shapes in real time before add them to the model
         {
-           // System.out.println("Mouse dragged");
-
             if (!(drawShape == null))
             {
                 if (CurrentShape.getShapeType()==ShapeEnum.PENCIL )
                 {
-                    drawShape.addPoint(new Point(event.getX(), event.getY()));
+                    ((Polyline)drawShape).addPoint(new Point(event.getX(), event.getY()));
                 }
                 else
                 {
@@ -131,8 +126,6 @@ class ContainerListenerForMainFrame extends ContainerAdapter{
     @Override
         public void mousePressed(MouseEvent e)  //when new shape is created, to set the starting point
         {
-            //System.out.println("Mouse pressed");
-
             if(isNewShapePainted) //flag which check if there is a new shape (helpful with pen)
             {
                 drawShape = getTmpShape(e.getX(), e.getY(), e.getX(), e.getY());
@@ -145,7 +138,6 @@ class ContainerListenerForMainFrame extends ContainerAdapter{
 
         public void mouseReleased(MouseEvent e)  //after user's action, it sets the finishing point and add the shape to the model
         {
-            //System.out.println("Mouse released");
             if (!(drawShape == null))
             {
                 ArrayList<ShapeObject> shapes = view.getWorkspaceComponent().getShapes();
@@ -167,31 +159,23 @@ class ContainerListenerForMainFrame extends ContainerAdapter{
                 else  //in the case of pen update the current pen shape in the view and the model
                 {
                     //checking if its a new instance of pen
-                    if(drawShape.getPoints().size()==0){
-                        drawShape.addPoint(new Point(e.getX(), e.getY()));
-
+                    if(((Polyline)drawShape).getPoints().size()==0){
+                        ((Polyline)drawShape).addPoint(new Point(e.getX(), e.getY()));
                     }
                     else //if the pen is actually used need to remove the previous shape and add new one with new points
                     {
-
-                        ShapeObject tempPen=shapes.get(shapes.size()-1); //get the last Pen object and changed them
-                        tempPen.addPoint(new Point(e.getX(), e.getY()));
+                        ShapeObject tempPen= shapes.get(shapes.size()-1); //get the last Pen object and changed them
+                        ((Polyline)tempPen).addPoint(new Point(e.getX(), e.getY()));
                         shapes.remove((shapes.size()-1));
                         model.getWorkspace().removeShape(shapes.size());
                         drawShape=tempPen;
-
                     }
                     shapes.add(drawShape);
                     view.getWorkspaceComponent().setShapes(shapes);
                     model.getWorkspace().addShape(drawShape);
                     isNewShapePainted=false;
-                    System.out.println(view.getWorkspaceComponent().getShapes().size());
-
                 }
-
-
                 view.getWorkspaceComponent().repaint();
-
             }
         }
 

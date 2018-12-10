@@ -22,11 +22,10 @@ public class MainView {
     public WorkspaceComponent getWorkspaceComponent() {
         return workspaceComponent;
     }
-
     public ToolbarComponent getToolbarComponent() {
         return toolbarComponent;
     }
-    //
+
     public MainView() {
 
         frame = new JFrame("Vector TikZ Editor");
@@ -43,8 +42,6 @@ public class MainView {
 
         setupToolbarComponent();
         setupMenuBar();
-        //setupWorkspaceComponent(1000,600,"graphics"); //temporary initial workspace
-
     }
     private void setupToolbarComponent() {
 

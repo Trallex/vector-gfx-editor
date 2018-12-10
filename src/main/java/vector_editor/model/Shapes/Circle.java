@@ -21,7 +21,5 @@ public class Circle extends Oval {
         if (g == null) return;
         VectorGraphics vg = VectorGraphics.create(g);
         vg.drawOval(Math.min(x,x2), Math.min(y,y2),  calcDiameter(), calcDiameter());
-
-
     }
 }

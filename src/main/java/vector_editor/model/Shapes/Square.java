@@ -6,13 +6,10 @@ import java.awt.*;
 
 public class Square extends Rectangle {
 
-
-
     public Square(double x, double y, double x2, double y2, Color c)
     {
         super(x, y, x2, y2, c);
     }
-
 
     @Override
     public double calcHeight() {
@@ -23,11 +20,9 @@ public class Square extends Rectangle {
         return  Math.max(super.calcHeight(), super.calcWidth());
     }
 
-
     @Override
     public void draw(Graphics g) {
         if (g == null) return;
-
         //change the starting point of drawing depends on user's behave
         double startX = getX() > getX2() ? getX() - calcWidth() : getX();
         double startY = getY() > getY2() ? getY() - calcWidth() : getY();
@@ -37,7 +32,5 @@ public class Square extends Rectangle {
 
         VectorGraphics vg = VectorGraphics.create(g);
         vg.drawRect(startX,startY,width,height);
-
-
     }
 }

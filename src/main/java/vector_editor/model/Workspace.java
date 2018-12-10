@@ -8,7 +8,7 @@ public class Workspace {
     private int height;
     private int width;
     private String name;
-    private ArrayList<ShapeObject> shapes;      //initially only shapes, wothout layer
+    private ArrayList<ShapeObject> shapes;      //initially only shapes, without layer
 
 
     public Workspace(int height, int width, String name){
@@ -20,8 +20,6 @@ public class Workspace {
 
     public void addShape( ShapeObject newShape){
         shapes.add(newShape);
-       // System.out.println(this.toString());
-
     }
     public void removeShape(int index){
         shapes.remove(index);
