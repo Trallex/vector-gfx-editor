@@ -17,6 +17,7 @@ public class Oval extends ShapeObject {
         vg.setColor(backgroundColor);
         vg.fillOval(Math.min(x, x2), Math.min(y, y2), calcWidth(), calcHeight());
         vg.setColor(strokeColor);
+        vg.setStroke(new BasicStroke(strokeThickness));
         vg.drawOval(Math.min(x, x2), Math.min(y, y2), calcWidth(), calcHeight());
 
     }

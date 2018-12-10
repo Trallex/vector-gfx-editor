@@ -23,6 +23,7 @@ public class Circle extends Oval {
         vg.setColor(backgroundColor);
         vg.fillOval(Math.min(x, x2), Math.min(y, y2), calcDiameter(), calcDiameter());
         vg.setColor(strokeColor);
+        vg.setStroke(new BasicStroke(strokeThickness));
         vg.drawOval(Math.min(x, x2), Math.min(y, y2), calcDiameter(), calcDiameter());
 
     }

@@ -34,6 +34,7 @@ public class Square extends Rectangle {
         vg.setColor(backgroundColor);
         vg.fillRect(startX, startY, width, height);
         vg.setColor(strokeColor);
+        vg.setStroke(new BasicStroke(strokeThickness));
         vg.drawRect(startX,startY,width,height);
     }
 

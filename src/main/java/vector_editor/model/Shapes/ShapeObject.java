@@ -8,6 +8,15 @@ public abstract class ShapeObject {
     protected double x2, y2;
     protected Color backgroundColor;
     protected Color strokeColor;
+
+    public float getStrokeThickness() {
+        return strokeThickness;
+    }
+
+    public void setStrokeThickness(float strokeThickness) {
+        this.strokeThickness = strokeThickness;
+    }
+
     protected float strokeThickness;
 
     public ShapeObject(double x, double y, double x2, double y2, Color backgroundColor, Color strokeColor, float strokeThickness)

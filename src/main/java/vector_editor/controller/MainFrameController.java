@@ -32,8 +32,21 @@ public class MainFrameController {
 
         this.view.getToolbarComponent().getStrokeColorBtn().addColorChangedListener(new ColorChangedListener());
         this.view.getToolbarComponent().getBackgroundColorBtn().addColorChangedListener(new ColorChangedListener());
+        this.view.getToolbarComponent().getStrokeThicknessComboBox().addItemListener(new StrokeChangeListener());
     }
 
+
+    class StrokeChangeListener implements ItemListener {
+
+        @Override
+        public void itemStateChanged(ItemEvent e) {
+            if (e.getStateChange() == ItemEvent.SELECTED) {
+                Object item = e.getItem();
+                float fv = Float.parseFloat(item.toString());
+                CurrentShape.setStrokeThickness(fv);
+            }
+        }
+    }
 
 class ContainerListenerForMainFrame extends ContainerAdapter{
 // initial solution when the new workspace is set
@@ -48,10 +61,8 @@ class ContainerListenerForMainFrame extends ContainerAdapter{
     }
 }
 
-    class ToolbarComponentListener implements ActionListener
-    {
+    class ToolbarComponentListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
-
             switch(e.getActionCommand()){
                 case "rectangle":
 //                    CurrentShape.setShapeType(ShapeEnum.RECTANGLE);
@@ -97,7 +108,6 @@ class ContainerListenerForMainFrame extends ContainerAdapter{
                 case "backgroundColor":
                     currentAction = "backgroundColor";
                     break;
-
             }
         }
     }
@@ -118,7 +128,6 @@ class ContainerListenerForMainFrame extends ContainerAdapter{
             }
         }
     }
-
 
     class MouseMotionListenerForWorkspace extends MouseMotionAdapter
     {
