@@ -5,10 +5,6 @@ import org.freehep.graphicsbase.util.export.ExportDialog;
 
 import javax.swing.*;
 import java.awt.*;
-
-
-public class MainView {
-    private JFrame frame;
 import java.awt.event.ContainerListener;
 
 
@@ -22,18 +18,12 @@ public class MainView {
     private int workspaceWidth, workspaceHeight; // It goes to WorkspaceModel
     private String workspaceName; // It goes to WorkspaceModel
 
-<<<<<<< HEAD
 
-=======
->>>>>>> origin/develop
     //to get the view components in the controller
     public WorkspaceComponent getWorkspaceComponent() {
         return workspaceComponent;
     }
-<<<<<<< HEAD
 
-=======
->>>>>>> origin/develop
     public ToolbarComponent getToolbarComponent() {
         return toolbarComponent;
     }
@@ -54,10 +44,6 @@ public class MainView {
         container.setBackground(Color.decode("#3E3E3E"));
         container.setLayout(new BorderLayout());
 
-<<<<<<< HEAD
-
-=======
->>>>>>> origin/develop
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         frame.setMinimumSize(new Dimension(1280, 720));
         frame.setMaximumSize(new Dimension((int) dim.getWidth(), (int) dim.getHeight()));
@@ -91,10 +77,7 @@ public class MainView {
         scrollPane.setOpaque(false);
 
         container.add(scrollPane, BorderLayout.CENTER);
-<<<<<<< HEAD
 
-=======
->>>>>>> origin/develop
         refresh();
     }
 
@@ -122,18 +105,12 @@ public class MainView {
             workspaceWidth = Integer.parseInt(widthField.getText().trim());
             workspaceHeight = Integer.parseInt(heightField.getText().trim());
             workspaceName = nameField.getText().trim();
-<<<<<<< HEAD
-=======
 
->>>>>>> origin/develop
         } else {
             System.out.println("Cancelled");
         }
     }
-<<<<<<< HEAD
 
-=======
->>>>>>> origin/develop
     private void setupMenuBar() {
         menuBar = new MenubarComponent();
 

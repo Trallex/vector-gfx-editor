@@ -22,20 +22,6 @@ public class CurrentShape {  //the static info about current shape and color sel
         return shapeColor;
     }
 
-    public static void setShapeColor(Color shapeColor)
-    {
-    public static ShapeEnum getShapeType() {
-        return shapeType;
-    }
-
-    public static void setShapeType(ShapeEnum shapeType) {
-        CurrentShape.shapeType = shapeType;
-    }
-
-    public static Color getShapeColor() {
-        return shapeColor;
-    }
-
     public static void setShapeColor(Color shapeColor) {
         CurrentShape.shapeColor = shapeColor;
     }

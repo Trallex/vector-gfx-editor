@@ -1,6 +1,7 @@
 package vector_editor.model;
 
 import org.freehep.graphics2d.VectorGraphics;
+import vector_editor.model.Shapes.ShapeObject;
 
 import java.awt.*;
 import java.util.ArrayList;

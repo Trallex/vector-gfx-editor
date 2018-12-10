@@ -1,18 +1,11 @@
 package vector_editor.controller;
 
 import vector_editor.model.*;
-import vector_editor.model.Rectangle;
+import vector_editor.model.Shapes.*;
+import vector_editor.model.Shapes.Rectangle;
 import vector_editor.view.MainView;
 
 import javax.swing.*;
-import vector_editor.model.CurrentShape;
-import vector_editor.model.Model;
-import vector_editor.model.ShapeEnum;
-import vector_editor.model.Shapes.*;
-import vector_editor.model.Shapes.Rectangle;
-import vector_editor.model.Workspace;
-import vector_editor.view.MainView;
-
 import java.awt.*;
 import java.awt.event.*;
 import java.util.ArrayList;
@@ -28,11 +21,6 @@ public class MainFrameController {
     private ShapeObject drawShape;
     private boolean isNewShapePainted; //helpful flag while using the pen
     private boolean isShiftKeyPressed = false;
-    private MainView view;
-    private Model model;
-
-    private ShapeObject drawShape;
-    private boolean isNewShapePainted; //helpful flag while using the pen, it check if the new shape will be painted
 
     public MainFrameController(MainView view, Model model) //temporary model..
     {
@@ -40,9 +28,7 @@ public class MainFrameController {
         this.model = model;
 
         this.view.getToolbarComponent().addToolbarComponentListener(new ToolbarComponentListener());
-
-        view.getWorkspaceComponent().addWorkspaceComponentMouseListener(new MouseListenerForWorkspace()); //need to set listeners
-        view.getWorkspaceComponent().addWorkspaceComponentMouseMotionListener(new MouseMotionListenerForWorkspace()); //after create the new workspace
+        this.view.addListenerToContainer(new ContainerListenerForMainFrame());
 
         //creating key binders
         inputMap = view.getJFrame().getRootPane().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
@@ -68,85 +54,72 @@ public class MainFrameController {
     }
 
 
-    class ToolbarComponentListener implements ActionListener {
-        public void actionPerformed(ActionEvent e) {
-
-            switch (e.getActionCommand()) {
-                case "rectangle":
-                    CurrentShape.setShapeType(ShapeEnum.RECTANGLE);
-                    System.out.println("RECTANGLE");
-                    isNewShapePainted = true;
-//                    temporary to test the model, need to make a key binding
-//                    CurrentShape.setShapeType(ShapeEnum.SQUARE);
-//                    System.out.println("SQUARE ");
-        this.view.addListenerToContainer(new ContainerListenerForMainFrame());
-        this.view.getToolbarComponent().addToolbarComponentListener(new ToolbarComponentListener());
-    }
 
 
-class ContainerListenerForMainFrame extends ContainerAdapter{
-// initial solution when the new workspace is set
-    @Override
-    public void componentAdded(ContainerEvent e) {
-        view.getWorkspaceComponent().addWorkspaceComponentMouseListener(new MouseListenerForWorkspace()); //need to set listeners
-        view.getWorkspaceComponent().addWorkspaceComponentMouseMotionListener(new MouseMotionListenerForWorkspace()); //after create the new workspace
-       int width = view.getWorkspaceComponent().getWidth();
-       int height = view.getWorkspaceComponent().getHeight();
-       String name = view.getWorkspaceComponent().getName();
-       model.setWorkspace(new Workspace(width,height,name));
-    }
-}
 
-    class ToolbarComponentListener implements ActionListener
-    {
-        public void actionPerformed(ActionEvent e) {
-
-            switch(e.getActionCommand()){
-                case "rectangle":
-//                    CurrentShape.setShapeType(ShapeEnum.RECTANGLE);
-//                    System.out.println("RECTANGLE");
-//                    temporary to test the model, need to make a key binding
-                    CurrentShape.setShapeType(ShapeEnum.SQUARE);
-                    System.out.println("SQUARE ");
-                    isNewShapePainted=true;
-
-                    break;
-                case "pencil":
-                    CurrentShape.setShapeType(ShapeEnum.PENCIL);
-                    System.out.println("PENCIL");
-                    isNewShapePainted = true;
-                    break;
-                case "pen":
-                    CurrentShape.setShapeType(ShapeEnum.PEN);  //
-                    System.out.println("PEN");
-                    isNewShapePainted = true;
-                    break;
-                case "oval":
-//                    CurrentShape.setShapeType(ShapeEnum.OVAL);
-//                    System.out.println("OVAL");
-//                    temporary to test the model, need to make a key binding
-                    CurrentShape.setShapeType(ShapeEnum.CIRCLE);
-                    System.out.println("CIRCLE");
-                    isNewShapePainted = true;
-                    break;
-                case "move":
-                    System.out.println("MOVE");
-                    break;
-                case "zoom":
-                    System.out.println("ZOOM");
-                    break;
-                case "text":
-                    System.out.println("TEXT");
-                    break;
-                case "bitmap":
-                    System.out.println("BITMAP");
-                    break;
-
-            }
-
-
+    class ContainerListenerForMainFrame extends ContainerAdapter{
+    // initial solution when the new workspace is set
+        @Override
+        public void componentAdded(ContainerEvent e) {
+            view.getWorkspaceComponent().addWorkspaceComponentMouseListener(new MouseListenerForWorkspace()); //need to set listeners
+            view.getWorkspaceComponent().addWorkspaceComponentMouseMotionListener(new MouseMotionListenerForWorkspace()); //after create the new workspace
+           int width = view.getWorkspaceComponent().getWidth();
+           int height = view.getWorkspaceComponent().getHeight();
+           String name = view.getWorkspaceComponent().getName();
+           model.setWorkspace(new Workspace(width,height,name));
         }
     }
+
+        class ToolbarComponentListener implements ActionListener
+        {
+            public void actionPerformed(ActionEvent e) {
+
+                switch(e.getActionCommand()){
+                    case "rectangle":
+    //                    CurrentShape.setShapeType(ShapeEnum.RECTANGLE);
+    //                    System.out.println("RECTANGLE");
+    //                    temporary to test the model, need to make a key binding
+                        CurrentShape.setShapeType(ShapeEnum.SQUARE);
+                        System.out.println("SQUARE ");
+                        isNewShapePainted=true;
+
+                        break;
+                    case "pencil":
+                        CurrentShape.setShapeType(ShapeEnum.PENCIL);
+                        System.out.println("PENCIL");
+                        isNewShapePainted = true;
+                        break;
+                    case "pen":
+                        CurrentShape.setShapeType(ShapeEnum.PEN);  //
+                        System.out.println("PEN");
+                        isNewShapePainted = true;
+                        break;
+                    case "oval":
+    //                    CurrentShape.setShapeType(ShapeEnum.OVAL);
+    //                    System.out.println("OVAL");
+    //                    temporary to test the model, need to make a key binding
+                        CurrentShape.setShapeType(ShapeEnum.CIRCLE);
+                        System.out.println("CIRCLE");
+                        isNewShapePainted = true;
+                        break;
+                    case "move":
+                        System.out.println("MOVE");
+                        break;
+                    case "zoom":
+                        System.out.println("ZOOM");
+                        break;
+                    case "text":
+                        System.out.println("TEXT");
+                        break;
+                    case "bitmap":
+                        System.out.println("BITMAP");
+                        break;
+
+                }
+
+
+            }
+        }
 
 
 
@@ -158,10 +131,11 @@ class ContainerListenerForMainFrame extends ContainerAdapter{
         {
             if (!(drawShape == null))
             {
-                if (drawShape instanceof Pencil) {
-                    ((Pencil) drawShape).addPoint(new Point(event.getX(), event.getY()));
-                    //System.out.println("Instance of pencil");
-                } else {
+                if (CurrentShape.getShapeType()==ShapeEnum.PENCIL )
+                {
+                    ((Polyline)drawShape).addPoint(new Point(event.getX(), event.getY()));
+                }
+                else {
                     if (isShiftKeyPressed) {
                         if (drawShape instanceof Rectangle) {
                             Square square = new Square(drawShape.getX(), drawShape.getY(), drawShape.getX2(), drawShape.getY2(), drawShape.getColor());
@@ -272,6 +246,6 @@ class ContainerListenerForMainFrame extends ContainerAdapter{
             return drawShape;
         }
     }
-
-
 }
+
+
