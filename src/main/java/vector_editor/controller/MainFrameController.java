@@ -5,6 +5,14 @@ import vector_editor.model.Rectangle;
 import vector_editor.view.MainView;
 
 import javax.swing.*;
+import vector_editor.model.CurrentShape;
+import vector_editor.model.Model;
+import vector_editor.model.ShapeEnum;
+import vector_editor.model.Shapes.*;
+import vector_editor.model.Shapes.Rectangle;
+import vector_editor.model.Workspace;
+import vector_editor.view.MainView;
+
 import java.awt.*;
 import java.awt.event.*;
 import java.util.ArrayList;
@@ -20,6 +28,11 @@ public class MainFrameController {
     private ShapeObject drawShape;
     private boolean isNewShapePainted; //helpful flag while using the pen
     private boolean isShiftKeyPressed = false;
+    private MainView view;
+    private Model model;
+
+    private ShapeObject drawShape;
+    private boolean isNewShapePainted; //helpful flag while using the pen, it check if the new shape will be painted
 
     public MainFrameController(MainView view, Model model) //temporary model..
     {
@@ -66,6 +79,37 @@ public class MainFrameController {
 //                    temporary to test the model, need to make a key binding
 //                    CurrentShape.setShapeType(ShapeEnum.SQUARE);
 //                    System.out.println("SQUARE ");
+        this.view.addListenerToContainer(new ContainerListenerForMainFrame());
+        this.view.getToolbarComponent().addToolbarComponentListener(new ToolbarComponentListener());
+    }
+
+
+class ContainerListenerForMainFrame extends ContainerAdapter{
+// initial solution when the new workspace is set
+    @Override
+    public void componentAdded(ContainerEvent e) {
+        view.getWorkspaceComponent().addWorkspaceComponentMouseListener(new MouseListenerForWorkspace()); //need to set listeners
+        view.getWorkspaceComponent().addWorkspaceComponentMouseMotionListener(new MouseMotionListenerForWorkspace()); //after create the new workspace
+       int width = view.getWorkspaceComponent().getWidth();
+       int height = view.getWorkspaceComponent().getHeight();
+       String name = view.getWorkspaceComponent().getName();
+       model.setWorkspace(new Workspace(width,height,name));
+    }
+}
+
+    class ToolbarComponentListener implements ActionListener
+    {
+        public void actionPerformed(ActionEvent e) {
+
+            switch(e.getActionCommand()){
+                case "rectangle":
+//                    CurrentShape.setShapeType(ShapeEnum.RECTANGLE);
+//                    System.out.println("RECTANGLE");
+//                    temporary to test the model, need to make a key binding
+                    CurrentShape.setShapeType(ShapeEnum.SQUARE);
+                    System.out.println("SQUARE ");
+                    isNewShapePainted=true;
+
                     break;
                 case "pencil":
                     CurrentShape.setShapeType(ShapeEnum.PENCIL);
@@ -105,14 +149,15 @@ public class MainFrameController {
     }
 
 
-    class MouseMotionListenerForWorkspace implements MouseMotionListener {
+
+    class MouseMotionListenerForWorkspace extends MouseMotionAdapter
+    {
 
         @Override
-        public void mouseDragged(MouseEvent event) //need to implement the method for the pencil
+        public void mouseDragged(MouseEvent event)  //to set points in the pencil or to paint the shapes in real time before add them to the model
         {
-            // System.out.println("Mouse dragged");
-
-            if (!(drawShape == null)) {
+            if (!(drawShape == null))
+            {
                 if (drawShape instanceof Pencil) {
                     ((Pencil) drawShape).addPoint(new Point(event.getX(), event.getY()));
                     //System.out.println("Instance of pencil");
@@ -142,109 +187,85 @@ public class MainFrameController {
                 view.getWorkspaceComponent().repaint(); // draw the shape during user's action
             }
 
-
         }
 
-        @Override
-        public void mouseMoved(MouseEvent arg0) {
-        }
 
     }
 
-    class MouseListenerForWorkspace implements MouseListener {
-        public void mouseClicked(MouseEvent e) {
-            // System.out.println("Mouse clicked");
-
-        }
-
-        public void mouseEntered(MouseEvent e) {
-        }
-
-        public void mouseExited(MouseEvent e) {
-        }
-
-
-        public void mousePressed(MouseEvent e) {
-            //System.out.println("Mouse pressed");
-
-            if (isNewShapePainted) //flag which check if the previous shape was fully painted (helpful with pen)
+    class MouseListenerForWorkspace extends MouseAdapter
+    {
+    @Override
+        public void mousePressed(MouseEvent e)  //when new shape is created, to set the starting point
+        {
+            if(isNewShapePainted) //flag which check if there is a new shape (helpful with pen)
             {
                 drawShape = getTmpShape(e.getX(), e.getY(), e.getX(), e.getY());
                 view.getWorkspaceComponent().setTmpShape(drawShape);
                 view.getWorkspaceComponent().repaint();
-                isNewShapePainted = false; //not necesary
+                isNewShapePainted=false; //not necesary
             }
 
         }
 
-        public void mouseReleased(MouseEvent e)  //after user's action, it sets the new shape and reset the temp
+        public void mouseReleased(MouseEvent e)  //after user's action, it sets the finishing point and add the shape to the model
         {
-            //System.out.println("Mouse released");
-            if (!(drawShape == null)) {
+            if (!(drawShape == null))
+            {
                 ArrayList<ShapeObject> shapes = view.getWorkspaceComponent().getShapes();
 
-                if (!(drawShape instanceof Pen)) {
+                if (CurrentShape.getShapeType()!=ShapeEnum.PEN ) {
 
                     drawShape.setX2(e.getX());
                     drawShape.setY2(e.getY());
 
 
                     shapes.add(drawShape);
+                    model.getWorkspace().addShape(drawShape);  //need to set the instance of the shape before
                     view.getWorkspaceComponent().setTmpShape(null);
                     view.getWorkspaceComponent().setShapes(shapes);
                     drawShape = null;
-                    isNewShapePainted = true;
-
-                } else {
-
-                    //System.out.println("Instance of pen");
-
-                    //checking if its a new instance of pen
-                    if (((Pen) drawShape).isFirstPoint()) {
-                        System.out.println("first point");
-                        ((Pen) drawShape).addPoint(new Point(e.getX(), e.getY()));
-
-                    } else //if the pen is actually used need to remove the previous shape and add new one with new points
-                    {
-
-                        Pen tempPen = (Pen) shapes.get(shapes.size() - 1); //get the last Pen object and changed them
-                        tempPen.addPoint(new Point(e.getX(), e.getY()));
-                        shapes.remove((shapes.size() - 1));
-                        drawShape = tempPen;
-
-                    }
-                    view.getWorkspaceComponent().setTmpShape(drawShape);
-                    view.getWorkspaceComponent().repaint();
-                    shapes.add(drawShape);
-                    view.getWorkspaceComponent().setTmpShape(null);
-                    view.getWorkspaceComponent().setShapes(shapes);
-                    isNewShapePainted = false;
-
+                    isNewShapePainted=true;
 
                 }
-
-
-                System.out.println(shapes.size());
+                else  //in the case of pen update the current pen shape in the view and the model
+                {
+                    //checking if its a new instance of pen
+                    if(((Polyline)drawShape).getPoints().size()==0){
+                        ((Polyline)drawShape).addPoint(new Point(e.getX(), e.getY()));
+                    }
+                    else //if the pen is actually used need to remove the previous shape and add new one with new points
+                    {
+                        ShapeObject tempPen= shapes.get(shapes.size()-1); //get the last Pen object and changed them
+                        ((Polyline)tempPen).addPoint(new Point(e.getX(), e.getY()));
+                        shapes.remove((shapes.size()-1));
+                        model.getWorkspace().removeShape(shapes.size());
+                        drawShape=tempPen;
+                    }
+                    shapes.add(drawShape);
+                    view.getWorkspaceComponent().setShapes(shapes);
+                    model.getWorkspace().addShape(drawShape);
+                    isNewShapePainted=false;
+                }
                 view.getWorkspaceComponent().repaint();
-
             }
         }
 
-        private ShapeObject getTmpShape(int x, int y, int x2, int y2) {
-            switch (CurrentShape.getShapeType()) {
+        private ShapeObject getTmpShape(int x, int y, int x2, int y2)
+        {
+            switch (CurrentShape.getShapeType())
+            {
                 case RECTANGLE:
                     return new Rectangle(x, y, x2, y2, CurrentShape.getShapeColor());
                 case SQUARE:
-                    return new Square(x, y, x2, y2, CurrentShape.getShapeColor());
+                    return new Square(x,y,x2,y2,CurrentShape.getShapeColor());
                 case OVAL:
-                    return new Oval(x, y, x2, y2, CurrentShape.getShapeColor());
+                    return new Oval(x,y,x2,y2,CurrentShape.getShapeColor());
                 case CIRCLE:
-                    return new Circle(x, y, x2, y2, CurrentShape.getShapeColor());
+                    return new Circle(x,y,x2,y2,CurrentShape.getShapeColor());
                 case PENCIL:
-                    return new Pencil(x, y, x2, y2, CurrentShape.getShapeColor());
+                   return new Polyline(x, y, x2, y2, CurrentShape.getShapeColor());
                 case PEN:
-                    return new Pen(x, y, x2, y2, CurrentShape.getShapeColor());
-                //return new Pen(x, y, x2, y2, CurrentShape.getShapeColor());
+                    return new Polyline(x, y, x2, y2, CurrentShape.getShapeColor());
                 default:
                     break;
             }

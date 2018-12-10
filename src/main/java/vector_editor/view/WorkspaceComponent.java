@@ -1,7 +1,7 @@
 package vector_editor.view;
 
 import org.freehep.graphics2d.VectorGraphics;
-import vector_editor.model.ShapeObject;
+import vector_editor.model.Shapes.ShapeObject;
 
 import javax.swing.*;
 import java.awt.*;
@@ -13,12 +13,22 @@ public class WorkspaceComponent extends JComponent {
     private VectorGraphics vg;
     private int currentX, currentY, oldX, oldY;
     int width, height;
+
+    @Override
+    public String getName() {
+        return name;
+    }
+
+    @Override
+    public void setName(String name) {
+        this.name = name;
+    }
+
     String name;
 
     //new code
     private ArrayList<ShapeObject> shapes = new ArrayList<>();
     private ShapeObject demoShape;
-
     //
     @Override
     public int getWidth() {
@@ -54,6 +64,7 @@ public class WorkspaceComponent extends JComponent {
     }
 
 
+
     private void clear() {
         vg.setPaint(Color.white);
         vg.fillRect(0, 0, getSize().width, getSize().height);
@@ -62,18 +73,22 @@ public class WorkspaceComponent extends JComponent {
     }
 
     //add mouse listeners to the workspace in the controller
-    public void addWorkspaceComponentMouseListener(MouseListener listenForMouse) {
+    public void addWorkspaceComponentMouseListener(MouseListener listenForMouse)
+    {
         this.addMouseListener(listenForMouse);
     }
 
-    public void addWorkspaceComponentMouseMotionListener(MouseMotionListener listenForMouse) {
+    public void addWorkspaceComponentMouseMotionListener(MouseMotionListener listenForMouse)
+    {
         this.addMouseMotionListener(listenForMouse);
     }
 
-    public void paintComponent(Graphics g) {
+    public void paintComponent(Graphics g)
+    {
         super.paintComponent(g);
 
-        for (ShapeObject s : shapes) {
+        for (ShapeObject s : shapes)
+        {
             if (s != null)
                 s.draw(g);
         }
@@ -81,15 +96,18 @@ public class WorkspaceComponent extends JComponent {
         if (demoShape != null) demoShape.draw(g);   //paint component during drawing
     }
 
-    public ArrayList<ShapeObject> getShapes() {
+    public ArrayList<ShapeObject> getShapes()
+    {
         return shapes;
     }
 
-    public void setShapes(ArrayList<ShapeObject> shapes) {
+    public void setShapes(ArrayList<ShapeObject>  shapes)
+    {
         this.shapes = shapes;
     }
 
-    public ShapeObject getTmpShape() {
+    public ShapeObject getTmpShape()
+    {
         return demoShape;
     }
 

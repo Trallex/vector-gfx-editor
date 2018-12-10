@@ -8,7 +8,12 @@ import java.awt.*;
 
 
 public class MainView {
-    private JFrame frame; //priv
+    private JFrame frame;
+import java.awt.event.ContainerListener;
+
+
+public class MainView {
+    private JFrame frame;
     private Container container;
     private WorkspaceComponent workspaceComponent;
     private ToolbarComponent toolbarComponent;
@@ -17,12 +22,18 @@ public class MainView {
     private int workspaceWidth, workspaceHeight; // It goes to WorkspaceModel
     private String workspaceName; // It goes to WorkspaceModel
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/develop
     //to get the view components in the controller
     public WorkspaceComponent getWorkspaceComponent() {
         return workspaceComponent;
     }
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/develop
     public ToolbarComponent getToolbarComponent() {
         return toolbarComponent;
     }
@@ -43,7 +54,10 @@ public class MainView {
         container.setBackground(Color.decode("#3E3E3E"));
         container.setLayout(new BorderLayout());
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/develop
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         frame.setMinimumSize(new Dimension(1280, 720));
         frame.setMaximumSize(new Dimension((int) dim.getWidth(), (int) dim.getHeight()));
@@ -53,14 +67,10 @@ public class MainView {
 
         setupToolbarComponent();
         setupMenuBar();
-        setupWorkspaceComponent(1000, 600, "graphics"); //temporary initial workspace
-
-
     }
-
     private void setupToolbarComponent() {
 
-        toolbarComponent = new ToolbarComponent(100, frame.getMaximumSize().height);
+        toolbarComponent = new ToolbarComponent(150, frame.getMaximumSize().height);
         container.add(toolbarComponent, BorderLayout.LINE_START);
 
         refresh();
@@ -81,7 +91,10 @@ public class MainView {
         scrollPane.setOpaque(false);
 
         container.add(scrollPane, BorderLayout.CENTER);
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/develop
         refresh();
     }
 
@@ -91,9 +104,9 @@ public class MainView {
     }
 
     private void displayNewFilePanel() {
-        JTextField widthField = new JTextField("");
-        JTextField nameField = new JTextField("");
-        JTextField heightField = new JTextField("");
+        JTextField widthField = new JTextField("1280");
+        JTextField nameField = new JTextField("test");
+        JTextField heightField = new JTextField("720");
         JPanel panel = new JPanel(new GridLayout(0, 2));
         panel.add(new JLabel("Name of your project: "));
         panel.add(nameField);
@@ -109,11 +122,18 @@ public class MainView {
             workspaceWidth = Integer.parseInt(widthField.getText().trim());
             workspaceHeight = Integer.parseInt(heightField.getText().trim());
             workspaceName = nameField.getText().trim();
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/develop
         } else {
             System.out.println("Cancelled");
         }
     }
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/develop
     private void setupMenuBar() {
         menuBar = new MenubarComponent();
 
@@ -133,7 +153,13 @@ public class MainView {
 
         refresh();
 
-
     }
+
+    public void addListenerToContainer(ContainerListener listener) { //listener to observe if new items were added to the container
+        //helpful when adding new Workspace
+        container.addContainerListener(listener);
+    }
+
+
 }
 
