@@ -45,7 +45,7 @@ public class MainView {
     }
     private void setupToolbarComponent() {
 
-        toolbarComponent = new ToolbarComponent(100, frame.getMaximumSize().height);
+        toolbarComponent = new ToolbarComponent(150, frame.getMaximumSize().height);
         container.add(toolbarComponent, BorderLayout.LINE_START);
 
         refresh();
