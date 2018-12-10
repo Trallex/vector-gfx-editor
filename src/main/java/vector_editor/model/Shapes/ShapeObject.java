@@ -7,16 +7,18 @@ public abstract class ShapeObject {
     protected double x, y;
     protected double x2, y2;
     protected Color backgroundColor;
-    protected Color borderColor;
+    protected Color strokeColor;
+    protected float strokeThickness;
 
-    public ShapeObject(double x, double y, double x2, double y2, Color backgroundColor, Color borderColor)
+    public ShapeObject(double x, double y, double x2, double y2, Color backgroundColor, Color strokeColor, float strokeThickness)
     {
         this.x = x;
         this.y = y;
         this.x2 = x2;
         this.y2 = y2;
         this.backgroundColor = backgroundColor;
-        this.borderColor = borderColor;
+        this.strokeColor = strokeColor;
+        this.strokeThickness = strokeThickness;
     }
 
 
@@ -80,12 +82,12 @@ public abstract class ShapeObject {
         this.backgroundColor = backgroundColor;
     }
 
-    public Color getBorderColor() {
-        return borderColor;
+    public Color getStrokeColor() {
+        return strokeColor;
     }
 
-    public void setBorderColor(Color borderColor) {
-        this.borderColor = borderColor;
+    public void setStrokeColor(Color strokeColor) {
+        this.strokeColor = strokeColor;
     }
 
 
@@ -98,7 +100,7 @@ public abstract class ShapeObject {
                 ", x2=" + x2 +
                 ", y2=" + y2 +
                 ", BGcolor=" + backgroundColor +
-                ", BorderColor=" + borderColor +
+                ", StrokeColor=" + strokeColor +
                 '}';
     }
 }

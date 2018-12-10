@@ -6,9 +6,9 @@ import java.awt.*;
 
 public class Square extends Rectangle {
 
-    public Square(double x, double y, double x2, double y2, Color backgroundColor, Color borderColor)
+    public Square(double x, double y, double x2, double y2, Color backgroundColor, Color strokeColor, float strokeThickness)
     {
-        super(x, y, x2, y2, backgroundColor, borderColor);
+        super(x, y, x2, y2, backgroundColor, strokeColor, strokeThickness);
     }
 
     @Override
@@ -31,6 +31,10 @@ public class Square extends Rectangle {
         double height = width;
 
         VectorGraphics vg = VectorGraphics.create(g);
+        vg.setColor(backgroundColor);
+        vg.fillRect(startX, startY, width, height);
+        vg.setColor(strokeColor);
         vg.drawRect(startX,startY,width,height);
     }
+
 }

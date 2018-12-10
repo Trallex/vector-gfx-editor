@@ -6,6 +6,7 @@ import vector_editor.model.ShapeEnum;
 import vector_editor.model.Shapes.Rectangle;
 import vector_editor.model.Shapes.*;
 import vector_editor.model.Workspace;
+import vector_editor.view.ColorChooserButton;
 import vector_editor.view.MainView;
 
 import java.awt.*;
@@ -20,12 +21,17 @@ public class MainFrameController {
     private ShapeObject drawShape;
     private boolean isNewShapePainted; //helpful flag while using the pen, it check if the new shape will be painted
 
+    private String currentAction; // REFACTOR needed, used it in Listeners to change BG Color
+
     public MainFrameController(MainView view, Model model) //temporary model..
     {
         this.view = view;
         this.model = model;
         this.view.addListenerToContainer(new ContainerListenerForMainFrame());
         this.view.getToolbarComponent().addToolbarComponentListener(new ToolbarComponentListener());
+
+        this.view.getToolbarComponent().getStrokeColorBtn().addColorChangedListener(new ColorChangedListener());
+        this.view.getToolbarComponent().getBackgroundColorBtn().addColorChangedListener(new ColorChangedListener());
     }
 
 
@@ -54,7 +60,6 @@ class ContainerListenerForMainFrame extends ContainerAdapter{
                     CurrentShape.setShapeType(ShapeEnum.SQUARE);
                     System.out.println("SQUARE ");
                     isNewShapePainted=true;
-
                     break;
                 case "pencil":
                     CurrentShape.setShapeType(ShapeEnum.PENCIL);
@@ -86,13 +91,33 @@ class ContainerListenerForMainFrame extends ContainerAdapter{
                 case "bitmap":
                     System.out.println("BITMAP");
                     break;
+                case "strokeColor":  //REFACTOR needed
+                    currentAction = "strokeColor";
+                    break;
+                case "backgroundColor":
+                    currentAction = "backgroundColor";
+                    break;
 
             }
-
-
         }
     }
 
+
+    // This part need REFACTOR but this is one of ways how to deal with problem
+    class ColorChangedListener implements ColorChooserButton.ColorChangedListener {
+
+        @Override
+        public void colorChanged(Color newColor) {
+            switch (currentAction) {
+                case "strokeColor":
+                    CurrentShape.setStrokeColor(newColor);
+                    break;
+                case "backgroundColor":
+                    CurrentShape.setBackgroundColor(newColor);
+                    break;
+            }
+        }
+    }
 
 
     class MouseMotionListenerForWorkspace extends MouseMotionAdapter
@@ -128,7 +153,7 @@ class ContainerListenerForMainFrame extends ContainerAdapter{
         {
             if(isNewShapePainted) //flag which check if there is a new shape (helpful with pen)
             {
-                drawShape = getTmpShape(e.getX(), e.getY(), e.getX(), e.getY());
+                drawShape = getTmpShape(e.getX(), e.getY(), e.getX(), e.getY(), CurrentShape.getBackgroundColor(), CurrentShape.getStrokeColor(), CurrentShape.getStrokeThickness());
                 view.getWorkspaceComponent().setTmpShape(drawShape);
                 view.getWorkspaceComponent().repaint();
                 isNewShapePainted=false; //not necesary
@@ -179,22 +204,22 @@ class ContainerListenerForMainFrame extends ContainerAdapter{
             }
         }
 
-        private ShapeObject getTmpShape(int x, int y, int x2, int y2)
+        private ShapeObject getTmpShape(double x, double y, double x2, double y2, Color backgroundColor, Color strokeColor, float strokeThickness)
         {
             switch (CurrentShape.getShapeType())
             {
                 case RECTANGLE:
-                    return new Rectangle(x, y, x2, y2, CurrentShape.getBacgroundColor(), CurrentShape.getBorderColor());
+                    return new Rectangle(x, y, x2, y2, CurrentShape.getBackgroundColor(), CurrentShape.getStrokeColor(), CurrentShape.getStrokeThickness());
                 case SQUARE:
-                    return new Square(x, y, x2, y2, CurrentShape.getBacgroundColor(), CurrentShape.getBorderColor());
+                    return new Square(x, y, x2, y2, CurrentShape.getBackgroundColor(), CurrentShape.getStrokeColor(), CurrentShape.getStrokeThickness());
                 case OVAL:
-                    return new Oval(x, y, x2, y2, CurrentShape.getBacgroundColor(), CurrentShape.getBorderColor());
+                    return new Oval(x, y, x2, y2, CurrentShape.getBackgroundColor(), CurrentShape.getStrokeColor(), CurrentShape.getStrokeThickness());
                 case CIRCLE:
-                    return new Circle(x, y, x2, y2, CurrentShape.getBacgroundColor(), CurrentShape.getBorderColor());
+                    return new Circle(x, y, x2, y2, CurrentShape.getBackgroundColor(), CurrentShape.getStrokeColor(), CurrentShape.getStrokeThickness());
                 case PENCIL:
-                    return new Polyline(x, y, x2, y2, CurrentShape.getBacgroundColor(), CurrentShape.getBorderColor());
+                    return new Polyline(x, y, x2, y2, CurrentShape.getBackgroundColor(), CurrentShape.getStrokeColor(), CurrentShape.getStrokeThickness());
                 case PEN:
-                    return new Polyline(x, y, x2, y2, CurrentShape.getBacgroundColor(), CurrentShape.getBorderColor());
+                    return new Polyline(x, y, x2, y2, CurrentShape.getBackgroundColor(), CurrentShape.getStrokeColor(), CurrentShape.getStrokeThickness());
                 default:
                     break;
             }

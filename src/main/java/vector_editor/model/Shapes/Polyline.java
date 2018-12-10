@@ -9,9 +9,9 @@ public class Polyline extends ShapeObject {
 
     private ArrayList<Point> points;
 
-    public Polyline(double x, double y, double x2, double y2, Color backgroundColor, Color borderColor)
+    public Polyline(double x, double y, double x2, double y2, Color backgroundColor, Color strokeColor, float strokeThickness)
     {
-        super(x, y, x2, y2, backgroundColor, borderColor);
+        super(x, y, x2, y2, backgroundColor, strokeColor, strokeThickness);
         points=new ArrayList<>();
     }
 
@@ -36,6 +36,9 @@ public class Polyline extends ShapeObject {
             //System.out.println(i);
         }
         VectorGraphics vg = VectorGraphics.create(g);
+        vg.setColor(backgroundColor);
+        vg.fillPolygon(xPoints, yPoints, nPoints);
+        vg.setColor(strokeColor);
         vg.drawPolyline(xPoints,yPoints,nPoints);
     }
 }

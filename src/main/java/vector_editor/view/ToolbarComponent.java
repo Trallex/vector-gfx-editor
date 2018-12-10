@@ -16,8 +16,17 @@ public class ToolbarComponent extends JPanel {
     private JButton ZoomToolBtn;
     private JButton TextToolBtn;
     private JButton BitmapToolBtn;
-    private ColorChooserButton ColorBackgroundBtn;
-    private ColorChooserButton ColorBorderBtn;
+
+    public ColorChooserButton getBackgroundColorBtn() {
+        return BackgroundColorBtn;
+    }
+
+    public ColorChooserButton getStrokeColorBtn() {
+        return StrokeColorBtn;
+    }
+
+    private ColorChooserButton BackgroundColorBtn;
+    private ColorChooserButton StrokeColorBtn;
 
     private ArrayList<JButton> buttons;
 
@@ -42,10 +51,12 @@ public class ToolbarComponent extends JPanel {
         ZoomToolBtn = new JButton();
         TextToolBtn = new JButton();
         BitmapToolBtn = new JButton();
-        ColorBackgroundBtn = new ColorChooserButton(Color.white);
-        ColorBorderBtn = new ColorChooserButton(Color.black);
-        ColorBackgroundBtn.setText("Background:");
-        ColorBorderBtn.setText("Border:");
+
+        BackgroundColorBtn = new ColorChooserButton(Color.white);
+        StrokeColorBtn = new ColorChooserButton(Color.black);
+
+        BackgroundColorBtn.setText("Background:");
+        StrokeColorBtn.setText("Stroke:");
 
         buttons.add(MoveToolBtn);
         buttons.add(PenToolBtn);
@@ -55,8 +66,8 @@ public class ToolbarComponent extends JPanel {
         buttons.add(ZoomToolBtn);
         buttons.add(TextToolBtn);
         buttons.add(BitmapToolBtn);
-        buttons.add(ColorBorderBtn);
-        buttons.add(ColorBackgroundBtn);
+        buttons.add(StrokeColorBtn);
+        buttons.add(BackgroundColorBtn);
 
 
         MoveToolBtn.setActionCommand("move");
@@ -67,8 +78,8 @@ public class ToolbarComponent extends JPanel {
         ZoomToolBtn.setActionCommand("zoom");
         TextToolBtn.setActionCommand("text");
         BitmapToolBtn.setActionCommand("bitmap");
-        ColorBorderBtn.setActionCommand("borderColor");
-        ColorBackgroundBtn.setActionCommand("backgroundColor");
+        StrokeColorBtn.setActionCommand("strokeColor");
+        BackgroundColorBtn.setActionCommand("backgroundColor");
 
 
 
