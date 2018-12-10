@@ -15,20 +15,22 @@ public class ToolbarComponent extends JPanel {
     private JButton ZoomToolBtn;
     private JButton TextToolBtn;
     private JButton BitmapToolBtn;
+    private ColorChooserButton ColorBackgroundBtn;
+    private ColorChooserButton ColorBorderBtn;
 
     private ArrayList<JButton> buttons;
 
     public ToolbarComponent(int width, int height) {
 
-
-        this.setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
+        this.setLayout(new GridLayout(0, 1));
         this.setPreferredSize(new Dimension(width, height));
         this.setBackground(Color.decode("#2E2E2E"));
-        setupButtons();
+        setupComponents();
+
 
     }
 
-    private void setupButtons() {
+    private void setupComponents() {
         buttons = new ArrayList<>();
 
         MoveToolBtn = new JButton();
@@ -39,6 +41,10 @@ public class ToolbarComponent extends JPanel {
         ZoomToolBtn = new JButton();
         TextToolBtn = new JButton();
         BitmapToolBtn = new JButton();
+        ColorBackgroundBtn = new ColorChooserButton(Color.white);
+        ColorBorderBtn = new ColorChooserButton(Color.black);
+        ColorBackgroundBtn.setText("Background:");
+        ColorBorderBtn.setText("Border:");
 
         buttons.add(MoveToolBtn);
         buttons.add(PenToolBtn);
@@ -48,6 +54,8 @@ public class ToolbarComponent extends JPanel {
         buttons.add(ZoomToolBtn);
         buttons.add(TextToolBtn);
         buttons.add(BitmapToolBtn);
+        buttons.add(ColorBorderBtn);
+        buttons.add(ColorBackgroundBtn);
 
         MoveToolBtn.setActionCommand("move");
         PenToolBtn.setActionCommand("pen");
@@ -57,17 +65,27 @@ public class ToolbarComponent extends JPanel {
         ZoomToolBtn.setActionCommand("zoom");
         TextToolBtn.setActionCommand("text");
         BitmapToolBtn.setActionCommand("bitmap");
+        ColorBorderBtn.setActionCommand("borderColor");
+        ColorBackgroundBtn.setActionCommand("backgroundColor");
+
 
 
         buttons.forEach(jButton -> {
-            Icon icon = createImageIcon(String.format("/images/%s.gif", jButton.getActionCommand()));
-            jButton.setIcon(icon);
+            if (!(jButton instanceof ColorChooserButton)) {
+                Icon icon = createImageIcon(String.format("/images/%s.gif", jButton.getActionCommand()));
+                jButton.setIcon(icon);
+            }
             jButton.setPreferredSize(new Dimension(getWidth(), 60));
             this.add(jButton);
             jButton.setOpaque(false);
             jButton.setFocusPainted(false);
             jButton.setBorderPainted(false);
             jButton.setContentAreaFilled(false);
+            jButton.setForeground(Color.white);
+            jButton.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
+            jButton.setHorizontalAlignment(SwingConstants.CENTER);
+            jButton.setHorizontalTextPosition(SwingConstants.LEFT);
+
 
         });
     }
