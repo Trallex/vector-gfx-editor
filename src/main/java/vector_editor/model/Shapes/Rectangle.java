@@ -21,5 +21,4 @@ public class Rectangle extends ShapeObject {
         vg.setColor(strokeColor);
         vg.drawRect(Math.min(x, x2), Math.min(y, y2), calcWidth(), calcHeight());
     }
-
 }

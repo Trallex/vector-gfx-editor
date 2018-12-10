@@ -1,12 +1,12 @@
 package vector_editor.controller;
 
-import vector_editor.model.*;
-import vector_editor.model.Shapes.*;
 import vector_editor.model.CurrentShape;
 import vector_editor.model.Model;
 import vector_editor.model.ShapeEnum;
+import vector_editor.model.Shapes.*;
 import vector_editor.model.Shapes.Rectangle;
 import vector_editor.model.Workspace;
+import vector_editor.view.ColorChooserButton;
 import vector_editor.view.MainView;
 
 import javax.swing.*;
@@ -73,16 +73,16 @@ public class MainFrameController {
         }
     }
 
-    class ContainerListenerForMainFrame extends ContainerAdapter{
-    // initial solution when the new workspace is set
+    class ContainerListenerForMainFrame extends ContainerAdapter {
+        // initial solution when the new workspace is set
         @Override
         public void componentAdded(ContainerEvent e) {
             view.getWorkspaceComponent().addWorkspaceComponentMouseListener(new MouseListenerForWorkspace()); //need to set listeners
             view.getWorkspaceComponent().addWorkspaceComponentMouseMotionListener(new MouseMotionListenerForWorkspace()); //after create the new workspace
-           int width = view.getWorkspaceComponent().getWidth();
-           int height = view.getWorkspaceComponent().getHeight();
-           String name = view.getWorkspaceComponent().getName();
-           model.setWorkspace(new Workspace(width,height,name));
+            int width = view.getWorkspaceComponent().getWidth();
+            int height = view.getWorkspaceComponent().getHeight();
+            String name = view.getWorkspaceComponent().getName();
+            model.setWorkspace(new Workspace(width, height, name));
         }
     }
 
@@ -169,22 +169,21 @@ public class MainFrameController {
                 else {
                     if (isShiftKeyPressed) {
                         if (drawShape instanceof Rectangle) {
-                            Square square = new Square(drawShape.getX(), drawShape.getY(), drawShape.getX2(), drawShape.getY2(), drawShape.getColor());
+                            Square square = new Square(drawShape.getX(), drawShape.getY(), drawShape.getX2(), drawShape.getY2(), drawShape.getBackgroundColor(), drawShape.getBackgroundColor(), drawShape.getStrokeThickness());
                             drawShape = square;
                         } else if (drawShape instanceof Oval) {
-                            Circle circle = new Circle(drawShape.getX(), drawShape.getY(), drawShape.getX2(), drawShape.getY2(), drawShape.getColor());
+                            Circle circle = new Circle(drawShape.getX(), drawShape.getY(), drawShape.getX2(), drawShape.getY2(), drawShape.getBackgroundColor(), drawShape.getBackgroundColor(), drawShape.getStrokeThickness());
                             drawShape = circle;
                         }
                     } else {
                         if (drawShape instanceof Square) {
-                            Rectangle rectangle = new Rectangle(drawShape.getX(), drawShape.getY(), drawShape.getX(), drawShape.getY2(), drawShape.getColor());
+                            Rectangle rectangle = new Rectangle(drawShape.getX(), drawShape.getY(), drawShape.getX(), drawShape.getY2(), drawShape.getBackgroundColor(), drawShape.getBackgroundColor(), drawShape.getStrokeThickness());
                             drawShape = rectangle;
                         } else if (drawShape instanceof Circle) {
-                            Oval oval = new Oval(drawShape.getX(), drawShape.getY(), drawShape.getX2(), drawShape.getY2(), drawShape.getColor());
+                            Oval oval = new Oval(drawShape.getX(), drawShape.getY(), drawShape.getX2(), drawShape.getY2(), drawShape.getBackgroundColor(), drawShape.getBackgroundColor(), drawShape.getStrokeThickness());
                             drawShape = oval;
                         }
                     }
-                    //System.out.println(drawShape.toString());
                     drawShape.setX2(event.getX());
                     drawShape.setY2(event.getY());
                 }
