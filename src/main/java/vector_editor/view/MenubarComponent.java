@@ -17,9 +17,6 @@ public class MenubarComponent extends JMenuBar {
         return saveFileItem;
     }
 
-    public JMenuItem getCloseItem() {
-        return closeItem;
-    }
 
     private JMenu fileMenu;
     private JMenuItem newFileItem;
