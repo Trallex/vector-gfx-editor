@@ -33,7 +33,7 @@ public class CurrentShape {  //the static info about current shape and color sel
         CurrentShape.strokeThickness = strokeThickness;
     }
 
-    private static float strokeThickness = 1.0f;
+    private static float strokeThickness = 0.f;
 
     public static ShapeEnum getShapeType()
     {

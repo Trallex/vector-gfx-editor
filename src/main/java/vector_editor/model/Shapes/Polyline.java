@@ -38,8 +38,10 @@ public class Polyline extends ShapeObject {
         VectorGraphics vg = VectorGraphics.create(g);
         vg.setColor(backgroundColor);
         vg.fillPolygon(xPoints, yPoints, nPoints);
-        vg.setColor(strokeColor);
-        vg.setStroke(new BasicStroke(strokeThickness));
-        vg.drawPolyline(xPoints,yPoints,nPoints);
+        if (strokeThickness > 0) {
+            vg.setColor(strokeColor);
+            vg.setStroke(new BasicStroke(strokeThickness));
+            vg.drawPolyline(xPoints, yPoints, nPoints);
+        }
     }
 }

@@ -22,9 +22,11 @@ public class Circle extends Oval {
         VectorGraphics vg = VectorGraphics.create(g);
         vg.setColor(backgroundColor);
         vg.fillOval(Math.min(x, x2), Math.min(y, y2), calcDiameter(), calcDiameter());
-        vg.setColor(strokeColor);
-        vg.setStroke(new BasicStroke(strokeThickness));
-        vg.drawOval(Math.min(x, x2), Math.min(y, y2), calcDiameter(), calcDiameter());
+        if (strokeThickness > 0) {
+            vg.setColor(strokeColor);
+            vg.setStroke(new BasicStroke(strokeThickness));
+            vg.drawOval(Math.min(x, x2), Math.min(y, y2), calcDiameter(), calcDiameter());
+        }
 
     }
 }
