@@ -90,42 +90,20 @@ public class MainFrameController {
         public void actionPerformed(ActionEvent e) {
             switch(e.getActionCommand()){
                 case "rectangle":
-//                    CurrentShape.setShapeType(ShapeEnum.RECTANGLE);
-//                    System.out.println("RECTANGLE");
-//                    temporary to test the model, need to make a key binding
                     CurrentShape.setShapeType(ShapeEnum.SQUARE);
-                    System.out.println("SQUARE ");
                     isNewShapePainted=true;
                     break;
                 case "pencil":
                     CurrentShape.setShapeType(ShapeEnum.PENCIL);
-                    System.out.println("PENCIL");
                     isNewShapePainted=true;
                     break;
                 case "pen":
                     CurrentShape.setShapeType(ShapeEnum.PEN);  //
-                    System.out.println("PEN");
                     isNewShapePainted=true;
                     break;
                 case "oval":
-//                    CurrentShape.setShapeType(ShapeEnum.OVAL);
-//                    System.out.println("OVAL");
-//                    temporary to test the model, need to make a key binding
                     CurrentShape.setShapeType(ShapeEnum.CIRCLE);
-                    System.out.println("CIRCLE");
                     isNewShapePainted=true;
-                    break;
-                case "move":
-                    System.out.println("MOVE");
-                    break;
-                case "zoom":
-                    System.out.println("ZOOM");
-                    break;
-                case "text":
-                    System.out.println("TEXT");
-                    break;
-                case "bitmap":
-                    System.out.println("BITMAP");
                     break;
                 case "strokeColor":  //REFACTOR needed
                     currentAction = "strokeColor";
