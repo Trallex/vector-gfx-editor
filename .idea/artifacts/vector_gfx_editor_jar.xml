@@ -1,0 +1,19 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="vector-gfx-editor:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/vector_gfx_editor_jar</output-path>
+    <root id="archive" name="vector-gfx-editor.jar">
+      <element id="module-output" name="vector-gfx-editor" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/junit/junit/4.10/junit-4.10.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/hamcrest/hamcrest-core/1.1/hamcrest-core-1.1.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/freehep/freehep-io/2.2.2/freehep-io-2.2.2.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/freehep/freehep-graphicsio/2.3/freehep-graphicsio-2.3.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/freehep/freehep-graphics2d/2.3/freehep-graphics2d-2.3.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/freehep/freehep-graphicsbase/2.3/freehep-graphicsbase-2.3.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/freehep/freehep-graphicsio-svg/2.4/freehep-graphicsio-svg-2.4.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/freehep/freehep-graphics2d/2.4/freehep-graphics2d-2.4.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/freehep/freehep-graphicsio/2.4/freehep-graphicsio-2.4.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/freehep/freehep-graphicsio-tests/2.4/freehep-graphicsio-tests-2.4.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/freehep/freehep-graphicsbase/2.4/freehep-graphicsbase-2.4.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>
