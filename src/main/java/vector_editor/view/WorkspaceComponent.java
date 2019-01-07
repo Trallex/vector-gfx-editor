@@ -115,4 +115,12 @@ public class WorkspaceComponent extends JComponent {
         this.demoShape = tmpShape;
     }
 
+    public void removeLastShape()
+    {
+        if(!shapes.isEmpty())
+        {
+            shapes.remove(shapes.size()-1);
+        }
+    }
+
 }

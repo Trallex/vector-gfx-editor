@@ -24,7 +24,12 @@ public class Workspace {
     public void removeShape(int index){
         shapes.remove(index);
     }
-
+    public void removeLastShape(){
+        if(!shapes.isEmpty())
+        {
+            shapes.remove(shapes.size()-1);
+        }
+    }
     //to test
     @Override
     public String toString() {

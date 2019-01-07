@@ -3,8 +3,8 @@ package vector_editor.controller;
 import vector_editor.model.CurrentShape;
 import vector_editor.model.Model;
 import vector_editor.model.ShapeEnum;
-import vector_editor.model.Shapes.Rectangle;
 import vector_editor.model.Shapes.*;
+import vector_editor.model.Shapes.Rectangle;
 import vector_editor.model.Workspace;
 import vector_editor.view.ColorChooserButton;
 import vector_editor.view.MainView;
@@ -43,6 +43,7 @@ public class MainFrameController {
 
         inputMap.put(KeyStroke.getKeyStroke(KeyEvent.VK_SHIFT, InputEvent.SHIFT_DOWN_MASK, false), "shiftPressed");
         inputMap.put(KeyStroke.getKeyStroke(KeyEvent.VK_SHIFT, 0, true), "shiftReleased");
+        inputMap.put(KeyStroke.getKeyStroke(KeyEvent.VK_Z, InputEvent.CTRL_DOWN_MASK, false), "ctrlZPressed");
 
         actionMap.put("shiftPressed", new AbstractAction() {
             @Override
@@ -50,11 +51,19 @@ public class MainFrameController {
                 isShiftKeyPressed = true;
             }
         });
-
         actionMap.put("shiftReleased", new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 isShiftKeyPressed = false;
+            }
+        });
+        actionMap.put("ctrlZPressed", new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.out.println("Ctrl + Z");
+                model.getWorkspace().removeLastShape();
+                view.getWorkspaceComponent().removeLastShape();
+                view.getWorkspaceComponent().repaint();
             }
         });
 
