@@ -126,6 +126,7 @@ public class MainFrameController {
                     break;
                 case "move":
                     System.out.println("MOVE");
+                    isNewShapePainted=false;
                     break;
                 case "zoom":
                     System.out.println("ZOOM");
@@ -216,6 +217,10 @@ public class MainFrameController {
                 view.getWorkspaceComponent().setTmpShape(drawShape);
                 view.getWorkspaceComponent().repaint();
                 isNewShapePainted=false; //not necesary
+            }
+            else {
+                Point p = new Point(e.getX(), e.getY());
+                System.out.println(model.getWorkspace().findDrawnShapesId(p));
             }
 
         }

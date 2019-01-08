@@ -30,7 +30,7 @@ public abstract class ShapeObject {
         this.strokeThickness = strokeThickness;
     }
 
-
+    public  abstract boolean ifPointBelongToField(Point p);
     public abstract void draw(Graphics g);
 
     public double calcWidth()

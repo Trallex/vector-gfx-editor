@@ -15,6 +15,11 @@ public class Polyline extends ShapeObject {
         points=new ArrayList<>();
     }
 
+    @Override
+    public boolean ifPointBelongToField(Point p) {
+        return false;
+    }
+
     public void addPoint(Point point){
         points.add(point);
     }

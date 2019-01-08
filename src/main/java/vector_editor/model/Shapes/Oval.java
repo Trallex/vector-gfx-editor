@@ -11,6 +11,11 @@ public class Oval extends ShapeObject {
     }
 
     @Override
+    public boolean ifPointBelongToField(Point p) {
+        return false;
+    }
+
+    @Override
     public void draw(Graphics g) {
         if (g == null) return;
         VectorGraphics vg = VectorGraphics.create(g);

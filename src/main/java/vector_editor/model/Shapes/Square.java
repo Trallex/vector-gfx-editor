@@ -39,5 +39,8 @@ public class Square extends Rectangle {
             vg.drawRect(startX, startY, width, height);
         }
     }
-
+    @Override
+    public boolean ifPointBelongToField(Point p){
+        return super.ifPointBelongToField(p);
+    }
 }

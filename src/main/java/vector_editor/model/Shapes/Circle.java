@@ -3,6 +3,7 @@ package vector_editor.model.Shapes;
 import org.freehep.graphics2d.VectorGraphics;
 
 import java.awt.*;
+import java.awt.geom.Point2D;
 
 public class Circle extends Oval {
 
@@ -27,6 +28,13 @@ public class Circle extends Oval {
             vg.setStroke(new BasicStroke(strokeThickness));
             vg.drawOval(Math.min(x, x2), Math.min(y, y2), calcDiameter(), calcDiameter());
         }
+    }
 
+    @Override
+    public boolean ifPointBelongToField(Point p) {
+        Point center = new Point();
+        center.setLocation((x+x2)/2,(y+y2)/2);
+        double  radius = Point2D.distance(center.getX(),center.getY(), x, y);
+        return (radius >= Point2D.distance(center.getX(),center.getY(), p.getX(), p.getY()));
     }
 }
