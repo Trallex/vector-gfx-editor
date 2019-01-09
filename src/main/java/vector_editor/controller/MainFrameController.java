@@ -3,8 +3,8 @@ package vector_editor.controller;
 import vector_editor.model.CurrentShape;
 import vector_editor.model.Model;
 import vector_editor.model.ShapeEnum;
-import vector_editor.model.Shapes.*;
 import vector_editor.model.Shapes.Rectangle;
+import vector_editor.model.Shapes.*;
 import vector_editor.model.Workspace;
 import vector_editor.view.ColorChooserButton;
 import vector_editor.view.MainView;
@@ -223,27 +223,28 @@ public class MainFrameController {
     @Override
         public void mousePressed(MouseEvent e)  //when new shape is created, to set the starting point
         {
-            if(isNewShapePainted) //flag which check if there is a new shape (helpful with pen)
+            listenToDrawingShapeWhenPressed(e);
+
+        }
+
+        private void listenToDrawingShapeWhenPressed(MouseEvent e) {
+            if (isNewShapePainted) //flag which check if there is a new shape (helpful with pen)
             {
                 drawShape = getTmpShape(e.getX(), e.getY(), e.getX(), e.getY(), CurrentShape.getBackgroundColor(), CurrentShape.getStrokeColor(), CurrentShape.getStrokeThickness());
                 view.getWorkspaceComponent().setTmpShape(drawShape);
                 view.getWorkspaceComponent().repaint();
-                isNewShapePainted=false; //not necesary
-            }
-            else {
+                isNewShapePainted = false; //not necesary
+            } else {
                 selectedShape = model.getWorkspace().findDrawnShapesId(e.getPoint());
                 System.out.println(model.getWorkspace().findDrawnShapesId(e.getPoint()));
             }
-
         }
 
-        public void mouseReleased(MouseEvent e)  //after user's action, it sets the finishing point and add the shape to the model
-        {
-            if (!(drawShape == null))
-            {
+        private void listenToDrawingShapeWhenReleased(MouseEvent e) {
+            if (!(drawShape == null)) {
                 ArrayList<ShapeObject> shapes = view.getWorkspaceComponent().getShapes();
 
-                if (CurrentShape.getShapeType()!=ShapeEnum.PEN ) {
+                if (CurrentShape.getShapeType() != ShapeEnum.PEN) {
 
                     drawShape.setX2(e.getX());
                     drawShape.setY2(e.getY());
@@ -254,30 +255,37 @@ public class MainFrameController {
                     view.getWorkspaceComponent().setTmpShape(null);
                     view.getWorkspaceComponent().setShapes(shapes);
                     drawShape = null;
-                    isNewShapePainted=true;
+                    isNewShapePainted = true;
 
-                }
-                else  //in the case of pen update the current pen shape in the view and the model
+                } else  //in the case of pen update the current pen shape in the view and the model
                 {
                     //checking if its a new instance of pen
-                    if(((Polyline)drawShape).getPoints().size()==0){
-                        ((Polyline)drawShape).addPoint(new Point(e.getX(), e.getY()));
-                    }
-                    else //if the pen is actually used need to remove the previous shape and add new one with new points
+                    if (((Polyline) drawShape).getPoints().size() == 0) {
+                        ((Polyline) drawShape).addPoint(new Point(e.getX(), e.getY()));
+                    } else //if the pen is actually used need to remove the previous shape and add new one with new points
                     {
-                        ShapeObject tempPen= shapes.get(shapes.size()-1); //get the last Pen object and changed them
-                        ((Polyline)tempPen).addPoint(new Point(e.getX(), e.getY()));
-                        shapes.remove((shapes.size()-1));
+                        ShapeObject tempPen = shapes.get(shapes.size() - 1); //get the last Pen object and changed them
+                        ((Polyline) tempPen).addPoint(new Point(e.getX(), e.getY()));
+                        shapes.remove((shapes.size() - 1));
                         model.getWorkspace().removeShape(shapes.size());
-                        drawShape=tempPen;
+                        drawShape = tempPen;
                     }
                     shapes.add(drawShape);
                     view.getWorkspaceComponent().setShapes(shapes);
                     model.getWorkspace().addShape(drawShape);
-                    isNewShapePainted=false;
+                    isNewShapePainted = false;
                 }
                 view.getWorkspaceComponent().repaint();
             }
+        }
+
+        private void listenToShapeClickedWhenPressed(MouseEvent e) {
+
+        }
+
+        public void mouseReleased(MouseEvent e)  //after user's action, it sets the finishing point and add the shape to the model
+        {
+            listenToDrawingShapeWhenReleased(e);
         }
 
         private ShapeObject getTmpShape(double x, double y, double x2, double y2, Color backgroundColor, Color strokeColor, float strokeThickness)

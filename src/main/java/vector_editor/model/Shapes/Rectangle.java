@@ -27,9 +27,8 @@ public class Rectangle extends ShapeObject {
     @Override
     public boolean ifPointBelongToField(Point p)
     {
-        if(p.getX() <= Math.max(x, x2) && p.getX() >= Math.min(x,x2)
-                && p.getY() <=Math.max(y,y2) && p.getY() >= Math.min(y,y2))
-            return true;
-        else return false;
+        this.setSelected(p.getX() <= Math.max(x, x2) && p.getX() >= Math.min(x, x2)
+                && p.getY() <= Math.max(y, y2) && p.getY() >= Math.min(y, y2));
+        return isSelected();
     }
 }

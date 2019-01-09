@@ -41,6 +41,7 @@ public class Square extends Rectangle {
     }
     @Override
     public boolean ifPointBelongToField(Point p){
-        return super.ifPointBelongToField(p);
+        this.setSelected(super.ifPointBelongToField(p));
+        return isSelected();
     }
 }

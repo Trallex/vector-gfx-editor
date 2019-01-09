@@ -35,6 +35,7 @@ public class Circle extends Oval {
         Point center = new Point();
         center.setLocation((x+x2)/2,(y+y2)/2);
         double  radius = Point2D.distance(center.getX(),center.getY(), x, y);
-        return (radius >= Point2D.distance(center.getX(),center.getY(), p.getX(), p.getY()));
+        this.setSelected(radius >= Point2D.distance(center.getX(), center.getY(), p.getX(), p.getY()));
+        return this.isSelected();
     }
 }

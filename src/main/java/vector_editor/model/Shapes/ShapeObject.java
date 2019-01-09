@@ -9,6 +9,16 @@ public abstract class ShapeObject {
     protected Color backgroundColor;
     protected Color strokeColor;
 
+    public boolean isSelected() {
+        return isSelected;
+    }
+
+    public void setSelected(boolean selected) {
+        isSelected = selected;
+    }
+
+    protected boolean isSelected;
+
     public float getStrokeThickness() {
         return strokeThickness;
     }
@@ -28,6 +38,7 @@ public abstract class ShapeObject {
         this.backgroundColor = backgroundColor;
         this.strokeColor = strokeColor;
         this.strokeThickness = strokeThickness;
+        this.isSelected = true;
     }
 
     public  abstract boolean ifPointBelongToField(Point p);
