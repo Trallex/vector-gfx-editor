@@ -15,7 +15,7 @@ import java.awt.event.*;
 import java.util.ArrayList;
 
 public class MainFrameController {
-
+    private int selectedShape =-1; //index of shape in model
     private MainView view;
     private Model model; //temporary!!
     private InputMap inputMap; //key binding
@@ -44,6 +44,7 @@ public class MainFrameController {
         inputMap.put(KeyStroke.getKeyStroke(KeyEvent.VK_SHIFT, InputEvent.SHIFT_DOWN_MASK, false), "shiftPressed");
         inputMap.put(KeyStroke.getKeyStroke(KeyEvent.VK_SHIFT, 0, true), "shiftReleased");
         inputMap.put(KeyStroke.getKeyStroke(KeyEvent.VK_Z, InputEvent.CTRL_DOWN_MASK, false), "ctrlZPressed");
+        inputMap.put(KeyStroke.getKeyStroke(KeyEvent.VK_DELETE, 0, false), "deleteSelectedShape");
 
         actionMap.put("shiftPressed", new AbstractAction() {
             @Override
@@ -64,6 +65,17 @@ public class MainFrameController {
                 model.getWorkspace().removeLastShape();
                 view.getWorkspaceComponent().removeLastShape();
                 view.getWorkspaceComponent().repaint();
+            }
+        });
+        actionMap.put("deleteSelectedShape", new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(selectedShape != -1)
+                {
+                    model.getWorkspace().removeShape(selectedShape);
+                    view.getWorkspaceComponent().removeShape(selectedShape);
+                    view.getWorkspaceComponent().repaint();
+                }
             }
         });
 
@@ -219,8 +231,8 @@ public class MainFrameController {
                 isNewShapePainted=false; //not necesary
             }
             else {
-                Point p = new Point(e.getX(), e.getY());
-                System.out.println(model.getWorkspace().findDrawnShapesId(p));
+                selectedShape = model.getWorkspace().findDrawnShapesId(e.getPoint());
+                System.out.println(model.getWorkspace().findDrawnShapesId(e.getPoint()));
             }
 
         }
