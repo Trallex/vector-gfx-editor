@@ -32,6 +32,10 @@ public class Workspace {
         }
     }
 
+    public ArrayList<ShapeObject> getShapes() {
+        return shapes;
+    }
+
     public int findDrawnShapesId(Point p)
     {
         int index = 0;

@@ -73,7 +73,7 @@ public class MainView {
         refresh();
     }
 
-    private void refresh() {
+    public void refresh() {
         frame.validate();
         frame.repaint();
     }

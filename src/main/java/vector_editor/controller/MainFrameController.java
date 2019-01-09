@@ -178,7 +178,6 @@ public class MainFrameController {
 
     class MouseMotionListenerForWorkspace extends MouseMotionAdapter
     {
-
         @Override
         public void mouseDragged(MouseEvent event)  //to set points in the pencil or to paint the shapes in real time before add them to the model
         {
@@ -221,13 +220,6 @@ public class MainFrameController {
 
     class MouseListenerForWorkspace extends MouseAdapter
     {
-    @Override
-        public void mousePressed(MouseEvent e)  //when new shape is created, to set the starting point
-        {
-            listenToDrawingShapeWhenPressed(e);
-
-        }
-
         private void listenToDrawingShapeWhenPressed(MouseEvent e) {
             if (isNewShapePainted) //flag which check if there is a new shape (helpful with pen)
             {
@@ -280,8 +272,32 @@ public class MainFrameController {
             }
         }
 
-        private void listenToShapeClickedWhenPressed(MouseEvent e) {
+        private void listenToShapeSelectWhenClicked(MouseEvent e) {
+            int x, y;
+            x = e.getX();
+            y = e.getY();
 
+            boolean selected = false;
+            Point pt = new Point(x, y);
+            for (ShapeObject currentShape : model.getWorkspace().getShapes()) {
+                if (currentShape.ifPointBelongToField(pt) && !selected) {
+                    currentShape.setSelected(true);
+                    System.out.println(currentShape);
+                    selected = true;
+                } else currentShape.setSelected(false);
+            }
+            view.refresh();
+        }
+
+        @Override
+        public void mousePressed(MouseEvent e)  //when new shape is created, to set the starting point
+        {
+            listenToDrawingShapeWhenPressed(e);
+        }
+
+        @Override
+        public void mouseClicked(MouseEvent e) {
+            listenToShapeSelectWhenClicked(e);
         }
 
         public void mouseReleased(MouseEvent e)  //after user's action, it sets the finishing point and add the shape to the model
