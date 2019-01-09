@@ -182,13 +182,14 @@ public class MainFrameController {
         @Override
         public void mouseDragged(MouseEvent event)  //to set points in the pencil or to paint the shapes in real time before add them to the model
         {
-            if (!(drawShape == null))
-            {
-                if (CurrentShape.getShapeType()==ShapeEnum.PENCIL )
-                {
-                    ((Polyline)drawShape).addPoint(new Point(event.getX(), event.getY()));
-                }
-                else {
+            listenToDrawingWhenDragged(event);
+        }
+
+        private void listenToDrawingWhenDragged(MouseEvent event) {
+            if (!(drawShape == null)) {
+                if (CurrentShape.getShapeType() == ShapeEnum.PENCIL) {
+                    ((Polyline) drawShape).addPoint(new Point(event.getX(), event.getY()));
+                } else {
                     if (isShiftKeyPressed) {
                         if (drawShape instanceof Rectangle) {
                             Square square = new Square(drawShape.getX(), drawShape.getY(), drawShape.getX2(), drawShape.getY2(), drawShape.getBackgroundColor(), drawShape.getStrokeColor(), drawShape.getStrokeThickness());
@@ -230,7 +231,7 @@ public class MainFrameController {
         private void listenToDrawingShapeWhenPressed(MouseEvent e) {
             if (isNewShapePainted) //flag which check if there is a new shape (helpful with pen)
             {
-                drawShape = getTmpShape(e.getX(), e.getY(), e.getX(), e.getY(), CurrentShape.getBackgroundColor(), CurrentShape.getStrokeColor(), CurrentShape.getStrokeThickness());
+                drawShape = getTmpShape(e.getX(), e.getY(), e.getX(), e.getY());
                 view.getWorkspaceComponent().setTmpShape(drawShape);
                 view.getWorkspaceComponent().repaint();
                 isNewShapePainted = false; //not necesary
@@ -288,7 +289,7 @@ public class MainFrameController {
             listenToDrawingShapeWhenReleased(e);
         }
 
-        private ShapeObject getTmpShape(double x, double y, double x2, double y2, Color backgroundColor, Color strokeColor, float strokeThickness)
+        private ShapeObject getTmpShape(double x, double y, double x2, double y2)
         {
             switch (CurrentShape.getShapeType())
             {

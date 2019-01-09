@@ -12,7 +12,7 @@ public class Workspace {
     private ArrayList<ShapeObject> shapes;      //initially only shapes, without layer
 
 
-    public Workspace(int height, int width, String name){
+    public Workspace(int width, int height, String name) {
         this.height=height;
         this.width=width;
         this.name=name;
