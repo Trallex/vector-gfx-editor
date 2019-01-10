@@ -114,7 +114,7 @@ public class MainView {
 //                    ExportDialog export = new ExportDialog();
 //                    workspaceComponent.clear();
 //                    export.showExportDialog(container, "Export view as...", workspaceComponent, "export");
-                    ExportComponent exportComponent = new ExportComponent(frame);
+                    ExportComponent exportComponent = new ExportComponent();
 
 
                 }
