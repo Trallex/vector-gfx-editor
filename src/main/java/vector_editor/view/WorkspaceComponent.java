@@ -89,8 +89,10 @@ public class WorkspaceComponent extends JComponent {
 
         for (ShapeObject s : shapes)
         {
-            if (s != null)
+            if (s != null) {
+                if (s.isSelected()) s.drawHighlight(g);
                 s.draw(g);
+            }
         }
 
         if (demoShape != null) demoShape.draw(g);   //paint component during drawing

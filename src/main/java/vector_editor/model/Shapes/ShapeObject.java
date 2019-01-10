@@ -1,5 +1,7 @@
 package vector_editor.model.Shapes;
 
+import org.freehep.graphics2d.VectorGraphics;
+
 import java.awt.*;
 
 public abstract class ShapeObject {
@@ -41,8 +43,21 @@ public abstract class ShapeObject {
         this.isSelected = true;
     }
 
-    public  abstract boolean ifPointBelongToField(Point p);
+    public abstract boolean ifPointBelongToField(Point p);
     public abstract void draw(Graphics g);
+
+    public void drawHighlight(Graphics g) {
+        if (g == null && !this.isSelected()) return;
+        assert g != null;
+        VectorGraphics vg = VectorGraphics.create(g);
+        vg.setColor(Color.BLUE);
+        int offset = 2;
+        vg.setStroke(new BasicStroke(1));
+        vg.drawRect(Math.min(x, x2) - getStrokeThickness() - offset, Math.min(y, y2) - getStrokeThickness() - offset, calcWidth()
+                + 2 * getStrokeThickness() + 2 * offset, calcHeight()
+                + 2 * getStrokeThickness() + 2 * offset);
+
+    }
 
     public double calcWidth()
     {
