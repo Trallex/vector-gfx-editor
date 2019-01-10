@@ -40,7 +40,7 @@ public abstract class ShapeObject {
         this.backgroundColor = backgroundColor;
         this.strokeColor = strokeColor;
         this.strokeThickness = strokeThickness;
-        this.isSelected = true;
+        this.isSelected = false;
     }
 
     public abstract boolean ifPointBelongToField(Point p);
@@ -74,7 +74,7 @@ public abstract class ShapeObject {
         return x;
     }
 
-    public void setX(int x)
+    public void setX(double x)
     {
         this.x = x;
     }
@@ -84,7 +84,7 @@ public abstract class ShapeObject {
         return y;
     }
 
-    public void setY(int y)
+    public void setY(double y)
     {
         this.y = y;
     }
@@ -94,7 +94,7 @@ public abstract class ShapeObject {
         return x2;
     }
 
-    public void setX2(int x2)
+    public void setX2(double x2)
     {
         this.x2 = x2;
     }
@@ -104,7 +104,7 @@ public abstract class ShapeObject {
         return y2;
     }
 
-    public void setY2(int y2)
+    public void setY2(double y2)
     {
         this.y2 = y2;
     }

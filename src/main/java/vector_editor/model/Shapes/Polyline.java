@@ -38,7 +38,6 @@ public class Polyline extends ShapeObject {
         for(int i=0; i<nPoints; i++){
             xPoints[i]=points.get(i).getX();
             yPoints[i]=points.get(i).getY();
-            //System.out.println(i);
         }
         VectorGraphics vg = VectorGraphics.create(g);
         vg.setColor(backgroundColor);
