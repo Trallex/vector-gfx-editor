@@ -1,6 +1,7 @@
 package vector_editor.view;
 
 import javax.swing.*;
+import java.awt.event.ActionListener;
 
 public class MenubarComponent extends JMenuBar {
 
@@ -41,6 +42,11 @@ public class MenubarComponent extends JMenuBar {
         closeItem = new JMenuItem("Close...");
         aboutItem = new JMenuItem("About us...");
 
+        newFileItem.setActionCommand("new_file");
+        saveFileItem.setActionCommand("save_file");
+        closeItem.setActionCommand("close");
+        aboutItem.setActionCommand("about");
+
         fileMenu.add(newFileItem);
         fileMenu.add(saveFileItem);
         fileMenu.add(closeItem);
@@ -49,6 +55,13 @@ public class MenubarComponent extends JMenuBar {
 
         this.add(fileMenu);
         this.add(helpMenu);
+    }
+
+    public void addCommandActionListener(ActionListener listener) {
+        newFileItem.addActionListener(listener);
+        saveFileItem.addActionListener(listener);
+        closeItem.addActionListener(listener);
+        aboutItem.addActionListener(listener);
     }
 
 }

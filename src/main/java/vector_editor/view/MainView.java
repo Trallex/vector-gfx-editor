@@ -18,6 +18,11 @@ public class MainView {
     }
 
     private JScrollPane scrollPane;
+
+    public MenubarComponent getMenuBar() {
+        return menuBar;
+    }
+
     private MenubarComponent menuBar;
     private int workspaceWidth, workspaceHeight; // It goes to WorkspaceModel
     private String workspaceName; // It goes to WorkspaceModel
@@ -60,7 +65,7 @@ public class MainView {
         refresh();
     }
 
-    private void setupWorkspaceComponent(int workspaceWidth, int workspaceHeight, String workspaceName) {
+    public void setupWorkspaceComponent() {
 
         if (scrollPane != null) container.remove(scrollPane);
 
@@ -83,7 +88,7 @@ public class MainView {
         frame.repaint();
     }
 
-    private void displayNewFilePanel() {
+    public void displayNewFilePanel() {
         JTextField widthField = new JTextField("1280");
         JTextField nameField = new JTextField("test");
         JTextField heightField = new JTextField("720");
@@ -108,26 +113,9 @@ public class MainView {
         }
     }
     private void setupMenuBar() {
+
         menuBar = new MenubarComponent();
-
-        ((MenubarComponent) menuBar).getNewFileItem().addActionListener(e -> {
-            displayNewFilePanel();
-            setupWorkspaceComponent(workspaceWidth, workspaceHeight, workspaceName);
-        });
-        //Set listeners for saveItem
-        ((MenubarComponent) menuBar).getSaveFileItem().addActionListener(
-                e -> {
-//                    ExportDialog export = new ExportDialog();
-//                    workspaceComponent.clear();
-//                    export.showExportDialog(container, "Export view as...", workspaceComponent, "export");
-                    exportComponent.display();
-
-
-                }
-        );
-
         frame.setJMenuBar(menuBar);
-
         refresh();
 
     }

@@ -33,7 +33,8 @@ public class MainFrameController {
         this.view.addListenerToContainer(new ContainerListenerForMainFrame());
         this.view.getToolbarComponent().addToolbarComponentListener(new ToolbarComponentListener());
 
-        this.view.getExportComponent().addListeners(new CommandActionListener());
+        this.view.getExportComponent().addCommandActionListener(new ExportCommandActionListener());
+        this.view.getMenuBar().addCommandActionListener(new MenuCommandActionListener());
 
         this.view.getToolbarComponent().getStrokeColorBtn().addColorChangedListener(new ColorChangedListener());
         this.view.getToolbarComponent().getBackgroundColorBtn().addColorChangedListener(new ColorChangedListener());
@@ -330,7 +331,7 @@ public class MainFrameController {
         }
     }
 
-    private class CommandActionListener implements ActionListener {
+    private class ExportCommandActionListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
             switch (e.getActionCommand()) {
@@ -342,6 +343,25 @@ public class MainFrameController {
                     break;
                 case "cancel":
                     view.getExportComponent().closeWindow();
+                    break;
+            }
+        }
+    }
+
+    private class MenuCommandActionListener implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            switch (e.getActionCommand()) {
+                case "new_file":
+                    view.displayNewFilePanel();
+                    view.setupWorkspaceComponent();
+                    break;
+                case "save_file":
+                    view.getExportComponent().display();
+                    break;
+                case "close":
+                    break;
+                case "about":
                     break;
             }
         }
