@@ -125,7 +125,12 @@ public abstract class ShapeObject {
         this.strokeColor = strokeColor;
     }
 
-
+    public void updateShapePlace(double xDifference, double yDifference){
+        this.x += xDifference;
+        this.x2 += xDifference;
+        this.y += yDifference;
+        this.y2 += yDifference;
+    }
 //to test
     @Override
     public String toString() {
