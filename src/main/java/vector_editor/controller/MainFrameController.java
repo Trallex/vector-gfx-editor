@@ -16,6 +16,7 @@ import java.util.ArrayList;
 
 public class MainFrameController {
     private int selectedShape =-1; //index of shape in model
+    private Point draggingPoint= null;
     private MainView view;
     private Model model; //temporary!!
     private InputMap inputMap; //key binding
@@ -212,6 +213,13 @@ public class MainFrameController {
                 view.getWorkspaceComponent().setTmpShape(drawShape);
                 view.getWorkspaceComponent().repaint(); // draw the shape during user's action
             }
+            else if(selectedShape != -1) {
+                double xDifference = event.getX() - draggingPoint.getX();
+                double yDiference = event.getY() - draggingPoint.getY();
+                draggingPoint.setLocation(event.getPoint());
+                view.getWorkspaceComponent().updateShapePlace(selectedShape, xDifference, yDiference);
+                view.getWorkspaceComponent().repaint();
+            }
 
         }
 
@@ -223,12 +231,13 @@ public class MainFrameController {
     @Override
         public void mousePressed(MouseEvent e)  //when new shape is created, to set the starting point
         {
+            draggingPoint = e.getPoint();
             if(isNewShapePainted) //flag which check if there is a new shape (helpful with pen)
             {
                 drawShape = getTmpShape(e.getX(), e.getY(), e.getX(), e.getY(), CurrentShape.getBackgroundColor(), CurrentShape.getStrokeColor(), CurrentShape.getStrokeThickness());
                 view.getWorkspaceComponent().setTmpShape(drawShape);
                 view.getWorkspaceComponent().repaint();
-                isNewShapePainted=false; //not necesary
+                isNewShapePainted=false;
             }
             else {
                 selectedShape = model.getWorkspace().findDrawnShapesId(e.getPoint());
@@ -239,6 +248,7 @@ public class MainFrameController {
 
         public void mouseReleased(MouseEvent e)  //after user's action, it sets the finishing point and add the shape to the model
         {
+            draggingPoint = null;
             if (!(drawShape == null))
             {
                 ArrayList<ShapeObject> shapes = view.getWorkspaceComponent().getShapes();

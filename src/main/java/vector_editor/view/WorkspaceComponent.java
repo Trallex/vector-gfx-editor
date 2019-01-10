@@ -131,5 +131,9 @@ public class WorkspaceComponent extends JComponent {
             shapes.remove(index);
         }
     }
+    public void updateShapePlace(int index, double xDifferecne, double yDifference) {
 
+        shapes.get(index).updateShapePlace(xDifferecne, yDifference);
+
+    }
 }
