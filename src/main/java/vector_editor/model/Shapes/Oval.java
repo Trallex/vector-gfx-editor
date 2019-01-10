@@ -15,8 +15,8 @@ public class Oval extends ShapeObject {
 
         Point center = new Point();
         center.setLocation((x+x2)/2, (y+y2)/2 );
-        double radiusX = Math.abs(x-x2 );
-        double radiusY = Math.abs(y-y2 );
+        double radiusX = Math.abs(x-x2)/2;
+        double radiusY = Math.abs(y-y2)/2;
         return Math.pow(((p.getX() - center.getX())/radiusX), 2) + Math.pow(((p.getY() - center.getY())/radiusY),2) <= 1;
     }
 
