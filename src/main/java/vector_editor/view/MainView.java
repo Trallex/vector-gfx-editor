@@ -12,6 +12,11 @@ public class MainView {
     private WorkspaceComponent workspaceComponent;
     private ToolbarComponent toolbarComponent;
     private ExportComponent exportComponent;
+
+    public ExportComponent getExportComponent() {
+        return exportComponent;
+    }
+
     private JScrollPane scrollPane;
     private MenubarComponent menuBar;
     private int workspaceWidth, workspaceHeight; // It goes to WorkspaceModel
@@ -45,6 +50,7 @@ public class MainView {
 
         setupToolbarComponent();
         setupMenuBar();
+        setupExportComponent();
     }
     private void setupToolbarComponent() {
 
@@ -114,7 +120,7 @@ public class MainView {
 //                    ExportDialog export = new ExportDialog();
 //                    workspaceComponent.clear();
 //                    export.showExportDialog(container, "Export view as...", workspaceComponent, "export");
-                    ExportComponent exportComponent = new ExportComponent();
+                    exportComponent.display();
 
 
                 }
@@ -124,6 +130,10 @@ public class MainView {
 
         refresh();
 
+    }
+
+    private void setupExportComponent() {
+        exportComponent = new ExportComponent();
     }
 
     public void addListenerToContainer(ContainerListener listener) { //listener to observe if new items were added to the container

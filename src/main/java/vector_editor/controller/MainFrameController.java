@@ -33,6 +33,8 @@ public class MainFrameController {
         this.view.addListenerToContainer(new ContainerListenerForMainFrame());
         this.view.getToolbarComponent().addToolbarComponentListener(new ToolbarComponentListener());
 
+        this.view.getExportComponent().addListeners(new CommandActionListener());
+
         this.view.getToolbarComponent().getStrokeColorBtn().addColorChangedListener(new ColorChangedListener());
         this.view.getToolbarComponent().getBackgroundColorBtn().addColorChangedListener(new ColorChangedListener());
         this.view.getToolbarComponent().getStrokeThicknessComboBox().addItemListener(new StrokeChangeListener());
@@ -328,4 +330,20 @@ public class MainFrameController {
         }
     }
 
+    private class CommandActionListener implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            switch (e.getActionCommand()) {
+                case "browse":
+                    view.getExportComponent().initFileChooser();
+                    break;
+                case "save":
+                    view.getExportComponent().saveFile(view.getExportComponent().getNameField().toString(), view.getWorkspaceComponent());
+                    break;
+                case "cancel":
+                    view.getExportComponent().closeWindow();
+                    break;
+            }
+        }
+    }
 }
