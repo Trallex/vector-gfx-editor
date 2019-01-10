@@ -1,8 +1,6 @@
 package vector_editor.view;
 
 
-import org.freehep.graphicsbase.util.export.ExportDialog;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ContainerListener;
@@ -13,6 +11,7 @@ public class MainView {
     private Container container;
     private WorkspaceComponent workspaceComponent;
     private ToolbarComponent toolbarComponent;
+    private ExportComponent exportComponent;
     private JScrollPane scrollPane;
     private MenubarComponent menuBar;
     private int workspaceWidth, workspaceHeight; // It goes to WorkspaceModel
@@ -112,8 +111,12 @@ public class MainView {
         //Set listeners for saveItem
         ((MenubarComponent) menuBar).getSaveFileItem().addActionListener(
                 e -> {
-                    ExportDialog export = new ExportDialog();
-                    export.showExportDialog(container, "Export view as...", workspaceComponent, "export");
+//                    ExportDialog export = new ExportDialog();
+//                    workspaceComponent.clear();
+//                    export.showExportDialog(container, "Export view as...", workspaceComponent, "export");
+                    ExportComponent exportComponent = new ExportComponent(frame);
+
+
                 }
         );
 

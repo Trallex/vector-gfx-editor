@@ -12,7 +12,7 @@ import java.util.ArrayList;
 public class WorkspaceComponent extends JComponent {
     private VectorGraphics vg;
     private int currentX, currentY, oldX, oldY;
-    int width, height;
+    private int width, height;
 
     @Override
     public String getName() {
@@ -64,11 +64,12 @@ public class WorkspaceComponent extends JComponent {
     }
 
 
-
-    private void clear() {
-        vg.setPaint(Color.white);
-        vg.fillRect(0, 0, getSize().width, getSize().height);
-        vg.setPaint(Color.black);
+    public void clear() {
+        for (ShapeObject shape : shapes) {
+            if (shape != null) {
+                shape.setSelected(false);
+            }
+        }
         repaint();
     }
 
@@ -116,8 +117,6 @@ public class WorkspaceComponent extends JComponent {
     public void setTmpShape(ShapeObject tmpShape) {  // temporary shape set during drawing
         this.demoShape = tmpShape;
     }
-
-
 
     public void removeLastShape()
     {
