@@ -12,6 +12,7 @@ import vector_editor.view.MainView;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class MainFrameController {
@@ -339,7 +340,11 @@ public class MainFrameController {
                     view.getExportComponent().initFileChooser();
                     break;
                 case "save":
-                    view.getExportComponent().saveFile(view.getExportComponent().getNameField().toString(), view.getWorkspaceComponent());
+                    try {
+                        view.getExportComponent().saveFile(view.getWorkspaceComponent());
+                    } catch (IOException e1) {
+                        e1.printStackTrace();
+                    }
                     break;
                 case "cancel":
                     view.getExportComponent().closeWindow();

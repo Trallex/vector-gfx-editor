@@ -125,8 +125,7 @@ public abstract class ShapeObject {
         this.strokeColor = strokeColor;
     }
 
-
-//to test
+    //to test
     @Override
     public String toString() {
         return "ShapeObject{" +

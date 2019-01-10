@@ -2,12 +2,20 @@ package vector_editor.view;
 
 import org.freehep.graphics2d.VectorGraphics;
 import org.freehep.graphicsbase.swing.Headless;
+import org.freehep.graphicsio.pdf.PDFGraphics2D;
+import org.freehep.graphicsio.ps.EPSGraphics2D;
+import org.freehep.graphicsio.svg.SVGGraphics2D;
+import vector_editor.TikZGraphics2D;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class ExportComponent extends JDialog {
     private JFileChooser fileChooser;
@@ -179,12 +187,14 @@ public class ExportComponent extends JDialog {
         dispose();
     }
 
-    public void saveFile(String format, WorkspaceComponent component) {
+    public void saveFile(JComponent component) throws IOException {
+        String format = Objects.requireNonNull(formatsCombobox.getSelectedItem()).toString();
+
         Headless headless = new Headless(component);
-        VectorGraphics vg;
         headless.pack();
         headless.setVisible(true);
-        File out = new File(String.format("%s%s", nameField.getText(), format));
+
+        File out = new File(String.format("%s/%s%s", pathField.getText(), nameField.getText(), format));
         switch (format) {
             case ".jpg":
                 break;
@@ -193,14 +203,33 @@ public class ExportComponent extends JDialog {
             case ".gif":
                 break;
             case ".svg":
+                VectorGraphics vgSVG = new SVGGraphics2D(out, component);
+                vgSVG.startExport();
+                component.print(vgSVG);
+                vgSVG.endExport();
                 break;
             case ".eps":
+                VectorGraphics vgEPS = new EPSGraphics2D(out, component);
+                vgEPS.startExport();
+                component.print(vgEPS);
+                vgEPS.endExport();
                 break;
             case ".pdf":
+                VectorGraphics vgPDF = new PDFGraphics2D(out, headless);
+                vgPDF.startExport();
+                headless.print(vgPDF);
+                vgPDF.endExport();
                 break;
             case ".tex":
+                /*@TODO tikz is saved only after closing app, don't know why // Repair */
+                OutputStream os = new FileOutputStream(out);
+                Thread thread = new Thread(() -> {
+                    TikZGraphics2D t = new TikZGraphics2D(os);
+                    t.paintComponent(component);
+                });
+                thread.start();
                 break;
         }
-    }
 
+    }
 }
