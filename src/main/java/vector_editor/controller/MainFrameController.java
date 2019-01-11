@@ -27,7 +27,6 @@ public class MainFrameController {
 
     private String currentAction; // REFACTOR needed, used it in Listeners to change BG Color
 
-
     private Workspace newWorkspaceState;
 
     public MainFrameController(MainView view, Model model) //temporary model..
@@ -65,13 +64,17 @@ public class MainFrameController {
         actionMap.put("ctrlZPressed", new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println("Ctrl + Z");
+                isNewShapePainted = false;
+                drawShape = null;
+                //System.out.println("Ctrl + Z");
+
 
                 model.setWorkspaceToPreviousState();
                 view.getWorkspaceComponent().setShapes(model.getWorkspace().getShapes());
 
 //                view.getWorkspaceComponent().removeLastShape();
                 view.getWorkspaceComponent().repaint();
+                //  System.out.println("dupa chuja nie dziala to gowno");
             }
         });
         actionMap.put("deleteSelectedShape", new AbstractAction() {
@@ -124,43 +127,37 @@ public class MainFrameController {
         public void actionPerformed(ActionEvent e) {
             switch(e.getActionCommand()){
                 case "rectangle":
-//                    CurrentShape.setShapeType(ShapeEnum.RECTANGLE);
-//                    System.out.println("RECTANGLE");
-//                    temporary to test the model, need to make a key binding
                     CurrentShape.setShapeType(ShapeEnum.SQUARE);
-                    System.out.println("SQUARE ");
+                    //System.out.println("SQUARE ");
                     isNewShapePainted=true;
                     break;
                 case "pencil":
                     CurrentShape.setShapeType(ShapeEnum.PENCIL);
-                    System.out.println("PENCIL");
+                    //System.out.println("PENCIL");
                     isNewShapePainted=true;
                     break;
                 case "pen":
                     CurrentShape.setShapeType(ShapeEnum.PEN);  //
-                    System.out.println("PEN");
+                    //System.out.println("PEN");
                     isNewShapePainted=true;
                     break;
                 case "oval":
-//                    CurrentShape.setShapeType(ShapeEnum.OVAL);
-//                    System.out.println("OVAL");
-//                    temporary to test the model, need to make a key binding
                     CurrentShape.setShapeType(ShapeEnum.CIRCLE);
-                    System.out.println("CIRCLE");
+                    //System.out.println("CIRCLE");
                     isNewShapePainted=true;
                     break;
                 case "move":
-                    System.out.println("MOVE");
+                    //System.out.println("MOVE");
                     isNewShapePainted=false;
                     break;
                 case "zoom":
-                    System.out.println("ZOOM");
+                    //System.out.println("ZOOM");
                     break;
                 case "text":
-                    System.out.println("TEXT");
+                    //System.out.println("TEXT");
                     break;
                 case "bitmap":
-                    System.out.println("BITMAP");
+                    //System.out.println("BITMAP");
                     break;
                 case "strokeColor":  //REFACTOR needed
                     currentAction = "strokeColor";
@@ -253,7 +250,7 @@ public class MainFrameController {
             }
             else {
                 selectedShape = model.getWorkspace().findDrawnShapesId(e.getPoint());
-                System.out.println(model.getWorkspace().findDrawnShapesId(e.getPoint()));
+                //System.out.println(model.getWorkspace().findDrawnShapesId(e.getPoint()));
             }
         }
 
@@ -262,45 +259,47 @@ public class MainFrameController {
             draggingPoint = null;
             if (!(drawShape == null))
             {
-                ArrayList<ShapeObject> shapes = view.getWorkspaceComponent().getShapes();
 
                 if (CurrentShape.getShapeType() != ShapeEnum.PEN) {
 
                     drawShape.setX2(e.getX());
                     drawShape.setY2(e.getY());
 
-                    shapes.add(drawShape);
 
-//                    if(model.getWorkspace().getShapes().size()==1) System.out.println("jeden");
                     model.saveCurrentWorkspaceToHistory();
                     newWorkspaceState = new Workspace(model.getWorkspace());
                     newWorkspaceState.addShape(drawShape);
-//                    System.out.println("Controller new work: "+newWorkspaceState.toString());
                     model.setWorkspace(newWorkspaceState);
 
-
-//                    model.getWorkspace().addShape(drawShape);  //need to set the instance of the shape before
                     view.getWorkspaceComponent().setTmpShape(null);
-                    view.getWorkspaceComponent().setShapes(shapes);
+                    view.getWorkspaceComponent().setShapes(model.getWorkspace().getShapes());
                     drawShape = null;
                     isNewShapePainted = true;
 
                 } else  //in the case of pen update the current pen shape in the view and the model
                 {
+
+                    model.saveCurrentWorkspaceToHistory(); //save the state of the previous one
+                    view.getWorkspaceComponent().setTmpShape(null);
+                    newWorkspaceState = new Workspace(model.getWorkspace());
+                    ArrayList<ShapeObject> shapes = view.getWorkspaceComponent().getShapes();
                     //checking if its a new instance of pen
                     if (((Polyline) drawShape).getPoints().size() == 0) {
                         ((Polyline) drawShape).addPoint(new Point(e.getX(), e.getY()));
+                        newWorkspaceState.addShape(new Polyline((Polyline) drawShape));
+                        model.setWorkspace(newWorkspaceState);
+
                     } else //if the pen is actually used need to remove the previous shape and add new one with new points
                     {
-                        ShapeObject tempPen = shapes.get(shapes.size() - 1); //get the last Pen object and changed them
+                        ShapeObject tempPen = new Polyline((Polyline) shapes.get(shapes.size() - 1)); //get the last Pen object and changed them
                         ((Polyline) tempPen).addPoint(new Point(e.getX(), e.getY()));
-                        shapes.remove((shapes.size() - 1));
-                        model.getWorkspace().removeShape(shapes.size());
+                        newWorkspaceState.removeLastShape();
                         drawShape = tempPen;
+                        newWorkspaceState.addShape(new Polyline((Polyline) drawShape));
+                        model.setWorkspace(newWorkspaceState);
+
                     }
-                    shapes.add(drawShape);
-                    view.getWorkspaceComponent().setShapes(shapes);
-                    model.getWorkspace().addShape(drawShape);
+                    view.getWorkspaceComponent().setShapes(model.getWorkspace().getShapes());
                     isNewShapePainted = false;
                 }
                 view.getWorkspaceComponent().repaint();
@@ -317,7 +316,7 @@ public class MainFrameController {
             for (ShapeObject currentShape : model.getWorkspace().getShapes()) {
                 if (currentShape.ifPointBelongToField(pt) && !selected) {
                     currentShape.setSelected(true);
-                    System.out.println(currentShape);
+                    //System.out.println(currentShape);
                     selected = true;
                 } else currentShape.setSelected(false);
             }

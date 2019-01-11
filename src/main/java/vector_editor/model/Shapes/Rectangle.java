@@ -31,4 +31,9 @@ public class Rectangle extends ShapeObject {
                 && p.getY() <= Math.max(y, y2) && p.getY() >= Math.min(y, y2));
         return isSelected();
     }
+
+    @Override
+    public String toString() {
+        return "rect";
+    }
 }

@@ -25,6 +25,7 @@ public class Workspace {
     public void removeShape(int index){
         shapes.remove(index);
     }
+
     public void removeLastShape(){
         if(!shapes.isEmpty())
         {
@@ -48,15 +49,15 @@ public class Workspace {
         return lastItem;
     }
     //to test
-    @Override
-    public String toString() {
-        return "Workspace{" +
-                "height=" + height +
-                ", width=" + width +
-                ", name='" + name + '\'' +
-                ", shapes=" + shapes +
-                '}';
-    }
+//    @Override
+//    public String toString() {
+//        return "Workspace{" +
+//                "height=" + height +
+//                ", width=" + width +
+//                ", name='" + name + '\'' +
+//                ", shapes=" + shapes +
+//                '}';
+//    }
 
     public Workspace(Workspace workspace) {
         this.height = workspace.height;
@@ -68,6 +69,16 @@ public class Workspace {
                 this.shapes.add(shape);
             }
         }
-
     }
+
+    @Override
+    public String toString() {
+        String string = "";
+        for (ShapeObject shape : shapes
+                ) {
+            string += shape.toString() + " ";
+        }
+        return string;
+    }
+
 }

@@ -28,6 +28,7 @@ public class Polyline extends ShapeObject {
         return points;
     }
 
+
     @Override
     public void draw(Graphics g) {
 
@@ -47,5 +48,26 @@ public class Polyline extends ShapeObject {
             vg.setStroke(new BasicStroke(strokeThickness));
             vg.drawPolyline(xPoints, yPoints, nPoints);
         }
+    }
+
+
+    public Polyline(Polyline p) {
+        super(p.getX(), p.getY(), p.getX2(), p.getY2(), p.backgroundColor, p.strokeColor, p.strokeThickness);
+        points = new ArrayList<>();
+        for (Point point : p.getPoints()) {
+            this.points.add(point);
+        }
+    }
+
+
+    @Override
+    public String toString() {
+        String string = "";
+        for (Point point : points
+                ) {
+            string += point.getX() + " " + point.getY() + " ";
+
+        }
+        return string;
     }
 }

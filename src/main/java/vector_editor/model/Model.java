@@ -11,33 +11,37 @@ public class Model {
 
     public void setWorkspace(Workspace workspace) {
         this.workspace = workspace;
-        System.out.println(workspace.toString());
     }
 
 
     private Workspace workspace;
     private ArrayList<Workspace> workspaceHistory;
-    private int previousWorkspaceStateId;
 
     public void saveCurrentWorkspaceToHistory() {
         workspaceHistory.add(workspace);
-        previousWorkspaceStateId++;
+        for (Workspace workspace : workspaceHistory) {
+            System.out.println(workspace.getShapes());
+        }
+
     }
 
     public Model() {
         workspaceHistory = new ArrayList<>();
-        previousWorkspaceStateId = -1;
+    }
+
+    public int getPreviousWorkspaceStateId() {
+        return workspaceHistory.size() - 1;
     }
 
     public void setWorkspaceToPreviousState() {
         try {
-            workspace = workspaceHistory.get(previousWorkspaceStateId--);
+            workspace = workspaceHistory.get(getPreviousWorkspaceStateId());
+            workspaceHistory.remove(getPreviousWorkspaceStateId());
+
         } catch (Exception e) {
         }
-        if (previousWorkspaceStateId < 0) {
+        if (getPreviousWorkspaceStateId() < 0) {
             workspaceHistory.clear();
-            //saveCurrentWorkspaceToHistory()
-
         }
     }
 
