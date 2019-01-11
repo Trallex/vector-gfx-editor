@@ -3,8 +3,8 @@ package vector_editor.controller;
 import vector_editor.model.CurrentShape;
 import vector_editor.model.Model;
 import vector_editor.model.ShapeEnum;
-import vector_editor.model.Shapes.Rectangle;
 import vector_editor.model.Shapes.*;
+import vector_editor.model.Shapes.Rectangle;
 import vector_editor.model.Workspace;
 import vector_editor.view.ColorChooserButton;
 import vector_editor.view.MainView;
@@ -26,6 +26,9 @@ public class MainFrameController {
     private boolean isShiftKeyPressed = false;
 
     private String currentAction; // REFACTOR needed, used it in Listeners to change BG Color
+
+
+    private Workspace newWorkspaceState;
 
     public MainFrameController(MainView view, Model model) //temporary model..
     {
@@ -63,8 +66,11 @@ public class MainFrameController {
             @Override
             public void actionPerformed(ActionEvent e) {
                 System.out.println("Ctrl + Z");
-                model.getWorkspace().removeLastShape();
-                view.getWorkspaceComponent().removeLastShape();
+
+                model.setWorkspaceToPreviousState();
+                view.getWorkspaceComponent().setShapes(model.getWorkspace().getShapes());
+
+//                view.getWorkspaceComponent().removeLastShape();
                 view.getWorkspaceComponent().repaint();
             }
         });
@@ -73,8 +79,14 @@ public class MainFrameController {
             public void actionPerformed(ActionEvent e) {
                 if(selectedShape != -1)
                 {
-                    model.getWorkspace().removeShape(selectedShape);
-                    view.getWorkspaceComponent().removeShape(selectedShape);
+                    model.saveCurrentWorkspaceToHistory();
+                    newWorkspaceState = new Workspace(model.getWorkspace());
+                    newWorkspaceState.removeShape(selectedShape);
+                    model.setWorkspace(newWorkspaceState);
+
+                    view.getWorkspaceComponent().setShapes(model.getWorkspace().getShapes());
+                    //model.getWorkspace().removeShape(selectedShape);
+                    //view.getWorkspaceComponent().removeShape(selectedShape);
                     view.getWorkspaceComponent().repaint();
                 }
             }
@@ -257,9 +269,17 @@ public class MainFrameController {
                     drawShape.setX2(e.getX());
                     drawShape.setY2(e.getY());
 
-
                     shapes.add(drawShape);
-                    model.getWorkspace().addShape(drawShape);  //need to set the instance of the shape before
+
+//                    if(model.getWorkspace().getShapes().size()==1) System.out.println("jeden");
+                    model.saveCurrentWorkspaceToHistory();
+                    newWorkspaceState = new Workspace(model.getWorkspace());
+                    newWorkspaceState.addShape(drawShape);
+//                    System.out.println("Controller new work: "+newWorkspaceState.toString());
+                    model.setWorkspace(newWorkspaceState);
+
+
+//                    model.getWorkspace().addShape(drawShape);  //need to set the instance of the shape before
                     view.getWorkspaceComponent().setTmpShape(null);
                     view.getWorkspaceComponent().setShapes(shapes);
                     drawShape = null;
@@ -304,21 +324,21 @@ public class MainFrameController {
             view.refresh();
         }
 
-        @Override
-        public void mousePressed(MouseEvent e)  //when new shape is created, to set the starting point
-        {
-            listenToDrawingShapeWhenPressed(e);
-        }
+//        @Override
+//        public void mousePressed(MouseEvent e)  //when new shape is created, to set the starting point
+//        {
+//            listenToDrawingShapeWhenPressed(e);
+//        }
 
         @Override
         public void mouseClicked(MouseEvent e) {
             listenToShapeSelectWhenClicked(e);
         }
 
-        public void mouseReleased(MouseEvent e)  //after user's action, it sets the finishing point and add the shape to the model
-        {
-            listenToDrawingShapeWhenReleased(e);
-        }
+//        public void mouseReleased(MouseEvent e)  //after user's action, it sets the finishing point and add the shape to the model
+//        {
+//            listenToDrawingShapeWhenReleased(e);
+//        }
 
         private ShapeObject getTmpShape(double x, double y, double x2, double y2)
         {

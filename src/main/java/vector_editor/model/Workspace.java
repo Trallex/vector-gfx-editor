@@ -57,4 +57,17 @@ public class Workspace {
                 ", shapes=" + shapes +
                 '}';
     }
+
+    public Workspace(Workspace workspace) {
+        this.height = workspace.height;
+        this.width = workspace.width;
+        this.name = workspace.name;
+        shapes = new ArrayList<>();
+        if (!workspace.shapes.isEmpty()) {
+            for (ShapeObject shape : workspace.shapes) {
+                this.shapes.add(shape);
+            }
+        }
+
+    }
 }
