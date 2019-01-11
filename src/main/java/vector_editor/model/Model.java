@@ -1,5 +1,7 @@
 package vector_editor.model;
 
+import vector_editor.model.Shapes.ShapeObject;
+
 import java.util.ArrayList;
 
 public class Model {
@@ -18,10 +20,15 @@ public class Model {
     private ArrayList<Workspace> workspaceHistory;
 
     public void saveCurrentWorkspaceToHistory() {
+
+        for (ShapeObject shape : workspace.getShapes()) {
+            shape.setSelected(false);
+        }
         workspaceHistory.add(workspace);
         for (Workspace workspace : workspaceHistory) {
             System.out.println(workspace.getShapes());
         }
+
 
     }
 

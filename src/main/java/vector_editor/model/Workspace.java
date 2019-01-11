@@ -66,7 +66,7 @@ public class Workspace {
         shapes = new ArrayList<>();
         if (!workspace.shapes.isEmpty()) {
             for (ShapeObject shape : workspace.shapes) {
-                this.shapes.add(shape);
+                this.shapes.add(shape.clone());
             }
         }
     }

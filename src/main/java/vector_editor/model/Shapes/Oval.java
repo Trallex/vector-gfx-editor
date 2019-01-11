@@ -10,6 +10,9 @@ public class Oval extends ShapeObject {
         super(x, y, x2, y2, backgroundColor, strokeColor, strokeThickness);
     }
 
+    public Oval(Oval oval) {
+        super(oval);
+    }
     @Override
     public boolean ifPointBelongToField(Point p) {
 
@@ -32,5 +35,11 @@ public class Oval extends ShapeObject {
             vg.setStroke(new BasicStroke(strokeThickness));
             vg.drawOval(Math.min(x, x2), Math.min(y, y2), calcWidth(), calcHeight());
         }
+    }
+
+    @Override
+    public ShapeObject clone() {
+        return new Oval(this);
+
     }
 }

@@ -11,6 +11,10 @@ public class Square extends Rectangle {
         super(x, y, x2, y2, backgroundColor, strokeColor, strokeThickness);
     }
 
+    public Square(Square square) {
+        super(square);
+    }
+
     @Override
     public double calcHeight() {
         return  Math.max(super.calcHeight(), super.calcWidth());
@@ -43,5 +47,11 @@ public class Square extends Rectangle {
     public boolean ifPointBelongToField(Point p){
         this.setSelected(super.ifPointBelongToField(p));
         return isSelected();
+    }
+
+    @Override
+    public ShapeObject clone() {
+        return new Square(this);
+
     }
 }

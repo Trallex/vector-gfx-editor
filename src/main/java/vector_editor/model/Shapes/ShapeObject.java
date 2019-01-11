@@ -46,6 +46,8 @@ public abstract class ShapeObject {
     public abstract boolean ifPointBelongToField(Point p);
     public abstract void draw(Graphics g);
 
+    public abstract ShapeObject clone();
+
     public void drawHighlight(Graphics g) {
         if (g == null && !this.isSelected()) return;
         assert g != null;
@@ -131,6 +133,17 @@ public abstract class ShapeObject {
         this.y += yDifference;
         this.y2 += yDifference;
     }
+
+    public ShapeObject(ShapeObject s) {
+        this.x = s.getX();
+        this.y = s.getY();
+        this.x2 = s.getX2();
+        this.y2 = s.getY2();
+        this.backgroundColor = s.backgroundColor;
+        this.strokeColor = s.strokeColor;
+        this.strokeThickness = s.strokeThickness;
+        this.isSelected = false;
+    }
 //to test
     @Override
     public String toString() {
@@ -143,4 +156,6 @@ public abstract class ShapeObject {
                 ", StrokeColor=" + strokeColor +
                 '}';
     }
+
+
 }

@@ -66,33 +66,30 @@ public class MainFrameController {
             public void actionPerformed(ActionEvent e) {
                 isNewShapePainted = false;
                 drawShape = null;
-                //System.out.println("Ctrl + Z");
 
 
                 model.setWorkspaceToPreviousState();
                 view.getWorkspaceComponent().setShapes(model.getWorkspace().getShapes());
-
-//                view.getWorkspaceComponent().removeLastShape();
                 view.getWorkspaceComponent().repaint();
-                //  System.out.println("dupa chuja nie dziala to gowno");
             }
         });
         actionMap.put("deleteSelectedShape", new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(selectedShape != -1)
-                {
-                    model.saveCurrentWorkspaceToHistory();
-                    newWorkspaceState = new Workspace(model.getWorkspace());
-                    newWorkspaceState.removeShape(selectedShape);
-                    model.setWorkspace(newWorkspaceState);
+                if (CurrentShape.getShapeType() == ShapeEnum.SELECT) {
+                    if (selectedShape != -1) {
+                        model.saveCurrentWorkspaceToHistory();
+                        newWorkspaceState = new Workspace(model.getWorkspace());
+                        newWorkspaceState.removeShape(selectedShape);
+                        model.setWorkspace(newWorkspaceState);
 
-                    view.getWorkspaceComponent().setShapes(model.getWorkspace().getShapes());
-                    //model.getWorkspace().removeShape(selectedShape);
-                    //view.getWorkspaceComponent().removeShape(selectedShape);
-                    view.getWorkspaceComponent().repaint();
+                        view.getWorkspaceComponent().setShapes(model.getWorkspace().getShapes());
+
+                        view.getWorkspaceComponent().repaint();
+                    }
                 }
             }
+
         });
 
     }
@@ -147,7 +144,9 @@ public class MainFrameController {
                     isNewShapePainted=true;
                     break;
                 case "move":
-                    //System.out.println("MOVE");
+                    //System.out.println("MOVE");  //to refactor names //curenttool
+                    CurrentShape.setShapeType(ShapeEnum.SELECT);
+                    // currentAction="select";
                     isNewShapePainted=false;
                     break;
                 case "zoom":
@@ -221,11 +220,22 @@ public class MainFrameController {
                 }
                 view.getWorkspaceComponent().setTmpShape(drawShape);
                 view.getWorkspaceComponent().repaint(); // draw the shape during user's action
-            }
-            else if(selectedShape != -1) {
+            } else if (selectedShape != -1 && CurrentShape.getShapeType() == ShapeEnum.SELECT) {
                 double xDifference = event.getX() - draggingPoint.getX();
                 double yDiference = event.getY() - draggingPoint.getY();
+
+//                model.saveCurrentWorkspaceToHistory();
+//                newWorkspaceState = new Workspace(model.getWorkspace());
+//                newWorkspaceState.getShapes().get(selectedShape).updateShapePlace(xDifference,yDiference);
+//                model.setWorkspace(newWorkspaceState);
+//
+//                view.getWorkspaceComponent().setTmpShape(null);
+//
+//                view.getWorkspaceComponent().setShapes(model.getWorkspace().getShapes());
+
+
                 draggingPoint.setLocation(event.getPoint());
+
                 view.getWorkspaceComponent().updateShapePlace(selectedShape, xDifference, yDiference);
                 view.getWorkspaceComponent().repaint();
             }
@@ -247,8 +257,7 @@ public class MainFrameController {
                 view.getWorkspaceComponent().setTmpShape(drawShape);
                 view.getWorkspaceComponent().repaint();
                 isNewShapePainted=false;
-            }
-            else {
+            } else if (CurrentShape.getShapeType() == ShapeEnum.SELECT) {
                 selectedShape = model.getWorkspace().findDrawnShapesId(e.getPoint());
                 //System.out.println(model.getWorkspace().findDrawnShapesId(e.getPoint()));
             }
@@ -256,7 +265,7 @@ public class MainFrameController {
 
         public void mouseReleased(MouseEvent e)
         {
-            draggingPoint = null;
+
             if (!(drawShape == null))
             {
 
@@ -303,14 +312,33 @@ public class MainFrameController {
                     isNewShapePainted = false;
                 }
                 view.getWorkspaceComponent().repaint();
+            } else if (CurrentShape.getShapeType() == ShapeEnum.SELECT && selectedShape != -1) {
+                double xDifference = e.getX() - draggingPoint.getX();
+                double yDiference = e.getY() - draggingPoint.getY();
+
+                model.saveCurrentWorkspaceToHistory();
+                newWorkspaceState = new Workspace(model.getWorkspace());
+
+                //ShapeObject temp = new ShapeObject(newWorkspaceState.getShapes().get(selectedShape));
+                // temp.updateShapePlace(xDifference,yDiference);
+                // newWorkspaceState.removeShape(selectedShape);
+                //  newWorkspaceState.getShapes().add(selectedShape, temp);
+                model.setWorkspace(newWorkspaceState);
+
+                view.getWorkspaceComponent().setTmpShape(null);
+                view.getWorkspaceComponent().setShapes(model.getWorkspace().getShapes());
             }
+            draggingPoint = null;
+
         }
 
         private void listenToShapeSelectWhenClicked(MouseEvent e) {
+
             int x, y;
             x = e.getX();
             y = e.getY();
 
+            System.out.println("selected");
             boolean selected = false;
             Point pt = new Point(x, y);
             for (ShapeObject currentShape : model.getWorkspace().getShapes()) {
@@ -331,7 +359,9 @@ public class MainFrameController {
 
         @Override
         public void mouseClicked(MouseEvent e) {
-            listenToShapeSelectWhenClicked(e);
+            if (CurrentShape.getShapeType() == ShapeEnum.SELECT) {
+                listenToShapeSelectWhenClicked(e);
+            }
         }
 
 //        public void mouseReleased(MouseEvent e)  //after user's action, it sets the finishing point and add the shape to the model

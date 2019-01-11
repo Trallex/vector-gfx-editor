@@ -11,6 +11,10 @@ public class Circle extends Oval {
         super(x, y, x2, y2, backgroundColor, strokeColor, strokeThickness);
     }
 
+    public Circle(Circle circle) {
+        super(circle);
+    }
+
     public double calcDiameter()
     {
         return Math.sqrt((Math.pow(calcWidth(), 2) + Math.pow(calcHeight(), 2))) / 2;
@@ -51,5 +55,11 @@ public class Circle extends Oval {
         double  radius = Point2D.distance(center.getX(),center.getY(), x, y);
         this.setSelected(radius >= Point2D.distance(center.getX(), center.getY(), p.getX(), p.getY()));
         return this.isSelected();
+    }
+
+    @Override
+    public ShapeObject clone() {
+        return new Circle(this);
+
     }
 }
