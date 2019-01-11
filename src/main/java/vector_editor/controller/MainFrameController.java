@@ -111,6 +111,7 @@ public class MainFrameController {
         // initial solution when the new workspace is set
         @Override
         public void componentAdded(ContainerEvent e) {
+            model.cleanWorkspaceHistory();
             view.getWorkspaceComponent().addWorkspaceComponentMouseListener(new MouseListenerForWorkspace()); //need to set listeners
             view.getWorkspaceComponent().addWorkspaceComponentMouseMotionListener(new MouseMotionListenerForWorkspace()); //after create the new workspace
             int width = view.getWorkspaceComponent().getWidth();

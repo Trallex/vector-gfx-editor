@@ -52,5 +52,8 @@ public class Model {
         }
     }
 
+    public void cleanWorkspaceHistory() {
+        this.workspaceHistory.clear();
+    }
 
 }
