@@ -2,9 +2,9 @@ package vector_editor.controller;
 
 import vector_editor.model.CurrentShape;
 import vector_editor.model.Model;
-import vector_editor.model.ShapeEnum;
 import vector_editor.model.Shapes.*;
 import vector_editor.model.Shapes.Rectangle;
+import vector_editor.model.ToolEnum;
 import vector_editor.model.Workspace;
 import vector_editor.view.ColorChooserButton;
 import vector_editor.view.MainView;
@@ -76,7 +76,7 @@ public class MainFrameController {
         actionMap.put("deleteSelectedShape", new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (CurrentShape.getShapeType() == ShapeEnum.SELECT) {
+                if (CurrentShape.getShapeType() == ToolEnum.SELECT) {
                     if (selectedShape != -1) {
                         model.saveCurrentWorkspaceToHistory();
                         newWorkspaceState = new Workspace(model.getWorkspace());
@@ -124,29 +124,27 @@ public class MainFrameController {
         public void actionPerformed(ActionEvent e) {
             switch(e.getActionCommand()){
                 case "rectangle":
-                    CurrentShape.setShapeType(ShapeEnum.SQUARE);
+                    CurrentShape.setShapeType(ToolEnum.SQUARE);
                     //System.out.println("SQUARE ");
                     isNewShapePainted=true;
                     break;
                 case "pencil":
-                    CurrentShape.setShapeType(ShapeEnum.PENCIL);
+                    CurrentShape.setShapeType(ToolEnum.PENCIL);
                     //System.out.println("PENCIL");
                     isNewShapePainted=true;
                     break;
                 case "pen":
-                    CurrentShape.setShapeType(ShapeEnum.PEN);  //
+                    CurrentShape.setShapeType(ToolEnum.PEN);  //
                     //System.out.println("PEN");
                     isNewShapePainted=true;
                     break;
                 case "oval":
-                    CurrentShape.setShapeType(ShapeEnum.CIRCLE);
+                    CurrentShape.setShapeType(ToolEnum.CIRCLE);
                     //System.out.println("CIRCLE");
                     isNewShapePainted=true;
                     break;
                 case "move":
-                    //System.out.println("MOVE");  //to refactor names //curenttool
-                    CurrentShape.setShapeType(ShapeEnum.SELECT);
-                    // currentAction="select";
+                    CurrentShape.setShapeType(ToolEnum.SELECT);
                     isNewShapePainted=false;
                     break;
                 case "zoom":
@@ -159,10 +157,10 @@ public class MainFrameController {
                     //System.out.println("BITMAP");
                     break;
                 case "strokeColor":  //REFACTOR needed
-                    currentAction = "strokeColor";
+                    CurrentShape.setShapeType(ToolEnum.STROKE_COLOR);
                     break;
                 case "backgroundColor":
-                    currentAction = "backgroundColor";
+                    CurrentShape.setShapeType(ToolEnum.BACKGROUND_COLOR);
                     break;
             }
         }
@@ -174,11 +172,11 @@ public class MainFrameController {
 
         @Override
         public void colorChanged(Color newColor) {
-            switch (currentAction) {
-                case "strokeColor":
+            switch (CurrentShape.getShapeType()) {
+                case STROKE_COLOR:
                     CurrentShape.setStrokeColor(newColor);
                     break;
-                case "backgroundColor":
+                case BACKGROUND_COLOR:
                     CurrentShape.setBackgroundColor(newColor);
                     break;
             }
@@ -195,7 +193,7 @@ public class MainFrameController {
 
         private void listenToDrawingWhenDragged(MouseEvent event) {
             if (!(drawShape == null)) {
-                if (CurrentShape.getShapeType() == ShapeEnum.PENCIL) {
+                if (CurrentShape.getShapeType() == ToolEnum.PENCIL) {
                     ((Polyline) drawShape).addPoint(new Point(event.getX(), event.getY()));
                 } else {
                     if (isShiftKeyPressed) {
@@ -220,7 +218,7 @@ public class MainFrameController {
                 }
                 view.getWorkspaceComponent().setTmpShape(drawShape);
                 view.getWorkspaceComponent().repaint(); // draw the shape during user's action
-            } else if (selectedShape != -1 && CurrentShape.getShapeType() == ShapeEnum.SELECT) {
+            } else if (selectedShape != -1 && CurrentShape.getShapeType() == ToolEnum.SELECT) {
                 double xDifference = event.getX() - draggingPoint.getX();
                 double yDiference = event.getY() - draggingPoint.getY();
 
@@ -257,7 +255,7 @@ public class MainFrameController {
                 view.getWorkspaceComponent().setTmpShape(drawShape);
                 view.getWorkspaceComponent().repaint();
                 isNewShapePainted=false;
-            } else if (CurrentShape.getShapeType() == ShapeEnum.SELECT) {
+            } else if (CurrentShape.getShapeType() == ToolEnum.SELECT) {
                 selectedShape = model.getWorkspace().findDrawnShapesId(e.getPoint());
                 //System.out.println(model.getWorkspace().findDrawnShapesId(e.getPoint()));
             }
@@ -269,7 +267,7 @@ public class MainFrameController {
             if (!(drawShape == null))
             {
 
-                if (CurrentShape.getShapeType() != ShapeEnum.PEN) {
+                if (CurrentShape.getShapeType() != ToolEnum.PEN) {
 
                     drawShape.setX2(e.getX());
                     drawShape.setY2(e.getY());
@@ -312,7 +310,7 @@ public class MainFrameController {
                     isNewShapePainted = false;
                 }
                 view.getWorkspaceComponent().repaint();
-            } else if (CurrentShape.getShapeType() == ShapeEnum.SELECT && selectedShape != -1) {
+            } else if (CurrentShape.getShapeType() == ToolEnum.SELECT && selectedShape != -1) {
                 double xDifference = e.getX() - draggingPoint.getX();
                 double yDiference = e.getY() - draggingPoint.getY();
 
@@ -359,7 +357,7 @@ public class MainFrameController {
 
         @Override
         public void mouseClicked(MouseEvent e) {
-            if (CurrentShape.getShapeType() == ShapeEnum.SELECT) {
+            if (CurrentShape.getShapeType() == ToolEnum.SELECT) {
                 listenToShapeSelectWhenClicked(e);
             }
         }

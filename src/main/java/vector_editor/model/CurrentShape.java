@@ -4,7 +4,7 @@ import java.awt.*;
 
 public class CurrentShape {  //the static info about current shape and color selected in a toolbar
 
-    private static ShapeEnum shapeType = ShapeEnum.RECTANGLE;  //initial selected shape and color
+    private static ToolEnum shapeType = ToolEnum.RECTANGLE;  //initial selected shape and color
 
     public static Color getBackgroundColor() {
         return backgroundColor;
@@ -35,12 +35,12 @@ public class CurrentShape {  //the static info about current shape and color sel
 
     private static float strokeThickness = 0.f;
 
-    public static ShapeEnum getShapeType()
+    public static ToolEnum getShapeType()
     {
         return shapeType;
     }
 
-    public static void setShapeType(ShapeEnum shapeType)
+    public static void setShapeType(ToolEnum shapeType)
     {
         CurrentShape.shapeType = shapeType;
     }

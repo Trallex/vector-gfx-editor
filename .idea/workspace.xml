@@ -2,17 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f1b4416b-c0a1-4950-a9a3-55c026b85e34" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/vector_editor/controller/MainFrameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/vector_editor/controller/MainFrameController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/vector_editor/model/Model.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/vector_editor/model/Model.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/vector_editor/model/ShapeEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/vector_editor/model/ShapeEnum.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/vector_editor/model/Shapes/Circle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/vector_editor/model/Shapes/Circle.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/vector_editor/model/Shapes/Oval.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/vector_editor/model/Shapes/Oval.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/vector_editor/model/Shapes/Polyline.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/vector_editor/model/Shapes/Polyline.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/vector_editor/model/Shapes/Rectangle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/vector_editor/model/Shapes/Rectangle.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/vector_editor/model/Shapes/ShapeObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/vector_editor/model/Shapes/ShapeObject.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/vector_editor/model/Shapes/Square.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/vector_editor/model/Shapes/Square.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/vector_editor/model/Workspace.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/vector_editor/model/Workspace.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/vector_editor/model/CurrentShape.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/vector_editor/model/CurrentShape.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/vector_editor/model/ShapeEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/vector_editor/model/ToolEnum.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/maven/target/" />
@@ -50,7 +42,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/vector_editor/model/Shapes/Circle.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="383">
-              <caret line="59" column="4" selection-start-line="59" selection-start-column="4" selection-end-line="59" selection-end-column="31" />
+              <caret line="60" column="4" selection-start-line="60" selection-start-column="4" selection-end-line="60" selection-end-column="32" />
               <folding>
                 <element signature="e#411#412#0" expanded="true" />
                 <element signature="e#434#435#0" expanded="true" />
@@ -63,7 +55,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/vector_editor/model/Shapes/Oval.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="612">
-              <caret line="38" column="30" selection-start-line="38" selection-start-column="30" selection-end-line="38" selection-end-column="30" />
+              <caret line="40" column="30" selection-start-line="40" selection-start-column="30" selection-end-line="40" selection-end-column="30" />
               <folding>
                 <element signature="e#380#381#0" expanded="true" />
                 <element signature="e#409#410#0" expanded="true" />
@@ -76,7 +68,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/vector_editor/model/Shapes/Polyline.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="247">
-              <caret line="74" column="31" selection-start-line="74" selection-start-column="31" selection-end-line="74" selection-end-column="31" />
+              <caret line="75" column="32" selection-start-line="75" selection-start-column="32" selection-end-line="75" selection-end-column="32" />
             </state>
           </provider>
         </entry>
@@ -84,8 +76,8 @@
       <file leaf-file-name="MainFrameController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/vector_editor/controller/MainFrameController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="227" lean-forward="true" selection-start-line="227" selection-end-line="227" />
+            <state relative-caret-position="186">
+              <caret line="159" column="55" lean-forward="true" selection-start-line="159" selection-start-column="55" selection-end-line="159" selection-end-column="67" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#2342#2509#0" expanded="true" />
@@ -105,7 +97,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/vector_editor/model/Shapes/Square.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="264">
-              <caret line="50" column="31" selection-start-line="50" selection-start-column="31" selection-end-line="50" selection-end-column="31" />
+              <caret line="52" column="32" selection-start-line="52" selection-start-column="32" selection-end-line="52" selection-end-column="32" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#399#400#0" expanded="true" />
@@ -119,7 +111,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/vector_editor/model/Shapes/Rectangle.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="332">
-              <caret line="43" column="31" selection-start-line="43" selection-start-column="31" selection-end-line="43" selection-end-column="31" />
+              <caret line="45" column="32" selection-start-line="45" selection-start-column="32" selection-end-line="45" selection-end-column="32" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#408#409#0" expanded="true" />
@@ -129,11 +121,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ShapeEnum.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/vector_editor/model/ShapeEnum.java">
+      <file leaf-file-name="ToolEnum.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/vector_editor/model/ToolEnum.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="68">
-              <caret line="4" column="57" selection-start-line="4" selection-start-column="57" selection-end-line="4" selection-end-column="57" />
+              <caret line="4" column="56" selection-start-line="4" selection-start-column="56" selection-end-line="4" selection-end-column="56" />
             </state>
           </provider>
         </entry>
@@ -142,7 +134,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/vector_editor/model/Shapes/ShapeObject.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="68">
-              <caret line="47" column="31" selection-start-line="47" selection-start-column="31" selection-end-line="47" selection-end-column="31" />
+              <caret line="48" column="31" selection-start-line="48" selection-start-column="31" selection-end-line="48" selection-end-column="31" />
             </state>
           </provider>
         </entry>
@@ -566,11 +558,18 @@
       <option name="project" value="LOCAL" />
       <updated>1547237617074</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="fully working ctr+z, need to refactor">
+      <created>1547245407114</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1547245407114</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="120141000" />
+    <option name="totallyTimeSpent" value="121095000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -595,11 +594,11 @@
       <window_info anchor="right" id="Maven Projects" order="12" weight="0.3295302" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="10" sideWeight="0.49852508" weight="0.17948718" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.47256637" visible="true" weight="0.3133903" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.47256637" visible="true" weight="0.3133903" />
       <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.49970502" weight="0.32897604" />
       <window_info id="Capture Tool" order="7" />
       <window_info id="Designer" order="4" />
-      <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.24697986" />
+      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.24697986" />
       <window_info anchor="right" id="Database" order="11" weight="0.3295302" />
       <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -705,7 +704,8 @@
     <MESSAGE value="Added Maven dependencies" />
     <MESSAGE value="Intially list with workspac history, problems after clear whole workspace." />
     <MESSAGE value="Working ctrl+z on Polyline and after removing objects." />
-    <option name="LAST_COMMIT_MESSAGE" value="Working ctrl+z on Polyline and after removing objects." />
+    <MESSAGE value="fully working ctr+z, need to refactor" />
+    <option name="LAST_COMMIT_MESSAGE" value="fully working ctr+z, need to refactor" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
@@ -720,7 +720,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/vector_editor/controller/MainFrameController.java</url>
-          <line>314</line>
+          <line>311</line>
           <properties />
           <option name="timeStamp" value="25" />
         </line-breakpoint>
@@ -1011,24 +1011,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/vector_editor/model/ShapeEnum.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/vector_editor/model/ToolEnum.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
-          <caret line="4" column="57" selection-start-line="4" selection-start-column="57" selection-end-line="4" selection-end-column="57" />
+          <caret line="4" column="56" selection-start-line="4" selection-start-column="56" selection-end-line="4" selection-end-column="56" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/vector_editor/model/Shapes/ShapeObject.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
-          <caret line="47" column="31" selection-start-line="47" selection-start-column="31" selection-end-line="47" selection-end-column="31" />
+          <caret line="48" column="31" selection-start-line="48" selection-start-column="31" selection-end-line="48" selection-end-column="31" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/vector_editor/model/Shapes/Circle.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="383">
-          <caret line="59" column="4" selection-start-line="59" selection-start-column="4" selection-end-line="59" selection-end-column="31" />
+          <caret line="60" column="4" selection-start-line="60" selection-start-column="4" selection-end-line="60" selection-end-column="32" />
           <folding>
             <element signature="e#411#412#0" expanded="true" />
             <element signature="e#434#435#0" expanded="true" />
@@ -1039,14 +1039,14 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/vector_editor/model/Shapes/Polyline.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="247">
-          <caret line="74" column="31" selection-start-line="74" selection-start-column="31" selection-end-line="74" selection-end-column="31" />
+          <caret line="75" column="32" selection-start-line="75" selection-start-column="32" selection-end-line="75" selection-end-column="32" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/vector_editor/model/Shapes/Rectangle.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="332">
-          <caret line="43" column="31" selection-start-line="43" selection-start-column="31" selection-end-line="43" selection-end-column="31" />
+          <caret line="45" column="32" selection-start-line="45" selection-start-column="32" selection-end-line="45" selection-end-column="32" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#408#409#0" expanded="true" />
@@ -1058,7 +1058,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/vector_editor/model/Shapes/Square.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="264">
-          <caret line="50" column="31" selection-start-line="50" selection-start-column="31" selection-end-line="50" selection-end-column="31" />
+          <caret line="52" column="32" selection-start-line="52" selection-start-column="32" selection-end-line="52" selection-end-column="32" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#399#400#0" expanded="true" />
@@ -1086,7 +1086,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/vector_editor/model/Shapes/Oval.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="612">
-          <caret line="38" column="30" selection-start-line="38" selection-start-column="30" selection-end-line="38" selection-end-column="30" />
+          <caret line="40" column="30" selection-start-line="40" selection-start-column="30" selection-end-line="40" selection-end-column="30" />
           <folding>
             <element signature="e#380#381#0" expanded="true" />
             <element signature="e#409#410#0" expanded="true" />
@@ -1096,8 +1096,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/vector_editor/controller/MainFrameController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="227" lean-forward="true" selection-start-line="227" selection-end-line="227" />
+        <state relative-caret-position="186">
+          <caret line="159" column="55" lean-forward="true" selection-start-line="159" selection-start-column="55" selection-end-line="159" selection-end-column="67" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#2342#2509#0" expanded="true" />
