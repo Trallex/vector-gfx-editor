@@ -33,21 +33,38 @@ public class MainFrameController {
     {
         this.view = view;
         this.model = model;
-        this.view.addListenerToContainer(new ContainerListenerForMainFrame());
-        this.view.getToolbarComponent().addToolbarComponentListener(new ToolbarComponentListener());
 
+        initListenersToToolbar();
+        initListenersToContainer();
+
+        //creating key binders
+        initInputMap();
+        initActionMap();
+
+    }
+
+    private void initListenersToToolbar() {
+        this.view.getToolbarComponent().addToolbarComponentListener(new ToolbarComponentListener());
         this.view.getToolbarComponent().getStrokeColorBtn().addColorChangedListener(new ColorChangedListener());
         this.view.getToolbarComponent().getBackgroundColorBtn().addColorChangedListener(new ColorChangedListener());
         this.view.getToolbarComponent().getStrokeThicknessComboBox().addItemListener(new StrokeChangeListener());
+    }
 
-        //creating key binders
+    private void initListenersToContainer() {
+        this.view.addListenerToContainer(new ContainerListenerForMainFrame());
+
+    }
+
+    private void initInputMap() {
         inputMap = view.getJFrame().getRootPane().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
-        actionMap = view.getJFrame().getRootPane().getActionMap();
-
         inputMap.put(KeyStroke.getKeyStroke(KeyEvent.VK_SHIFT, InputEvent.SHIFT_DOWN_MASK, false), "shiftPressed");
         inputMap.put(KeyStroke.getKeyStroke(KeyEvent.VK_SHIFT, 0, true), "shiftReleased");
         inputMap.put(KeyStroke.getKeyStroke(KeyEvent.VK_Z, InputEvent.CTRL_DOWN_MASK, false), "ctrlZPressed");
         inputMap.put(KeyStroke.getKeyStroke(KeyEvent.VK_DELETE, 0, false), "deleteSelectedShape");
+    }
+
+    private void initActionMap() {
+        actionMap = view.getJFrame().getRootPane().getActionMap();
 
         actionMap.put("shiftPressed", new AbstractAction() {
             @Override
@@ -64,37 +81,39 @@ public class MainFrameController {
         actionMap.put("ctrlZPressed", new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                isNewShapePainted = false;
-                drawShape = null;
-
-
-                model.setWorkspaceToPreviousState();
-                view.getWorkspaceComponent().setShapes(model.getWorkspace().getShapes());
-                view.getWorkspaceComponent().repaint();
+                setWorkspaceToPreviousState();
             }
         });
         actionMap.put("deleteSelectedShape", new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (CurrentShape.getShapeType() == ToolEnum.SELECT) {
-                    if (selectedShape != -1) {
-                        model.saveCurrentWorkspaceToHistory();
-                        newWorkspaceState = new Workspace(model.getWorkspace());
-                        newWorkspaceState.removeShape(selectedShape);
-                        model.setWorkspace(newWorkspaceState);
-
-                        view.getWorkspaceComponent().setShapes(model.getWorkspace().getShapes());
-
-                        view.getWorkspaceComponent().repaint();
-                    }
-                }
+                deleteSlectedShape();
             }
 
         });
 
     }
 
+    private void setWorkspaceToPreviousState() {
+        isNewShapePainted = false;
+        drawShape = null;
+        model.setWorkspaceToPreviousState();
+        view.getWorkspaceComponent().setShapes(model.getWorkspace().getShapes());
+        view.getWorkspaceComponent().repaint();
+    }
 
+    private void deleteSlectedShape() {
+        if (CurrentShape.getShapeType() == ToolEnum.SELECT && selectedShape != -1) {
+            {
+                model.saveCurrentWorkspaceToHistory();
+                newWorkspaceState = new Workspace(model.getWorkspace());
+                newWorkspaceState.removeShape(selectedShape);
+                model.setWorkspace(newWorkspaceState);
+                view.getWorkspaceComponent().setShapes(model.getWorkspace().getShapes());
+                view.getWorkspaceComponent().repaint();
+            }
+        }
+    }
     class StrokeChangeListener implements ItemListener {
 
         @Override
@@ -111,51 +130,47 @@ public class MainFrameController {
         // initial solution when the new workspace is set
         @Override
         public void componentAdded(ContainerEvent e) {
-            model.cleanWorkspaceHistory();
-            view.getWorkspaceComponent().addWorkspaceComponentMouseListener(new MouseListenerForWorkspace()); //need to set listeners
-            view.getWorkspaceComponent().addWorkspaceComponentMouseMotionListener(new MouseMotionListenerForWorkspace()); //after create the new workspace
-            int width = view.getWorkspaceComponent().getWidth();
-            int height = view.getWorkspaceComponent().getHeight();
-            String name = view.getWorkspaceComponent().getName();
-            model.setWorkspace(new Workspace(width, height, name));
+            setNewWorkspace();
         }
     }
+
+    private void setNewWorkspace() {
+        initListenersToWorkspace();
+        model.cleanWorkspaceHistory();
+        int width = view.getWorkspaceComponent().getWidth();
+        int height = view.getWorkspaceComponent().getHeight();
+        String name = view.getWorkspaceComponent().getName();
+        model.setWorkspace(new Workspace(width, height, name));
+    }
+
+    private void initListenersToWorkspace() {
+        view.getWorkspaceComponent().addWorkspaceComponentMouseListener(new MouseListenerForWorkspace()); //need to set listeners
+        view.getWorkspaceComponent().addWorkspaceComponentMouseMotionListener(new MouseMotionListenerForWorkspace()); //after create the new workspace
+    }
+
 
     class ToolbarComponentListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             switch(e.getActionCommand()){
                 case "rectangle":
                     CurrentShape.setShapeType(ToolEnum.SQUARE);
-                    //System.out.println("SQUARE ");
                     isNewShapePainted=true;
                     break;
                 case "pencil":
                     CurrentShape.setShapeType(ToolEnum.PENCIL);
-                    //System.out.println("PENCIL");
                     isNewShapePainted=true;
                     break;
                 case "pen":
                     CurrentShape.setShapeType(ToolEnum.PEN);  //
-                    //System.out.println("PEN");
                     isNewShapePainted=true;
                     break;
                 case "oval":
                     CurrentShape.setShapeType(ToolEnum.CIRCLE);
-                    //System.out.println("CIRCLE");
                     isNewShapePainted=true;
                     break;
                 case "move":
                     CurrentShape.setShapeType(ToolEnum.SELECT);
                     isNewShapePainted=false;
-                    break;
-                case "zoom":
-                    //System.out.println("ZOOM");
-                    break;
-                case "text":
-                    //System.out.println("TEXT");
-                    break;
-                case "bitmap":
-                    //System.out.println("BITMAP");
                     break;
                 case "strokeColor":  //REFACTOR needed
                     CurrentShape.setShapeType(ToolEnum.STROKE_COLOR);
@@ -222,16 +237,6 @@ public class MainFrameController {
             } else if (selectedShape != -1 && CurrentShape.getShapeType() == ToolEnum.SELECT) {
                 double xDifference = event.getX() - draggingPoint.getX();
                 double yDiference = event.getY() - draggingPoint.getY();
-
-//                model.saveCurrentWorkspaceToHistory();
-//                newWorkspaceState = new Workspace(model.getWorkspace());
-//                newWorkspaceState.getShapes().get(selectedShape).updateShapePlace(xDifference,yDiference);
-//                model.setWorkspace(newWorkspaceState);
-//
-//                view.getWorkspaceComponent().setTmpShape(null);
-//
-//                view.getWorkspaceComponent().setShapes(model.getWorkspace().getShapes());
-
 
                 draggingPoint.setLocation(event.getPoint());
 
@@ -317,15 +322,13 @@ public class MainFrameController {
 
                 model.saveCurrentWorkspaceToHistory();
                 newWorkspaceState = new Workspace(model.getWorkspace());
+                newWorkspaceState.getShapes().get(selectedShape).updateShapePlace(xDifference, yDiference);
 
-                //ShapeObject temp = new ShapeObject(newWorkspaceState.getShapes().get(selectedShape));
-                // temp.updateShapePlace(xDifference,yDiference);
-                // newWorkspaceState.removeShape(selectedShape);
-                //  newWorkspaceState.getShapes().add(selectedShape, temp);
                 model.setWorkspace(newWorkspaceState);
 
                 view.getWorkspaceComponent().setTmpShape(null);
-                view.getWorkspaceComponent().setShapes(model.getWorkspace().getShapes());
+                view.getWorkspaceComponent().setShapes(model.getWorkspace().getShapes()); //because of that problem with ctr+z
+                //after moving, view changes the model..
             }
             draggingPoint = null;
 
