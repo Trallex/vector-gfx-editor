@@ -196,19 +196,15 @@ public class MainFrameController {
                 } else {
                     if (isShiftKeyPressed) {
                         if (drawShape instanceof Rectangle) {
-                            Square square = new Square(drawShape.getX(), drawShape.getY(), drawShape.getX2(), drawShape.getY2(), drawShape.getBackgroundColor(), drawShape.getStrokeColor(), drawShape.getStrokeThickness());
-                            drawShape = square;
+                            drawShape = new Square(drawShape.getX(), drawShape.getY(), drawShape.getX2(), drawShape.getY2(), drawShape.getBackgroundColor(), drawShape.getStrokeColor(), drawShape.getStrokeThickness());
                         } else if (drawShape instanceof Oval) {
-                            Circle circle = new Circle(drawShape.getX(), drawShape.getY(), drawShape.getX2(), drawShape.getY2(), drawShape.getBackgroundColor(), drawShape.getStrokeColor(), drawShape.getStrokeThickness());
-                            drawShape = circle;
+                            drawShape = new Circle(drawShape.getX(), drawShape.getY(), drawShape.getX2(), drawShape.getY2(), drawShape.getBackgroundColor(), drawShape.getStrokeColor(), drawShape.getStrokeThickness());
                         }
                     } else {
                         if (drawShape instanceof Square) {
-                            Rectangle rectangle = new Rectangle(drawShape.getX(), drawShape.getY(), drawShape.getX(), drawShape.getY2(), drawShape.getBackgroundColor(), drawShape.getStrokeColor(), drawShape.getStrokeThickness());
-                            drawShape = rectangle;
+                            drawShape = new Rectangle(drawShape.getX(), drawShape.getY(), drawShape.getX(), drawShape.getY2(), drawShape.getBackgroundColor(), drawShape.getStrokeColor(), drawShape.getStrokeThickness());
                         } else if (drawShape instanceof Circle) {
-                            Oval oval = new Oval(drawShape.getX(), drawShape.getY(), drawShape.getX2(), drawShape.getY2(), drawShape.getBackgroundColor(), drawShape.getStrokeColor(), drawShape.getStrokeThickness());
-                            drawShape = oval;
+                            drawShape = new Oval(drawShape.getX(), drawShape.getY(), drawShape.getX2(), drawShape.getY2(), drawShape.getBackgroundColor(), drawShape.getStrokeColor(), drawShape.getStrokeThickness());
                         }
                     }
                     drawShape.setX2(event.getX());
@@ -232,28 +228,43 @@ public class MainFrameController {
 
     class MouseListenerForWorkspace extends MouseAdapter
     {
-    @Override
+
+
+        @Override
         public void mousePressed(MouseEvent e)  //when new shape is created, to set the starting point
         {
+            listenToDrawingShapeWhenPressed(e);
+        }
+
+        private void listenToDrawingShapeWhenPressed(MouseEvent e) {
             draggingPoint = e.getPoint();
-            if(isNewShapePainted) //flag which check if there is a new shape (helpful with pen)
+            if (isNewShapePainted) //flag which check if there is a new shape (helpful with pen)
             {
                 drawShape = getTmpShape(e.getX(), e.getY(), e.getX(), e.getY());
                 view.getWorkspaceComponent().setTmpShape(drawShape);
                 view.getWorkspaceComponent().repaint();
-                isNewShapePainted=false;
-            }
-            else {
+                isNewShapePainted = false;
+            } else {
                 selectedShape = model.getWorkspace().findDrawnShapesId(e.getPoint());
-                System.out.println(model.getWorkspace().findDrawnShapesId(e.getPoint()));
+                if (model.getWorkspace().findDrawnShapesId(draggingPoint) != -1)
+                    model.getWorkspace().getShapes().forEach(shape -> {
+                        if (model.getWorkspace().getShapes().indexOf(shape) == selectedShape) {
+                            shape.setSelected(true);
+                        } else shape.setSelected(false);
+                    });
+                view.refresh();
             }
         }
 
-        public void mouseReleased(MouseEvent e)
+        public void mouseReleased(MouseEvent e)  //after user's action, it sets the finishing point and add the shape to the model
         {
+            listenToDrawingShapeWhenReleased(e);
+        }
+
+        private void listenToDrawingShapeWhenReleased(MouseEvent e) {
+
             draggingPoint = null;
-            if (!(drawShape == null))
-            {
+            if (!(drawShape == null)) {
                 ArrayList<ShapeObject> shapes = view.getWorkspaceComponent().getShapes();
 
                 if (CurrentShape.getShapeType() != ShapeEnum.PEN) {
@@ -291,38 +302,6 @@ public class MainFrameController {
             }
         }
 
-        private void listenToShapeSelectWhenClicked(MouseEvent e) {
-            int x, y;
-            x = e.getX();
-            y = e.getY();
-
-            boolean selected = false;
-            Point pt = new Point(x, y);
-            for (ShapeObject currentShape : model.getWorkspace().getShapes()) {
-                if (currentShape.ifPointBelongToField(pt) && !selected) {
-                    currentShape.setSelected(true);
-                    System.out.println(currentShape);
-                    selected = true;
-                } else currentShape.setSelected(false);
-            }
-            view.refresh();
-        }
-
-        @Override
-        public void mousePressed(MouseEvent e)  //when new shape is created, to set the starting point
-        {
-            listenToDrawingShapeWhenPressed(e);
-        }
-
-        @Override
-        public void mouseClicked(MouseEvent e) {
-            listenToShapeSelectWhenClicked(e);
-        }
-
-        public void mouseReleased(MouseEvent e)  //after user's action, it sets the finishing point and add the shape to the model
-        {
-            listenToDrawingShapeWhenReleased(e);
-        }
 
         private ShapeObject getTmpShape(double x, double y, double x2, double y2)
         {
