@@ -87,7 +87,7 @@ public class MainFrameController {
         actionMap.put("deleteSelectedShape", new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                deleteSlectedShape();
+                deleteSelectedShape();
             }
 
         });
@@ -102,7 +102,7 @@ public class MainFrameController {
         view.getWorkspaceComponent().repaint();
     }
 
-    private void deleteSlectedShape() {
+    private void deleteSelectedShape() {
         if (CurrentShape.getShapeType() == ToolEnum.SELECT && selectedShape != -1) {
             {
                 model.saveCurrentWorkspaceToHistory();
@@ -182,6 +182,25 @@ public class MainFrameController {
         }
     }
 
+    private ShapeObject getTmpShape(double x, double y, double x2, double y2) {
+        switch (CurrentShape.getShapeType()) {
+            case RECTANGLE:
+                return new Rectangle(x, y, x2, y2, CurrentShape.getBackgroundColor(), CurrentShape.getStrokeColor(), CurrentShape.getStrokeThickness());
+            case SQUARE:
+                return new Square(x, y, x2, y2, CurrentShape.getBackgroundColor(), CurrentShape.getStrokeColor(), CurrentShape.getStrokeThickness());
+            case OVAL:
+                return new Oval(x, y, x2, y2, CurrentShape.getBackgroundColor(), CurrentShape.getStrokeColor(), CurrentShape.getStrokeThickness());
+            case CIRCLE:
+                return new Circle(x, y, x2, y2, CurrentShape.getBackgroundColor(), CurrentShape.getStrokeColor(), CurrentShape.getStrokeThickness());
+            case PENCIL:
+                return new Polyline(x, y, x2, y2, CurrentShape.getBackgroundColor(), CurrentShape.getStrokeColor(), CurrentShape.getStrokeThickness());
+            case PEN:
+                return new Polyline(x, y, x2, y2, CurrentShape.getBackgroundColor(), CurrentShape.getStrokeColor(), CurrentShape.getStrokeThickness());
+            default:
+                break;
+        }
+        return drawShape;
+    }
 
     // This part need REFACTOR but this is one of ways how to deal with problem
     class ColorChangedListener implements ColorChooserButton.ColorChangedListener {
@@ -251,25 +270,72 @@ public class MainFrameController {
 
     class MouseListenerForWorkspace extends MouseAdapter
     {
-    @Override
+
+        @Override
         public void mousePressed(MouseEvent e)  //when new shape is created, to set the starting point
         {
+            listenToDrawingShapeWhenPressed(e);
+        }
+
+        private void listenToDrawingShapeWhenPressed(MouseEvent e) {
+            //when new shape is created, to set the starting point
+
             draggingPoint = e.getPoint();
-            if(isNewShapePainted) //flag which check if there is a new shape (helpful with pen)
+            if (isNewShapePainted) //flag which check if there is a new shape (helpful with pen)
             {
                 drawShape = getTmpShape(e.getX(), e.getY(), e.getX(), e.getY());
                 view.getWorkspaceComponent().setTmpShape(drawShape);
                 view.getWorkspaceComponent().repaint();
-                isNewShapePainted=false;
+                isNewShapePainted = false;
             } else if (CurrentShape.getShapeType() == ToolEnum.SELECT) {
                 selectedShape = model.getWorkspace().findDrawnShapesId(e.getPoint());
                 //System.out.println(model.getWorkspace().findDrawnShapesId(e.getPoint()));
             }
         }
 
-        public void mouseReleased(MouseEvent e)
-        {
+        @Override
+        public void mouseClicked(MouseEvent e) {
+            if (CurrentShape.getShapeType() == ToolEnum.SELECT) {
+                listenToShapeSelectWhenClicked(e);
+            }
+        }
 
+        private void listenToShapeSelectWhenClicked(MouseEvent e) {
+            int x, y;
+            x = e.getX();
+            y = e.getY();
+
+            System.out.println("selected");
+            boolean selected = false;
+            Point pt = new Point(x, y);
+            for (ShapeObject currentShape : model.getWorkspace().getShapes()) {
+                if (currentShape.ifPointBelongToField(pt) && !selected) {
+                    currentShape.setSelected(true);
+                    //System.out.println(currentShape);
+                    selected = true;
+                } else currentShape.setSelected(false);
+            }
+            view.refresh();
+        }
+
+        public void mouseReleased(MouseEvent e)  //after user's action, it sets the finishing point and add the shape to the model
+        {
+            listenToDrawingShapeWhenReleased(e);
+        }
+
+        private void addNewShapeToWorkspace() {
+            model.saveCurrentWorkspaceToHistory();
+            newWorkspaceState = new Workspace(model.getWorkspace());
+            newWorkspaceState.addShape(drawShape);
+            model.setWorkspace(newWorkspaceState);
+
+            view.getWorkspaceComponent().setTmpShape(null);
+            view.getWorkspaceComponent().setShapes(model.getWorkspace().getShapes());
+            drawShape = null;
+            isNewShapePainted = true;
+        }
+
+        private void listenToDrawingShapeWhenReleased(MouseEvent e) {
             if (!(drawShape == null))
             {
 
@@ -277,17 +343,8 @@ public class MainFrameController {
 
                     drawShape.setX2(e.getX());
                     drawShape.setY2(e.getY());
-
-
-                    model.saveCurrentWorkspaceToHistory();
-                    newWorkspaceState = new Workspace(model.getWorkspace());
-                    newWorkspaceState.addShape(drawShape);
-                    model.setWorkspace(newWorkspaceState);
-
-                    view.getWorkspaceComponent().setTmpShape(null);
-                    view.getWorkspaceComponent().setShapes(model.getWorkspace().getShapes());
-                    drawShape = null;
-                    isNewShapePainted = true;
+                    addNewShapeToWorkspace();
+ 
 
                 } else  //in the case of pen update the current pen shape in the view and the model
                 {
@@ -323,75 +380,15 @@ public class MainFrameController {
                 model.saveCurrentWorkspaceToHistory();
                 newWorkspaceState = new Workspace(model.getWorkspace());
                 newWorkspaceState.getShapes().get(selectedShape).updateShapePlace(xDifference, yDiference);
-
                 model.setWorkspace(newWorkspaceState);
-
                 view.getWorkspaceComponent().setTmpShape(null);
                 view.getWorkspaceComponent().setShapes(model.getWorkspace().getShapes()); //because of that problem with ctr+z
                 //after moving, view changes the model..
             }
             draggingPoint = null;
-
         }
 
-        private void listenToShapeSelectWhenClicked(MouseEvent e) {
-
-            int x, y;
-            x = e.getX();
-            y = e.getY();
-
-            System.out.println("selected");
-            boolean selected = false;
-            Point pt = new Point(x, y);
-            for (ShapeObject currentShape : model.getWorkspace().getShapes()) {
-                if (currentShape.ifPointBelongToField(pt) && !selected) {
-                    currentShape.setSelected(true);
-                    //System.out.println(currentShape);
-                    selected = true;
-                } else currentShape.setSelected(false);
-            }
-            view.refresh();
-        }
-
-//        @Override
-//        public void mousePressed(MouseEvent e)  //when new shape is created, to set the starting point
-//        {
-//            listenToDrawingShapeWhenPressed(e);
-//        }
-
-        @Override
-        public void mouseClicked(MouseEvent e) {
-            if (CurrentShape.getShapeType() == ToolEnum.SELECT) {
-                listenToShapeSelectWhenClicked(e);
-            }
-        }
-
-//        public void mouseReleased(MouseEvent e)  //after user's action, it sets the finishing point and add the shape to the model
-//        {
-//            listenToDrawingShapeWhenReleased(e);
-//        }
-
-        private ShapeObject getTmpShape(double x, double y, double x2, double y2)
-        {
-            switch (CurrentShape.getShapeType())
-            {
-                case RECTANGLE:
-                    return new Rectangle(x, y, x2, y2, CurrentShape.getBackgroundColor(), CurrentShape.getStrokeColor(), CurrentShape.getStrokeThickness());
-                case SQUARE:
-                    return new Square(x, y, x2, y2, CurrentShape.getBackgroundColor(), CurrentShape.getStrokeColor(), CurrentShape.getStrokeThickness());
-                case OVAL:
-                    return new Oval(x, y, x2, y2, CurrentShape.getBackgroundColor(), CurrentShape.getStrokeColor(), CurrentShape.getStrokeThickness());
-                case CIRCLE:
-                    return new Circle(x, y, x2, y2, CurrentShape.getBackgroundColor(), CurrentShape.getStrokeColor(), CurrentShape.getStrokeThickness());
-                case PENCIL:
-                    return new Polyline(x, y, x2, y2, CurrentShape.getBackgroundColor(), CurrentShape.getStrokeColor(), CurrentShape.getStrokeThickness());
-                case PEN:
-                    return new Polyline(x, y, x2, y2, CurrentShape.getBackgroundColor(), CurrentShape.getStrokeColor(), CurrentShape.getStrokeThickness());
-                default:
-                    break;
-            }
-            return drawShape;
-        }
     }
+
 
 }
