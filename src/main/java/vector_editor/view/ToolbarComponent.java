@@ -17,9 +17,6 @@ public class ToolbarComponent extends JPanel {
     private JButton PencilToolBtn;
     private JButton SquareToolBtn;
     private JButton CircleToolBtn;
-    private JButton ZoomToolBtn;
-    private JButton TextToolBtn;
-    private JButton BitmapToolBtn;
 
     public ColorChooserButton getBackgroundColorBtn() {
         return BackgroundColorBtn;
@@ -91,9 +88,6 @@ public class ToolbarComponent extends JPanel {
         PencilToolBtn = new JButton();
         SquareToolBtn = new JButton();
         CircleToolBtn = new JButton();
-        ZoomToolBtn = new JButton();
-        TextToolBtn = new JButton();
-        BitmapToolBtn = new JButton();
 
         BackgroundColorBtn = new ColorChooserButton(Color.white);
         StrokeColorBtn = new ColorChooserButton(Color.black);
@@ -112,9 +106,6 @@ public class ToolbarComponent extends JPanel {
         buttons.add(PencilToolBtn);
         buttons.add(SquareToolBtn);
         buttons.add(CircleToolBtn);
-        buttons.add(ZoomToolBtn);
-        buttons.add(TextToolBtn);
-        buttons.add(BitmapToolBtn);
         buttons.add(StrokeColorBtn);
         buttons.add(BackgroundColorBtn);
 
@@ -124,9 +115,6 @@ public class ToolbarComponent extends JPanel {
         PencilToolBtn.setActionCommand("pencil");
         SquareToolBtn.setActionCommand("rectangle");
         CircleToolBtn.setActionCommand("oval");
-        ZoomToolBtn.setActionCommand("zoom");
-        TextToolBtn.setActionCommand("text");
-        BitmapToolBtn.setActionCommand("bitmap");
         StrokeColorBtn.setActionCommand("strokeColor");
         BackgroundColorBtn.setActionCommand("backgroundColor");
         StrokeThicknessComboBox.setActionCommand("strokeThickness");
