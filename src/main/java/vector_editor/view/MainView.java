@@ -5,14 +5,12 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ContainerListener;
 
-
 public class MainView {
     private JFrame frame;
     private Container container;
     private WorkspaceComponent workspaceComponent;
     private ToolbarComponent toolbarComponent;
     private ExportComponent exportComponent;
-
     public ExportComponent getExportComponent() {
         return exportComponent;
     }
@@ -52,7 +50,6 @@ public class MainView {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
-
         setupToolbarComponent();
         setupMenuBar();
         setupExportComponent();
@@ -61,10 +58,8 @@ public class MainView {
 
         toolbarComponent = new ToolbarComponent(150, frame.getMaximumSize().height);
         container.add(toolbarComponent, BorderLayout.LINE_START);
-
         refresh();
     }
-
     public void setupWorkspaceComponent() {
 
         if (scrollPane != null) container.remove(scrollPane);
@@ -125,7 +120,6 @@ public class MainView {
     }
 
     public void addListenerToContainer(ContainerListener listener) { //listener to observe if new items were added to the container
-        //helpful when adding new Workspace
         container.addContainerListener(listener);
     }
 

@@ -99,9 +99,7 @@ public class ExportComponent extends JDialog {
         cancelButton.setActionCommand("cancel");
         browsePathButton = new JButton("Browse");
         browsePathButton.setActionCommand("browse");
-
         populateCombobox();
-
     }
 
     private void populateCombobox() {
@@ -117,7 +115,6 @@ public class ExportComponent extends JDialog {
         for (String pf : possibleFormats
         ) {
             formatsCombobox.addItem(pf);
-
         }
     }
 
@@ -221,7 +218,6 @@ public class ExportComponent extends JDialog {
                 vgPDF.endExport();
                 break;
             case ".tex":
-                /*@TODO tikz is saved only after closing app, don't know why // Repair */
                 OutputStream os = new FileOutputStream(out);
                 Thread thread = new Thread(() -> {
                     TikZGraphics2D t = new TikZGraphics2D(os);

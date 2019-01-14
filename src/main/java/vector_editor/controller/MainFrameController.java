@@ -19,27 +19,21 @@ public class MainFrameController {
     private int selectedShape =-1; //index of shape in model
     private Point draggingPoint= null;
     private MainView view;
-    private Model model; //temporary!!
+    private Model model;
     private InputMap inputMap; //key binding
     private ActionMap actionMap; //KB
     private ShapeObject drawShape;
     private boolean isNewShapePainted; //helpful flag while using the pen
     private boolean isShiftKeyPressed = false;
-
-    private String currentAction; // REFACTOR needed, used it in Listeners to change BG Color
-
     private Workspace newWorkspaceState;
 
     public MainFrameController(MainView view, Model model) //temporary model..
     {
         this.view = view;
         this.model = model;
-
         initListenersToToolbar();
         initListenersToContainer();
         initListenersToMenuBar();
-
-        //creating key binders
         initInputMap();
         initActionMap();
 
@@ -54,7 +48,6 @@ public class MainFrameController {
 
     private void initListenersToContainer() {
         this.view.addListenerToContainer(new ContainerListenerForMainFrame());
-
     }
 
     private void initListenersToMenuBar() {

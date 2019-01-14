@@ -32,7 +32,6 @@ public class ToolbarComponent extends JPanel {
 
     private static final int MAX_THICKNESS = 15;
     private static final int MIN_THICKNESS = 0;
-    private static final int INIT_THICKNESS = 1;
 
     public JComboBox<Integer> getStrokeThicknessComboBox() {
         return StrokeThicknessComboBox;
@@ -78,7 +77,6 @@ public class ToolbarComponent extends JPanel {
             }
         }
     }
-
 
     private void setupComponents() {
         buttons = new ArrayList<>();
@@ -135,11 +133,7 @@ public class ToolbarComponent extends JPanel {
             jButton.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
             jButton.setHorizontalAlignment(SwingConstants.CENTER);
             jButton.setHorizontalTextPosition(SwingConstants.LEFT);
-
-
         });
-
-
         this.add(StrokeThicknessComboBox);
     }
 

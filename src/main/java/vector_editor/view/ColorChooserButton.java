@@ -35,7 +35,6 @@ public class ColorChooserButton extends JButton {
         repaint();
 
         if (notify) {
-            // Notify everybody that may be interested.
             for (ColorChangedListener l : listeners) {
                 l.colorChanged(newColor);
             }

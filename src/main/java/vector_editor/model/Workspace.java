@@ -9,9 +9,7 @@ public class Workspace {
     private int height;
     private int width;
     private String name;
-    private ArrayList<ShapeObject> shapes;      //initially only shapes, without layer
-
-
+    private ArrayList<ShapeObject> shapes; 
     public Workspace(int width, int height, String name) {
         this.height=height;
         this.width=width;
@@ -48,17 +46,6 @@ public class Workspace {
         }
         return lastItem;
     }
-    //to test
-//    @Override
-//    public String toString() {
-//        return "Workspace{" +
-//                "height=" + height +
-//                ", width=" + width +
-//                ", name='" + name + '\'' +
-//                ", shapes=" + shapes +
-//                '}';
-//    }
-
     public Workspace(Workspace workspace) {
         this.height = workspace.height;
         this.width = workspace.width;

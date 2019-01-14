@@ -35,7 +35,6 @@ public class Polyline extends ShapeObject {
         return points;
     }
 
-
     @Override
     public void draw(Graphics g) {
 

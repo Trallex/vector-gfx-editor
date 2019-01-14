@@ -14,11 +14,8 @@ public class Model {
     public void setWorkspace(Workspace workspace) {
         this.workspace = workspace;
     }
-
-
     private Workspace workspace;
     private ArrayList<Workspace> workspaceHistory;
-
     public void saveCurrentWorkspaceToHistory() {
 
         for (ShapeObject shape : workspace.getShapes()) {
