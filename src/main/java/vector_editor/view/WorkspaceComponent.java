@@ -88,10 +88,13 @@ public class WorkspaceComponent extends JComponent {
     {
         super.paintComponent(g);
 
-        for (ShapeObject s : shapes)
-        {
+        for (ShapeObject s : shapes) {
+            int i = 0;
+            i++;
             if (s != null) {
                 if (s.isSelected()) s.drawHighlight(g);
+                //if(s instanceof Polyline) System.out.println("rysuje nowy Polyline "+i);
+                //else System.out.println("rysuje");
                 s.draw(g);
             }
         }

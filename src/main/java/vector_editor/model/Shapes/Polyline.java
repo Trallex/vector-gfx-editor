@@ -15,6 +15,13 @@ public class Polyline extends ShapeObject {
         points=new ArrayList<>();
     }
 
+    public Polyline(Polyline polyline) {
+        super(polyline);
+        points = new ArrayList<>();
+        for (Point point : polyline.getPoints()) {
+            this.points.add(point);
+        }
+    }
     @Override
     public boolean ifPointBelongToField(Point p) {
         return false;
@@ -27,6 +34,7 @@ public class Polyline extends ShapeObject {
     public ArrayList<Point> getPoints() {
         return points;
     }
+
 
     @Override
     public void draw(Graphics g) {
@@ -47,5 +55,26 @@ public class Polyline extends ShapeObject {
             vg.setStroke(new BasicStroke(strokeThickness));
             vg.drawPolyline(xPoints, yPoints, nPoints);
         }
+    }
+
+
+
+
+
+    @Override
+    public String toString() {
+        String string = "";
+        for (Point point : points
+                ) {
+            string += point.getX() + " " + point.getY() + " ";
+
+        }
+        return string;
+    }
+
+    @Override
+    public ShapeObject clone() {
+        return new Polyline(this);
+
     }
 }
