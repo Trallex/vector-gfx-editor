@@ -25,10 +25,6 @@ public class Model {
             shape.setSelected(false);
         }
         workspaceHistory.add(workspace);
-        for (Workspace workspace : workspaceHistory) {
-            System.out.println(workspace.getShapes());
-        }
-
 
     }
 
