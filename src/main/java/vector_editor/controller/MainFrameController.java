@@ -2,8 +2,8 @@ package vector_editor.controller;
 
 import vector_editor.model.CurrentShape;
 import vector_editor.model.Model;
-import vector_editor.model.Shapes.*;
 import vector_editor.model.Shapes.Rectangle;
+import vector_editor.model.Shapes.*;
 import vector_editor.model.ToolEnum;
 import vector_editor.model.Workspace;
 import vector_editor.view.ColorChooserButton;
@@ -12,6 +12,7 @@ import vector_editor.view.MainView;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class MainFrameController {
@@ -36,6 +37,7 @@ public class MainFrameController {
 
         initListenersToToolbar();
         initListenersToContainer();
+        initListenersToMenuBar();
 
         //creating key binders
         initInputMap();
@@ -53,6 +55,11 @@ public class MainFrameController {
     private void initListenersToContainer() {
         this.view.addListenerToContainer(new ContainerListenerForMainFrame());
 
+    }
+
+    private void initListenersToMenuBar() {
+        this.view.getExportComponent().addCommandActionListener(new ExportCommandActionListener());
+        this.view.getMenuBar().addCommandActionListener(new MenuCommandActionListener());
     }
 
     private void initInputMap() {
@@ -93,6 +100,7 @@ public class MainFrameController {
         });
 
     }
+
 
     private void setWorkspaceToPreviousState() {
         isNewShapePainted = false;
@@ -388,6 +396,46 @@ public class MainFrameController {
             draggingPoint = null;
         }
 
+    }
+
+    private class MenuCommandActionListener implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            switch (e.getActionCommand()) {
+                case "new_file":
+                    view.displayNewFilePanel();
+                    view.setupWorkspaceComponent();
+                    break;
+                case "save_file":
+                    view.getExportComponent().display();
+                    break;
+                case "close":
+                    break;
+                case "about":
+                    break;
+            }
+        }
+    }
+
+    private class ExportCommandActionListener implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            switch (e.getActionCommand()) {
+                case "browse":
+                    view.getExportComponent().initFileChooser();
+                    break;
+                case "save":
+                    try {
+                        view.getExportComponent().saveFile(view.getWorkspaceComponent());
+                    } catch (IOException e1) {
+                        e1.printStackTrace();
+                    }
+                    break;
+                case "cancel":
+                    view.getExportComponent().closeWindow();
+                    break;
+            }
+        }
     }
 
 
