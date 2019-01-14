@@ -377,11 +377,11 @@ public class MainFrameController {
                 view.getWorkspaceComponent().repaint();
             } else if (CurrentShape.getShapeType() == ToolEnum.SELECT && selectedShape != -1) {
                 double xDifference = e.getX() - draggingPoint.getX();
-                double yDiference = e.getY() - draggingPoint.getY();
+                double yDifference = e.getY() - draggingPoint.getY();
 
                 model.saveCurrentWorkspaceToHistory();
                 newWorkspaceState = new Workspace(model.getWorkspace());
-                newWorkspaceState.getShapes().get(selectedShape).updateShapePlace(xDifference, yDiference);
+                newWorkspaceState.getShapes().get(selectedShape).updateShapePlace(xDifference, yDifference);
                 model.setWorkspace(newWorkspaceState);
                 view.getWorkspaceComponent().setTmpShape(null);
                 view.getWorkspaceComponent().setShapes(model.getWorkspace().getShapes()); //because of that problem with ctr+z
