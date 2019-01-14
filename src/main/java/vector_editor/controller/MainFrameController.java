@@ -297,7 +297,6 @@ public class MainFrameController {
                 isNewShapePainted = false;
             } else if (CurrentShape.getShapeType() == ToolEnum.SELECT) {
                 selectedShape = model.getWorkspace().findDrawnShapesId(e.getPoint());
-                //System.out.println(model.getWorkspace().findDrawnShapesId(e.getPoint()));
             }
         }
 
@@ -313,13 +312,12 @@ public class MainFrameController {
             x = e.getX();
             y = e.getY();
 
-            System.out.println("selected");
+
             boolean selected = false;
             Point pt = new Point(x, y);
             for (ShapeObject currentShape : model.getWorkspace().getShapes()) {
                 if (currentShape.ifPointBelongToField(pt) && !selected) {
                     currentShape.setSelected(true);
-                    //System.out.println(currentShape);
                     selected = true;
                 } else currentShape.setSelected(false);
             }

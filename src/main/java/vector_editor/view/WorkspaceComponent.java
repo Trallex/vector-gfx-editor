@@ -93,8 +93,6 @@ public class WorkspaceComponent extends JComponent {
             i++;
             if (s != null) {
                 if (s.isSelected()) s.drawHighlight(g);
-                //if(s instanceof Polyline) System.out.println("rysuje nowy Polyline "+i);
-                //else System.out.println("rysuje");
                 s.draw(g);
             }
         }
