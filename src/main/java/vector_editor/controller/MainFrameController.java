@@ -293,31 +293,14 @@ public class MainFrameController {
                 isNewShapePainted = false;
             } else if (CurrentShape.getShapeType() == ToolEnum.SELECT) {
                 selectedShape = model.getWorkspace().findDrawnShapesId(e.getPoint());
+                if (model.getWorkspace().findDrawnShapesId(draggingPoint) != -1)
+                    model.getWorkspace().getShapes().forEach(shape -> {
+                        if (model.getWorkspace().getShapes().indexOf(shape) == selectedShape) {
+                            shape.setSelected(true);
+                        } else shape.setSelected(false);
+                    });
+                view.refresh();
             }
-        }
-
-        @Override
-        public void mouseClicked(MouseEvent e) {
-            if (CurrentShape.getShapeType() == ToolEnum.SELECT) {
-                listenToShapeSelectWhenClicked(e);
-            }
-        }
-
-        private void listenToShapeSelectWhenClicked(MouseEvent e) {
-            int x, y;
-            x = e.getX();
-            y = e.getY();
-
-
-            boolean selected = false;
-            Point pt = new Point(x, y);
-            for (ShapeObject currentShape : model.getWorkspace().getShapes()) {
-                if (currentShape.ifPointBelongToField(pt) && !selected) {
-                    currentShape.setSelected(true);
-                    selected = true;
-                } else currentShape.setSelected(false);
-            }
-            view.refresh();
         }
 
         public void mouseReleased(MouseEvent e)  //after user's action, it sets the finishing point and add the shape to the model

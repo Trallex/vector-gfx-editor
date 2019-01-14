@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f1b4416b-c0a1-4950-a9a3-55c026b85e34" name="Default" comment="Refactor" />
+    <list default="true" id="f1b4416b-c0a1-4950-a9a3-55c026b85e34" name="Default" comment="Rewrite toolbar">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/maven/target/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -45,10 +47,10 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/vector_editor/controller/MainFrameController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-131">
+            <state relative-caret-position="1453">
               <caret line="381" column="54" lean-forward="true" selection-start-line="381" selection-start-column="54" selection-end-line="381" selection-end-column="54" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -57,11 +59,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/vector_editor/view/ToolbarComponent.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="257">
-              <caret line="118" column="28" lean-forward="true" selection-start-line="118" selection-start-column="28" selection-end-line="118" selection-end-column="28" />
+            <state relative-caret-position="682">
+              <caret line="116" column="47" selection-start-line="116" selection-start-column="47" selection-end-line="116" selection-end-column="47" />
             </state>
           </provider>
         </entry>
@@ -90,8 +92,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="449">
-              <caret line="67" column="21" selection-start-line="67" selection-start-column="21" selection-end-line="67" selection-end-column="21" />
+            <state relative-caret-position="545">
+              <caret line="73" column="21" selection-start-line="73" selection-start-column="21" selection-end-line="73" selection-end-column="21" />
             </state>
           </provider>
         </entry>
@@ -223,7 +225,6 @@
         <option value="$PROJECT_DIR$/src/main/java/vector_editor/view/MenubarComponent.java" />
         <option value="$PROJECT_DIR$/src/main/java/vector_editor/view/MainView.java" />
         <option value="$PROJECT_DIR$/src/main/java/vector_editor/view/ColorChooserButton.java" />
-        <option value="$PROJECT_DIR$/src/main/java/vector_editor/view/ToolbarComponent.java" />
         <option value="$PROJECT_DIR$/src/main/java/vector_editor/model/CurrentShape.java" />
         <option value="$PROJECT_DIR$/src/main/java/vector_editor/model/ShapeEnum.java" />
         <option value="$PROJECT_DIR$/src/main/java/vector_editor/model/Workspace.java" />
@@ -238,6 +239,7 @@
         <option value="$PROJECT_DIR$/src/main/java/vector_editor/view/WorkspaceComponent.java" />
         <option value="$PROJECT_DIR$/src/main/java/vector_editor/model/Model.java" />
         <option value="$PROJECT_DIR$/src/main/java/vector_editor/controller/MainFrameController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/vector_editor/view/ToolbarComponent.java" />
       </list>
     </option>
   </component>
@@ -342,7 +344,7 @@
     <property name="Git.Branch.Popup.ShowAllRemotes" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1547505606840" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1547505695505" />
     <property name="jdk.selected.JAVA_MODULE" value="1.8" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -440,7 +442,7 @@
       <workItem from="1547061737675" duration="1422000" />
       <workItem from="1547499081667" duration="256000" />
       <workItem from="1547499633921" duration="109000" />
-      <workItem from="1547499765081" duration="2336000" />
+      <workItem from="1547499765081" duration="2480000" />
     </task>
     <task id="LOCAL-00001" summary="Created MenuBar">
       <created>1543766438813</created>
@@ -547,11 +549,18 @@
       <option name="project" value="LOCAL" />
       <updated>1547501394802</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Rewrite toolbar">
+      <created>1547505658709</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1547505658709</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="126187000" />
+    <option name="totallyTimeSpent" value="126331000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -576,16 +585,16 @@
       <window_info id="Capture Tool" order="7" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32897604" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4719764" weight="0.2600243" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.47138643" visible="true" weight="0.2600243" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49793512" weight="0.39975247" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49852508" weight="0.32685298" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.49852508" weight="0.32806805" />
-      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5144543" side_tool="true" visible="true" weight="0.32685298" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.52861357" side_tool="true" visible="true" weight="0.2600243" />
       <window_info anchor="bottom" id="Version Control" order="10" sideWeight="0.49793512" weight="0.32806805" />
-      <window_info anchor="bottom" id="Messages" order="11" sideWeight="0.48554572" visible="true" weight="0.32685298" />
+      <window_info anchor="bottom" id="Messages" order="11" sideWeight="0.48554572" weight="0.32685298" />
       <window_info anchor="bottom" id="Duplicate detector" order="12" weight="0.32998747" />
       <window_info anchor="bottom" id="Docker" order="13" show_stripe_button="false" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -681,7 +690,8 @@
     <MESSAGE value="Fixed controller after merge" />
     <MESSAGE value="Deleted some Debug souts" />
     <MESSAGE value="Refactor" />
-    <option name="LAST_COMMIT_MESSAGE" value="Refactor" />
+    <MESSAGE value="Rewrite toolbar" />
+    <option name="LAST_COMMIT_MESSAGE" value="Rewrite toolbar" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
@@ -845,8 +855,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="449">
-          <caret line="67" column="21" selection-start-line="67" selection-start-column="21" selection-end-line="67" selection-end-column="21" />
+        <state relative-caret-position="545">
+          <caret line="73" column="21" selection-start-line="73" selection-start-column="21" selection-end-line="73" selection-end-column="21" />
         </state>
       </provider>
     </entry>
@@ -910,20 +920,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/vector_editor/view/ToolbarComponent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="682">
+          <caret line="116" column="47" selection-start-line="116" selection-start-column="47" selection-end-line="116" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/vector_editor/controller/MainFrameController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-131">
+        <state relative-caret-position="1453">
           <caret line="381" column="54" lean-forward="true" selection-start-line="381" selection-start-column="54" selection-end-line="381" selection-end-column="54" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/vector_editor/view/ToolbarComponent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="257">
-          <caret line="118" column="28" lean-forward="true" selection-start-line="118" selection-start-column="28" selection-end-line="118" selection-end-column="28" />
         </state>
       </provider>
     </entry>
