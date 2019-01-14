@@ -241,19 +241,15 @@ public class MainFrameController {
                 } else {
                     if (isShiftKeyPressed) {
                         if (drawShape instanceof Rectangle) {
-                            Square square = new Square(drawShape.getX(), drawShape.getY(), drawShape.getX2(), drawShape.getY2(), drawShape.getBackgroundColor(), drawShape.getStrokeColor(), drawShape.getStrokeThickness());
-                            drawShape = square;
+                            drawShape = new Square(drawShape.getX(), drawShape.getY(), drawShape.getX2(), drawShape.getY2(), drawShape.getBackgroundColor(), drawShape.getStrokeColor(), drawShape.getStrokeThickness());
                         } else if (drawShape instanceof Oval) {
-                            Circle circle = new Circle(drawShape.getX(), drawShape.getY(), drawShape.getX2(), drawShape.getY2(), drawShape.getBackgroundColor(), drawShape.getStrokeColor(), drawShape.getStrokeThickness());
-                            drawShape = circle;
+                            drawShape = new Circle(drawShape.getX(), drawShape.getY(), drawShape.getX2(), drawShape.getY2(), drawShape.getBackgroundColor(), drawShape.getStrokeColor(), drawShape.getStrokeThickness());
                         }
                     } else {
                         if (drawShape instanceof Square) {
-                            Rectangle rectangle = new Rectangle(drawShape.getX(), drawShape.getY(), drawShape.getX(), drawShape.getY2(), drawShape.getBackgroundColor(), drawShape.getStrokeColor(), drawShape.getStrokeThickness());
-                            drawShape = rectangle;
+                            drawShape = new Rectangle(drawShape.getX(), drawShape.getY(), drawShape.getX(), drawShape.getY2(), drawShape.getBackgroundColor(), drawShape.getStrokeColor(), drawShape.getStrokeThickness());
                         } else if (drawShape instanceof Circle) {
-                            Oval oval = new Oval(drawShape.getX(), drawShape.getY(), drawShape.getX2(), drawShape.getY2(), drawShape.getBackgroundColor(), drawShape.getStrokeColor(), drawShape.getStrokeThickness());
-                            drawShape = oval;
+                            drawShape = new Oval(drawShape.getX(), drawShape.getY(), drawShape.getX2(), drawShape.getY2(), drawShape.getBackgroundColor(), drawShape.getStrokeColor(), drawShape.getStrokeThickness());
                         }
                     }
                     drawShape.setX2(event.getX());
@@ -263,11 +259,11 @@ public class MainFrameController {
                 view.getWorkspaceComponent().repaint(); // draw the shape during user's action
             } else if (selectedShape != -1 && CurrentShape.getShapeType() == ToolEnum.SELECT) {
                 double xDifference = event.getX() - draggingPoint.getX();
-                double yDiference = event.getY() - draggingPoint.getY();
+                double yDifference = event.getY() - draggingPoint.getY();
 
                 draggingPoint.setLocation(event.getPoint());
 
-                view.getWorkspaceComponent().updateShapePlace(selectedShape, xDifference, yDiference);
+                view.getWorkspaceComponent().updateShapePlace(selectedShape, xDifference, yDifference);
                 view.getWorkspaceComponent().repaint();
             }
 
@@ -367,8 +363,8 @@ public class MainFrameController {
 
                     } else //if the pen is actually used need to remove the previous shape and add new one with new points
                     {
-                        ShapeObject tempPen = new Polyline((Polyline) shapes.get(shapes.size() - 1)); //get the last Pen object and changed them
-                        ((Polyline) tempPen).addPoint(new Point(e.getX(), e.getY()));
+                        Polyline tempPen = new Polyline((Polyline) shapes.get(shapes.size() - 1)); //get the last Pen object and changed them
+                        tempPen.addPoint(new Point(e.getX(), e.getY()));
                         newWorkspaceState.removeLastShape();
                         drawShape = tempPen;
                         newWorkspaceState.addShape(new Polyline((Polyline) drawShape));
