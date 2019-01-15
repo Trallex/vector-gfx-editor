@@ -374,7 +374,6 @@ public class MainFrameController {
             switch (e.getActionCommand()) {
                 case "new_file":
                     view.displayNewFilePanel();
-                    // view.setupWorkspaceComponent();
                     break;
                 case "save_file":
                     view.getExportComponent().display();
@@ -408,5 +407,18 @@ public class MainFrameController {
         }
     }
 
+    public static class WorkspaceDimensionsInputVerifier extends InputVerifier {
+        @Override
+        public boolean verify(JComponent input) {
+            String text = ((JTextField) input).getText().trim();
+            try {
+
+                int value = Integer.parseInt(text);
+                return (value > 0);
+            } catch (NumberFormatException e) {
+                return false;
+            }
+        }
+    }
 
 }

@@ -63,7 +63,7 @@ public class MainView {
     public void setupWorkspaceComponent() {
 
         if (scrollPane != null) container.remove(scrollPane);
-
+        System.out.println(workspaceWidth + workspaceHeight);
         workspaceComponent = new WorkspaceComponent(workspaceWidth, workspaceHeight, workspaceName);
         scrollPane = new JScrollPane(workspaceComponent, ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED, ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
         if (workspaceComponent.getPreferredSize().width < 1280 && workspaceComponent.getPreferredSize().height < 720) {
