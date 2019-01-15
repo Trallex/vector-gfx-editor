@@ -28,6 +28,11 @@ public class ExportComponent extends JDialog {
         return nameField;
     }
 
+    public void setFileName(String fileName) {
+        this.fileName = fileName;
+    }
+
+    private String fileName;
     private JTextField pathField;
     private JTextField nameField;
     private JLabel nameLabel;
@@ -39,12 +44,11 @@ public class ExportComponent extends JDialog {
     private JButton cancelButton;
     private File pathToDirectory;
 
-    ExportComponent() {
-
+    ExportComponent(String fileName) {
         initComponentItems();
-
         this.setSize(600, 300);
         this.setResizable(false);
+        this.fileName = fileName;
         this.setTitle("Save file as...");
 
         showComponentItems();
@@ -56,6 +60,7 @@ public class ExportComponent extends JDialog {
     }
 
     public void display() {
+        this.nameField.setText(fileName);
         this.setVisible(true);
     }
 

@@ -73,6 +73,7 @@ public class MainView {
         }
         scrollPane.setBorder(BorderFactory.createEmptyBorder(25, 25, 25, 25));
         scrollPane.setOpaque(false);
+        exportComponent.setFileName(scrollPane.getName());
 
         container.add(scrollPane, BorderLayout.CENTER);
         refresh();
@@ -116,13 +117,15 @@ public class MainView {
     }
 
     private void setupExportComponent() {
-        exportComponent = new ExportComponent();
+        exportComponent = new ExportComponent(workspaceName);
     }
 
     public void addListenerToContainer(ContainerListener listener) { //listener to observe if new items were added to the container
         container.addContainerListener(listener);
     }
 
-
+    public void setWorkspaceName( String workspaceName){
+        this.workspaceName = workspaceName;
+    }
 }
 

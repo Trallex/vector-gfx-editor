@@ -141,6 +141,8 @@ public class MainFrameController {
         int width = view.getWorkspaceComponent().getWidth();
         int height = view.getWorkspaceComponent().getHeight();
         String name = view.getWorkspaceComponent().getName();
+        view.setWorkspaceName(name);
+        view.getExportComponent().setFileName(name);
         model.setWorkspace(new Workspace(width, height, name));
     }
 
