@@ -73,7 +73,6 @@ public class MainView {
         }
         scrollPane.setBorder(BorderFactory.createEmptyBorder(25, 25, 25, 25));
         scrollPane.setOpaque(false);
-
         container.add(scrollPane, BorderLayout.CENTER);
         refresh();
     }
@@ -102,6 +101,7 @@ public class MainView {
             workspaceWidth = Integer.parseInt(widthField.getText().trim());
             workspaceHeight = Integer.parseInt(heightField.getText().trim());
             workspaceName = nameField.getText().trim();
+            setupWorkspaceComponent();
 
         } else {
             System.out.println("Cancelled");

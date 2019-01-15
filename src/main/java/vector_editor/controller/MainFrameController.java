@@ -2,8 +2,8 @@ package vector_editor.controller;
 
 import vector_editor.model.CurrentShape;
 import vector_editor.model.Model;
-import vector_editor.model.Shapes.Rectangle;
 import vector_editor.model.Shapes.*;
+import vector_editor.model.Shapes.Rectangle;
 import vector_editor.model.ToolEnum;
 import vector_editor.model.Workspace;
 import vector_editor.view.ColorChooserButton;
@@ -374,7 +374,7 @@ public class MainFrameController {
             switch (e.getActionCommand()) {
                 case "new_file":
                     view.displayNewFilePanel();
-                    view.setupWorkspaceComponent();
+                    // view.setupWorkspaceComponent();
                     break;
                 case "save_file":
                     view.getExportComponent().display();
