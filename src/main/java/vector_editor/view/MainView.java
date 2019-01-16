@@ -118,8 +118,11 @@ public class MainView {
         }
     }
 
-    public void displayExitDialog() {
-        System.exit(0);
+    public int displayExitDialog() {
+        return JOptionPane.showConfirmDialog(
+                null,
+                "Are you sure you want to exit without saving?", "",
+                JOptionPane.YES_NO_OPTION);
     }
 
 

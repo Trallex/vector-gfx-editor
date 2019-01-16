@@ -381,7 +381,15 @@ public class MainFrameController {
                     view.getExportComponent().display();
                     break;
                 case "close":
-                    view.displayExitDialog();
+                    if (model.getWorkspace() != null) {
+                        // System.out.println(view.displayExitDialog());
+                        if (view.displayExitDialog() == 1) {
+                            view.getExportComponent().display();
+                        } else {
+                            System.exit(0);
+
+                        }
+                    } else System.exit(0);
                     break;
                 case "about":
                     break;
