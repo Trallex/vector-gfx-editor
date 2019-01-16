@@ -254,6 +254,11 @@ public class ExportComponent extends JDialog {
     }
 
     public void showError(String error) {
+        JPanel errorPanel = new JPanel(new GridLayout(0, 1));
+        JLabel errorText = new JLabel(error);
+        errorPanel.add(errorText);
+
+        JOptionPane.showConfirmDialog(null, errorPanel, "Error occured...", JOptionPane.DEFAULT_OPTION);
 
     }
 
