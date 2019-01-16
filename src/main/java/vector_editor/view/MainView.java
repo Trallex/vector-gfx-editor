@@ -93,20 +93,37 @@ public class MainView {
         panel.add(widthField);
         panel.add(new JLabel("Height: [px]"));
         panel.add(heightField);
-        int result = JOptionPane.showConfirmDialog(null, panel, "New File...",
-                JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
-        if (result == JOptionPane.OK_OPTION) {
 
-            //HERE PASS THE NEW WORKSPACE TO THE CONTROLLER!
-            workspaceWidth = Integer.parseInt(widthField.getText().trim());
-            workspaceHeight = Integer.parseInt(heightField.getText().trim());
-            workspaceName = nameField.getText().trim();
-            setupWorkspaceComponent();
+        while (true) {
+            int result = JOptionPane.showConfirmDialog(null, panel, "New File...",
+                    JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
 
-        } else {
-            System.out.println("Cancelled");
+            if (result == JOptionPane.OK_OPTION) {
+                if (verifyWorkspaceDimensions(widthField.getText()) && verifyWorkspaceDimensions(heightField.getText()) && !(nameField.getText().trim().isEmpty())) {
+                    workspaceWidth = Integer.parseInt(widthField.getText().trim());
+                    workspaceHeight = Integer.parseInt(heightField.getText().trim());
+                    workspaceName = nameField.getText().trim();
+                    setupWorkspaceComponent();
+                    break;
+                } else {
+                    JOptionPane.showMessageDialog(null, "Enter the correct name and dimensions");
+                }
+            } else {
+                break;
+            }
         }
     }
+
+
+    private boolean verifyWorkspaceDimensions(String dimension) {
+        try {
+            int value = Integer.parseInt(dimension);
+            return (value > 0);
+        } catch (NumberFormatException e) {
+            return false;
+        }
+    }
+
     private void setupMenuBar() {
 
         menuBar = new MenubarComponent();
