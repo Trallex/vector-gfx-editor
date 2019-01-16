@@ -63,7 +63,7 @@ public class MainView {
     public void setupWorkspaceComponent() {
 
         if (scrollPane != null) container.remove(scrollPane);
-        System.out.println(workspaceWidth + workspaceHeight);
+
         workspaceComponent = new WorkspaceComponent(workspaceWidth, workspaceHeight, workspaceName);
         scrollPane = new JScrollPane(workspaceComponent, ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED, ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
         if (workspaceComponent.getPreferredSize().width < 1280 && workspaceComponent.getPreferredSize().height < 720) {
@@ -73,6 +73,8 @@ public class MainView {
         }
         scrollPane.setBorder(BorderFactory.createEmptyBorder(25, 25, 25, 25));
         scrollPane.setOpaque(false);
+        exportComponent.setFileName(scrollPane.getName());
+
         container.add(scrollPane, BorderLayout.CENTER);
 
         refresh();
@@ -135,13 +137,15 @@ public class MainView {
     }
 
     private void setupExportComponent() {
-        exportComponent = new ExportComponent();
+        exportComponent = new ExportComponent(workspaceName);
     }
 
     public void addListenerToContainer(ContainerListener listener) { //listener to observe if new items were added to the container
         container.addContainerListener(listener);
     }
 
-
+    public void setWorkspaceName( String workspaceName){
+        this.workspaceName = workspaceName;
+    }
 }
 
