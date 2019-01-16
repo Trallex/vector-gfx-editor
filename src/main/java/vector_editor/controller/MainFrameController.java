@@ -381,6 +381,7 @@ public class MainFrameController {
                     view.getExportComponent().display();
                     break;
                 case "close":
+                    view.displayExitDialog();
                     break;
                 case "about":
                     break;

@@ -118,6 +118,10 @@ public class MainView {
         }
     }
 
+    public void displayExitDialog() {
+        System.exit(0);
+    }
+
 
     private boolean verifyWorkspaceDimensions(String dimension) {
         try {
