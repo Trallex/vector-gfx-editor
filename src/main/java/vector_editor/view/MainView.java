@@ -74,6 +74,7 @@ public class MainView {
         scrollPane.setBorder(BorderFactory.createEmptyBorder(25, 25, 25, 25));
         scrollPane.setOpaque(false);
         container.add(scrollPane, BorderLayout.CENTER);
+
         refresh();
     }
 
@@ -104,6 +105,7 @@ public class MainView {
                     workspaceHeight = Integer.parseInt(heightField.getText().trim());
                     workspaceName = nameField.getText().trim();
                     setupWorkspaceComponent();
+                    menuBar.getSaveFileItem().setEnabled(true);
                     break;
                 } else {
                     JOptionPane.showMessageDialog(null, "Enter the correct name and dimensions");

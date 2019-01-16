@@ -56,6 +56,7 @@ public class WorkspaceComponent extends JComponent {
         this.setOpaque(false);
         this.setPreferredSize(this.getPreferredSize());
 
+
     }
 
     @Override

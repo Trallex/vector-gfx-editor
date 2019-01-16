@@ -39,6 +39,7 @@ public class MenubarComponent extends JMenuBar {
 
         newFileItem = new JMenuItem("New file...");
         saveFileItem = new JMenuItem("Save as...");
+        saveFileItem.setEnabled(false);
         closeItem = new JMenuItem("Close...");
         aboutItem = new JMenuItem("About us...");
 
