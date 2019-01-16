@@ -398,6 +398,11 @@ public class MainFrameController {
                     break;
                 case "save":
                     try {
+                        if (view.getExportComponent().getNameField().getText().isEmpty() || view.getExportComponent().getNameField().getText() == null) {
+                            view.getExportComponent().showError("The name of file must not be empty!");
+                        } else if (view.getExportComponent().getPathField().getText().isEmpty() || view.getExportComponent().getPathField().getText() == null) {
+                            view.getExportComponent().showError("The path name must not be empty!");
+                        }
                         view.getExportComponent().saveFile(view.getWorkspaceComponent());
                     } catch (IOException e1) {
                         e1.printStackTrace();

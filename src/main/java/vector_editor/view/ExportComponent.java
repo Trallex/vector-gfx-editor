@@ -205,7 +205,7 @@ public class ExportComponent extends JDialog {
                 headless.paintAll(gJPG);
                 try {
                     if (ImageIO.write(bImg, "jpg", out)) {
-
+                        showSuccess();
                     }
                 } catch (IOException ex) {
                     ex.printStackTrace();
@@ -215,7 +215,9 @@ public class ExportComponent extends JDialog {
                 Graphics2D gPNG = bImg.createGraphics();
                 headless.paintAll(gPNG);
                 try {
-                    if (ImageIO.write(bImg, "png", out)) ;
+                    if (ImageIO.write(bImg, "png", out)) {
+                        showSuccess();
+                    }
                 } catch (IOException ex) {
                     ex.printStackTrace();
                 }
@@ -224,7 +226,9 @@ public class ExportComponent extends JDialog {
                 Graphics2D gGIF = bImg.createGraphics();
                 headless.paintAll(gGIF);
                 try {
-                    if (ImageIO.write(bImg, "gif", out)) ;
+                    if (ImageIO.write(bImg, "gif", out)) {
+                        showSuccess();
+                    }
                 } catch (IOException ex) {
                     ex.printStackTrace();
                 }
@@ -234,12 +238,14 @@ public class ExportComponent extends JDialog {
                 vgSVG.startExport();
                 component.print(vgSVG);
                 vgSVG.endExport();
+                showSuccess();
                 break;
             case ".eps":
                 VectorGraphics vgEPS = new EPSGraphics2D(out, component);
                 vgEPS.startExport();
                 component.print(vgEPS);
                 vgEPS.endExport();
+                showSuccess();
                 break;
             case ".tex":
                 OutputStream os = new FileOutputStream(out);
@@ -248,6 +254,7 @@ public class ExportComponent extends JDialog {
                     t.paintComponent(component);
                 });
                 thread.start();
+                showSuccess();
                 break;
         }
 

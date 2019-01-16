@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f1b4416b-c0a1-4950-a9a3-55c026b85e34" name="Default" comment="Refactor and small functionalities in export dialog">
+    <list default="true" id="f1b4416b-c0a1-4950-a9a3-55c026b85e34" name="Default" comment="Implementation of error dialog">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/vector_editor/controller/MainFrameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/vector_editor/controller/MainFrameController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/vector_editor/view/ExportComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/vector_editor/view/ExportComponent.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -48,11 +49,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/vector_editor/controller/MainFrameController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="237">
-              <caret line="287" column="29" selection-start-line="287" selection-start-column="29" selection-end-line="287" selection-end-column="29" />
+            <state relative-caret-position="552">
+              <caret line="399" column="25" lean-forward="true" selection-start-line="399" selection-start-column="25" selection-end-line="399" selection-end-column="25" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1781#1782#0" expanded="true" />
@@ -62,11 +63,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/vector_editor/view/ExportComponent.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="663">
-              <caret line="260" column="102" selection-start-line="260" selection-start-column="102" selection-end-line="260" selection-end-column="102" />
+            <state relative-caret-position="743">
+              <caret line="262" column="10" selection-start-line="262" selection-start-column="4" selection-end-line="262" selection-end-column="10" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -89,8 +90,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1824">
-              <caret line="114" column="16" selection-start-line="114" selection-start-column="16" selection-end-line="114" selection-end-column="16" />
+            <state relative-caret-position="1664">
+              <caret line="104" column="16" selection-start-line="104" selection-start-column="16" selection-end-line="104" selection-end-column="16" />
             </state>
           </provider>
         </entry>
@@ -208,8 +209,8 @@
         <option value="$PROJECT_DIR$/src/main/java/vector_editor/Runner.java" />
         <option value="$PROJECT_DIR$/src/main/java/vector_editor/view/ToolbarComponent.java" />
         <option value="$PROJECT_DIR$/src/main/java/vector_editor/view/MainView.java" />
-        <option value="$PROJECT_DIR$/src/main/java/vector_editor/controller/MainFrameController.java" />
         <option value="$PROJECT_DIR$/src/main/java/vector_editor/view/ExportComponent.java" />
+        <option value="$PROJECT_DIR$/src/main/java/vector_editor/controller/MainFrameController.java" />
       </list>
     </option>
   </component>
@@ -306,7 +307,7 @@
     <property name="Git.Branch.Popup.ShowAllRemotes" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1547602284706" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1547672606644" />
     <property name="jdk.selected.JAVA_MODULE" value="1.8" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -406,7 +407,7 @@
       <workItem from="1547500737140" duration="604000" />
       <workItem from="1547507054739" duration="1898000" />
       <workItem from="1547509702919" duration="2548000" />
-      <workItem from="1547672146652" duration="452000" />
+      <workItem from="1547672146652" duration="997000" />
     </task>
     <task id="LOCAL-00001" summary="Created MenuBar">
       <created>1543766438813</created>
@@ -450,11 +451,18 @@
       <option name="project" value="LOCAL" />
       <updated>1547602199646</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Implementation of error dialog">
+      <created>1547672640341</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1547672640341</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="100162000" />
+    <option name="totallyTimeSpent" value="100707000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -571,7 +579,8 @@
     <MESSAGE value="Rewrite Toolbar" />
     <MESSAGE value="Added Maven dependencies" />
     <MESSAGE value="Refactor and small functionalities in export dialog" />
-    <option name="LAST_COMMIT_MESSAGE" value="Refactor and small functionalities in export dialog" />
+    <MESSAGE value="Implementation of error dialog" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implementation of error dialog" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
@@ -763,8 +772,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1824">
-          <caret line="114" column="16" selection-start-line="114" selection-start-column="16" selection-end-line="114" selection-end-column="16" />
+        <state relative-caret-position="1664">
+          <caret line="104" column="16" selection-start-line="104" selection-start-column="16" selection-end-line="104" selection-end-column="16" />
         </state>
       </provider>
     </entry>
@@ -816,18 +825,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/vector_editor/controller/MainFrameController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="237">
-          <caret line="287" column="29" selection-start-line="287" selection-start-column="29" selection-end-line="287" selection-end-column="29" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1781#1782#0" expanded="true" />
-            <element signature="e#1866#1867#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/vector_editor/view/MainView.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="695">
@@ -840,10 +837,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/vector_editor/view/ExportComponent.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="663">
-          <caret line="260" column="102" selection-start-line="260" selection-start-column="102" selection-end-line="260" selection-end-column="102" />
+        <state relative-caret-position="743">
+          <caret line="262" column="10" selection-start-line="262" selection-start-column="4" selection-end-line="262" selection-end-column="10" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/vector_editor/controller/MainFrameController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="552">
+          <caret line="399" column="25" lean-forward="true" selection-start-line="399" selection-start-column="25" selection-end-line="399" selection-end-column="25" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1781#1782#0" expanded="true" />
+            <element signature="e#1866#1867#0" expanded="true" />
           </folding>
         </state>
       </provider>
