@@ -391,8 +391,6 @@ public class MainFrameController {
                         }
                     } else System.exit(0);
                     break;
-                case "about":
-                    break;
             }
         }
     }
