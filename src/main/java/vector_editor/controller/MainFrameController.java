@@ -404,7 +404,15 @@ public class MainFrameController {
                     break;
                 case "save":
                     try {
-                        view.getExportComponent().saveFile(view.getWorkspaceComponent());
+                        if (view.getExportComponent().getNameField().getText().isEmpty() || view.getExportComponent().getNameField().getText() == null) {
+                            view.getExportComponent().showError("The name of file must not be empty!");
+                        } else if (view.getExportComponent().getPathField().getText().isEmpty() || view.getExportComponent().getPathField().getText() == null) {
+                            view.getExportComponent().showError("The path must not be empty!");
+                        } else if (view.getWorkspaceComponent() == null || model.getWorkspace() == null) {
+                            view.getExportComponent().showError("The Workspace must be created!");
+                        } else {
+                            view.getExportComponent().saveFile(view.getWorkspaceComponent());
+                        }
                     } catch (IOException e1) {
                         e1.printStackTrace();
                     }

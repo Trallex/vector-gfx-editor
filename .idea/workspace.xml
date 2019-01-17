@@ -1,16 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f1b4416b-c0a1-4950-a9a3-55c026b85e34" name="Default" comment="">
+    <list default="true" id="f1b4416b-c0a1-4950-a9a3-55c026b85e34" name="Default" comment="Error handling for export component">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/vector_editor/controller/MainFrameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/vector_editor/controller/MainFrameController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/vector_editor/view/MenubarComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/vector_editor/view/MenubarComponent.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/maven/target/" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
-    <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -19,97 +17,56 @@
   <component name="CodeInsightWorkspaceSettings">
     <option name="optimizeImportsOnTheFly" value="true" />
   </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
+  </component>
   <component name="FavoritesManager">
     <favorites_list name="vector-gfx-editor" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Runner.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/vector_editor/Runner.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="7" column="2" selection-start-line="7" selection-start-column="2" selection-end-line="7" selection-end-column="2" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MenubarComponent.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/vector_editor/view/MenubarComponent.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="43" lean-forward="true" selection-start-line="43" selection-end-line="43" />
-              <folding>
-                <element signature="e#322#323#0" expanded="true" />
-                <element signature="e#356#357#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CurrentShape.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/vector_editor/model/CurrentShape.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="26" column="47" selection-start-line="26" selection-start-column="47" selection-end-line="26" selection-end-column="47" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MainView.java" pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/vector_editor/view/MainView.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="319">
-              <caret line="121" column="15" lean-forward="true" selection-start-line="121" selection-start-column="15" selection-end-line="121" selection-end-column="44" />
+            <state relative-caret-position="695">
+              <caret line="107" column="12" selection-start-line="107" selection-start-column="12" selection-end-line="107" selection-end-column="12" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#5203#5204#0" expanded="true" />
-                <element signature="e#5253#5254#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MainFrameController.java" pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/vector_editor/controller/MainFrameController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1186">
-              <caret line="392" column="26" selection-start-line="392" selection-start-column="26" selection-end-line="392" selection-end-column="26" />
+            <state relative-caret-position="352">
+              <caret line="381" column="57" selection-start-line="381" selection-start-column="57" selection-end-line="381" selection-end-column="57" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#1781#1782#0" expanded="true" />
+                <element signature="e#1866#1867#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="WorkspaceComponent.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/vector_editor/view/WorkspaceComponent.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="46" selection-start-line="46" selection-end-line="46" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ColorChooserButton.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/vector_editor/view/ColorChooserButton.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="476">
-              <caret line="36" column="21" selection-start-line="36" selection-start-column="21" selection-end-line="36" selection-end-column="21" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ExportComponent.java" pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/vector_editor/view/ExportComponent.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3366">
-              <caret line="219" column="24" selection-start-line="219" selection-start-column="24" selection-end-line="219" selection-end-column="24" />
+            <state relative-caret-position="743">
+              <caret line="262" column="10" selection-start-line="262" selection-start-column="4" selection-end-line="262" selection-end-column="10" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -117,11 +74,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ToolbarComponent.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/vector_editor/view/ToolbarComponent.java">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/vector_editor/view/WorkspaceComponent.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1377">
-              <caret line="95" column="9" selection-start-line="95" selection-start-column="9" selection-end-line="95" selection-end-column="9" />
+            <state relative-caret-position="743">
+              <caret line="121" column="33" selection-start-line="121" selection-start-column="33" selection-end-line="121" selection-end-column="33" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -129,11 +86,57 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Polyline.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/vector_editor/model/Shapes/Polyline.java">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1139">
-              <caret line="76" selection-start-line="76" selection-end-line="76" />
+            <state relative-caret-position="1664">
+              <caret line="104" column="16" selection-start-line="104" selection-start-column="16" selection-end-line="104" selection-end-column="16" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/vector_editor/model/Shapes/ShapeObject.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1536">
+              <caret line="144" column="9" selection-start-line="144" selection-start-column="9" selection-end-line="144" selection-end-column="9" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/vector_editor/model/Model.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="272">
+              <caret line="23" column="40" selection-start-line="23" selection-start-column="40" selection-end-line="23" selection-end-column="40" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/vector_editor/AbstractGraphicsInterface.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="928">
+              <caret line="77" column="13" selection-start-line="77" selection-start-column="13" selection-end-line="77" selection-end-column="13" />
+              <folding>
+                <element signature="e#2341#2342#0" expanded="true" />
+                <element signature="e#2373#2374#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/vector_editor/model/Workspace.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="416">
+              <caret line="34" column="10" selection-start-line="34" selection-start-column="10" selection-end-line="34" selection-end-column="10" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -156,17 +159,16 @@
       <find>getToolbar</find>
       <find>toolB</find>
       <find>colo</find>
-      <find>setNew</find>
-      <find>setupW</find>
-      <find>displayNe</find>
-      <find>setupWorkspaceComponent</find>
+      <find>set</find>
+      <find>.pdf</find>
+      <find>pdf</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="hotfix/export-func" />
+        <entry key="$PROJECT_DIR$" value="develop" />
       </map>
     </option>
   </component>
@@ -190,6 +192,7 @@
         <option value="$PROJECT_DIR$/src/main/java/vector_editor/view/MainContainer.java" />
         <option value="$PROJECT_DIR$/maven/pom.xml" />
         <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/vector_editor/view/MenubarComponent.java" />
         <option value="$PROJECT_DIR$/src/main/java/vector_editor/model/Shapes/Rectangle.java" />
         <option value="$PROJECT_DIR$/src/main/java/vector_editor/model/Shapes/Circle.java" />
         <option value="$PROJECT_DIR$/src/main/java/vector_editor/model/Shapes/Oval.java" />
@@ -202,20 +205,13 @@
         <option value="$PROJECT_DIR$/src/main/java/vector_editor/model/Shapes/Square.java" />
         <option value="$PROJECT_DIR$/src/main/java/vector_editor/model/Shapes/Polyline.java" />
         <option value="$PROJECT_DIR$/src/main/java/vector_editor/view/ColorChooserButton.java" />
-        <option value="$PROJECT_DIR$/src/main/java/vector_editor/view/ExportComponent.java" />
         <option value="$PROJECT_DIR$/src/main/java/vector_editor/Runner.java" />
         <option value="$PROJECT_DIR$/src/main/java/vector_editor/view/ToolbarComponent.java" />
         <option value="$PROJECT_DIR$/src/main/java/vector_editor/view/MainView.java" />
+        <option value="$PROJECT_DIR$/src/main/java/vector_editor/view/ExportComponent.java" />
         <option value="$PROJECT_DIR$/src/main/java/vector_editor/controller/MainFrameController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/vector_editor/view/MenubarComponent.java" />
       </list>
     </option>
-  </component>
-  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
-  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
-  <component name="JsGulpfileManager">
-    <detection-done>true</detection-done>
-    <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="MavenImportPreferences">
     <option name="importingSettings">
@@ -224,13 +220,11 @@
       </MavenImportingSettings>
     </option>
   </component>
-  <component name="NodePackageJsonFileManager">
-    <packageJsonPaths />
-  </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-10" />
-    <option name="width" value="975" />
-    <option name="height" value="1050" />
+    <option name="x" value="801" />
+    <option name="y" value="152" />
+    <option name="width" value="981" />
+    <option name="height" value="1054" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="1" id="Add" />
@@ -240,9 +234,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="AndroidView" />
       <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -292,6 +285,15 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="vector_editor" type="462c0819:PsiDirectoryNode" />
+              <item name="model" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="vector-gfx-editor" type="b2602c69:ProjectViewProjectNode" />
+              <item name="vector-gfx-editor" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="vector_editor" type="462c0819:PsiDirectoryNode" />
               <item name="view" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
@@ -304,7 +306,7 @@
     <property name="Git.Branch.Popup.ShowAllRemotes" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1547303236031" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1547759394155" />
     <property name="jdk.selected.JAVA_MODULE" value="1.8" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -342,54 +344,30 @@
     <configuration name="Unnamed" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="vector_editor.Runner" />
       <module name="vector-gfx-editor" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <method>
+      <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="METHOD_NAME" />
       <option name="TEST_OBJECT" value="class" />
       <option name="VM_PARAMETERS" />
-      <option name="PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <patterns />
-      <method>
+      <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="TestNG" factoryName="TestNG">
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="SUITE_NAME" />
-      <option name="PACKAGE_NAME" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="METHOD_NAME" />
-      <option name="GROUP_NAME" />
-      <option name="TEST_OBJECT" value="CLASS" />
+    <configuration default="true" type="TestNG">
       <option name="VM_PARAMETERS" />
-      <option name="PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
-      <option name="OUTPUT_DIRECTORY" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <option name="USE_DEFAULT_REPORTERS" value="false" />
-      <option name="PROPERTIES_FILE" />
       <properties />
       <listeners />
-      <method>
+      <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
@@ -426,8 +404,9 @@
       <workItem from="1547061737675" duration="1422000" />
       <workItem from="1547304056090" duration="1574000" />
       <workItem from="1547500737140" duration="604000" />
-      <workItem from="1547507054739" duration="1808000" />
-      <workItem from="1547592064998" duration="4581000" />
+      <workItem from="1547507054739" duration="1898000" />
+      <workItem from="1547509702919" duration="2548000" />
+      <workItem from="1547672146652" duration="1895000" />
     </task>
     <task id="LOCAL-00001" summary="Created MenuBar">
       <created>1543766438813</created>
@@ -464,39 +443,39 @@
       <option name="project" value="LOCAL" />
       <updated>1543832638016</updated>
     </task>
-    <task id="LOCAL-00006" summary="fixed new workspace after user cancelled action">
-      <created>1547510427418</created>
+    <task id="LOCAL-00006" summary="Refactor and small functionalities in export dialog">
+      <created>1547602199646</created>
       <option name="number" value="00006" />
       <option name="presentableId" value="LOCAL-00006" />
       <option name="project" value="LOCAL" />
-      <updated>1547510427419</updated>
+      <updated>1547602199646</updated>
     </task>
-    <task id="LOCAL-00007" summary="initial workspace dimension validator">
-      <created>1547513533464</created>
+    <task id="LOCAL-00007" summary="Implementation of error dialog">
+      <created>1547672640341</created>
       <option name="number" value="00007" />
       <option name="presentableId" value="LOCAL-00007" />
       <option name="project" value="LOCAL" />
-      <updated>1547513533464</updated>
+      <updated>1547672640341</updated>
     </task>
-    <task id="LOCAL-00008" summary="initial closing command">
-      <created>1547682176836</created>
+    <task id="LOCAL-00008" summary="Implementation of error dialog handling">
+      <created>1547673183744</created>
       <option name="number" value="00008" />
       <option name="presentableId" value="LOCAL-00008" />
       <option name="project" value="LOCAL" />
-      <updated>1547682176836</updated>
+      <updated>1547673183744</updated>
     </task>
-    <task id="LOCAL-00009" summary="closing dialog with confirmation without saving file">
-      <created>1547683040203</created>
+    <task id="LOCAL-00009" summary="Error handling for export component">
+      <created>1547758910212</created>
       <option name="number" value="00009" />
       <option name="presentableId" value="LOCAL-00009" />
       <option name="project" value="LOCAL" />
-      <updated>1547683040203</updated>
+      <updated>1547758910212</updated>
     </task>
     <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="103923000" />
+    <option name="totallyTimeSpent" value="101605000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -508,93 +487,71 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <frame x="-7" y="-7" width="1753" height="954" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info anchor="right" id="Palette" order="3" />
-      <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49911505" weight="0.3278867" />
-      <window_info anchor="bottom" id="Messages" order="11" sideWeight="0.48731562" weight="0.3267974" />
-      <window_info anchor="right" id="Palette&#9;" order="8" />
-      <window_info id="Image Layers" order="3" />
-      <window_info anchor="right" id="Capture Analysis" order="4" />
-      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.52743363" side_tool="true" weight="0.3199498" />
-      <window_info anchor="right" id="Maven Projects" order="7" />
-      <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="10" sideWeight="0.49852508" weight="0.3091168" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.47256637" visible="true" weight="0.25925925" />
-      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.49970502" weight="0.32897604" />
-      <window_info id="Capture Tool" order="7" />
-      <window_info id="Designer" order="4" />
-      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.27785236" />
-      <window_info anchor="right" id="Database" order="6" />
-      <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info id="UI Designer" order="5" />
-      <window_info anchor="right" id="Theme Preview" order="5" />
-      <window_info id="Favorites" order="6" side_tool="true" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49793512" weight="0.39975247" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Docker" order="13" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.52743363" side_tool="true" weight="0.3199498" />
-      <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.26979867" />
       <window_info id="Learn" order="0" />
-      <window_info id="Favorites" order="6" side_tool="true" />
-      <window_info anchor="bottom" id="Duplicate detector" order="12" weight="0.32998747" />
-      <window_info anchor="right" id="Maven" order="9" />
-      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.49970502" weight="0.32897604" />
+      <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.14572272" />
       <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
-      <window_info anchor="right" id="Palette" order="3" />
-      <window_info anchor="right" id="Palette&#9;" order="8" />
-      <window_info anchor="right" id="Maven Projects" order="7" />
-      <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49793512" weight="0.39975247" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info id="Image Layers" order="3" />
-      <window_info anchor="right" id="Theme Preview" order="5" />
-      <window_info anchor="right" id="Database" order="6" />
-      <window_info id="Capture Tool" order="7" />
-      <window_info anchor="bottom" id="Version Control" order="10" sideWeight="0.49852508" weight="0.32806805" />
-      <window_info anchor="right" id="Capture Analysis" order="4" />
-      <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49911505" weight="0.3278867" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info id="UI Designer" order="5" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32897604" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.47256637" visible="true" weight="0.25925925" />
-      <window_info anchor="bottom" id="Messages" order="11" sideWeight="0.48731562" weight="0.3267974" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info id="Designer" order="4" />
+      <window_info id="UI Designer" order="5" />
+      <window_info id="Favorites" order="6" side_tool="true" />
+      <window_info id="Capture Tool" order="7" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32897604" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.47256637" visible="true" weight="0.25880924" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49793512" weight="0.39869282" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49911505" weight="0.3278867" />
+      <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.49970502" weight="0.32897604" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.52743363" side_tool="true" weight="0.3199498" />
+      <window_info anchor="bottom" id="Version Control" order="10" sideWeight="0.49852508" weight="0.32806805" />
+      <window_info anchor="bottom" id="Messages" order="11" sideWeight="0.48731562" weight="0.3256379" />
+      <window_info anchor="bottom" id="Duplicate detector" order="12" weight="0.32998747" />
+      <window_info anchor="bottom" id="Docker" order="13" show_stripe_button="false" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="right" id="Capture Analysis" order="4" />
+      <window_info anchor="right" id="Theme Preview" order="5" />
+      <window_info anchor="right" id="Database" order="6" weight="0.32995737" />
+      <window_info anchor="right" id="Maven Projects" order="7" />
+      <window_info anchor="right" id="Palette&#9;" order="8" />
+      <window_info anchor="right" id="Maven" order="9" />
     </layout>
     <layout-to-restore>
-      <window_info anchor="right" id="Palette" order="3" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Capture Analysis" order="4" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4778761" visible="true" weight="0.30445546" />
-      <window_info anchor="right" id="Theme Preview" order="5" />
-      <window_info id="Favorites" order="5" side_tool="true" />
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2837758" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49911505" weight="0.32920793" />
-      <window_info anchor="bottom" id="Version Control" order="10" sideWeight="0.49970502" weight="0.32920793" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
       <window_info id="UI Designer" order="4" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="right" id="Database" order="6" />
-      <window_info anchor="right" id="Palette&#9;" order="8" />
-      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.49970502" weight="0.32920793" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49793512" weight="0.39975247" />
-      <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5221239" side_tool="true" weight="0.30445546" />
+      <window_info id="Favorites" order="5" side_tool="true" />
       <window_info id="Capture Tool" order="6" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Messages" order="11" sideWeight="0.49144542" weight="0.32920793" />
-      <window_info anchor="right" id="Maven Projects" order="7" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4778761" visible="true" weight="0.30445546" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49793512" weight="0.39975247" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49911505" weight="0.32920793" />
+      <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.49970502" weight="0.32920793" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5221239" side_tool="true" weight="0.30445546" />
+      <window_info anchor="bottom" id="Version Control" order="10" sideWeight="0.49970502" weight="0.32920793" />
+      <window_info anchor="bottom" id="Messages" order="11" sideWeight="0.49144542" weight="0.32920793" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="right" id="Capture Analysis" order="4" />
+      <window_info anchor="right" id="Theme Preview" order="5" />
+      <window_info anchor="right" id="Database" order="6" />
+      <window_info anchor="right" id="Maven Projects" order="7" />
+      <window_info anchor="right" id="Palette&#9;" order="8" />
     </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -610,8 +567,21 @@
       </list>
     </option>
   </component>
-  <component name="VcsContentAnnotationSettings">
-    <option name="myLimit" value="2678400000" />
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list />
+          </value>
+        </entry>
+        <entry key="User">
+          <value>
+            <list />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Created example of drawing vectors and mouse listener" />
@@ -621,85 +591,21 @@
     <MESSAGE value="Created workspace component with Scrollpanel" />
     <MESSAGE value="Rewrite Toolbar" />
     <MESSAGE value="Added Maven dependencies" />
-    <MESSAGE value="fixed new workspace after user cancelled action" />
-    <MESSAGE value="initial workspace dimension validator" />
-    <MESSAGE value="initial closing command" />
-    <MESSAGE value="closing dialog with confirmation without saving file" />
-    <option name="LAST_COMMIT_MESSAGE" value="closing dialog with confirmation without saving file" />
+    <MESSAGE value="Refactor and small functionalities in export dialog" />
+    <MESSAGE value="Implementation of error dialog" />
+    <MESSAGE value="Implementation of error dialog handling" />
+    <MESSAGE value="Error handling for export component" />
+    <option name="LAST_COMMIT_MESSAGE" value="Error handling for export component" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <option name="time" value="3" />
-    </breakpoint-manager>
-  </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/vector_editor/model/Shapes/Rectangle.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="24" column="9" lean-forward="true" selection-start-line="20" selection-start-column="6" selection-end-line="24" selection-end-column="9" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/vector_editor/model/Shapes/Square.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="41" lean-forward="true" selection-start-line="41" selection-end-line="41" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/vector_editor/view/ToolbarComponent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-391">
-          <caret line="103" column="9" selection-start-line="103" selection-start-column="9" selection-end-line="103" selection-end-column="9" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/vector_editor/controller/MainFrameController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="115">
-          <caret line="37" column="113" selection-start-line="37" selection-start-column="113" selection-end-line="37" selection-end-column="113" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/vector_editor/model/CurrentShape.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="416">
-          <caret line="35" column="47" lean-forward="true" selection-start-line="35" selection-start-column="47" selection-end-line="35" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/vector_editor/Runner.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="92">
-          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/vector_editor/controller/MainFrameController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4488">
-          <caret line="264" column="71" selection-start-line="264" selection-start-column="71" selection-end-line="264" selection-end-column="71" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/gui_example/tools/Line.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/gui_example/ui/view/MainFrame.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/gui_example/ui/controller/MainFrameController.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/gui_example/Model/Item.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/resources/images/move.gif">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/vector_editor/view/components/ToolButton.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/vector_editor/view/components/BackgroundMenuBar.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/vector_editor/view/ToolbarContainer.form" />
@@ -708,6 +614,18 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/vector_editor/view/MainContainer.form" />
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/src.zip!/java/util/ArrayList.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/vector_editor/view/MainContainer.java" />
+    <entry file="file://$PROJECT_DIR$/.idea/misc.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/modules.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/uiDesigner.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/vcs.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/maven/pom.xml" />
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
@@ -715,6 +633,9 @@
           <caret line="24" column="20" selection-start-line="24" selection-start-column="20" selection-end-line="24" selection-end-column="20" />
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/images/bitmap.gif">
+      <provider selected="true" editor-type-id="images" />
     </entry>
     <entry file="file://$PROJECT_DIR$/vector-gfx-editor.iml">
       <provider selected="true" editor-type-id="text-editor">
@@ -736,38 +657,17 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/vector_editor/model/Pen.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/vector_editor/model/ShapeEnum.java" />
-    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1610">
-          <caret line="70" column="67" selection-start-line="70" selection-start-column="67" selection-end-line="70" selection-end-column="67" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/vector_editor/model/Shapes/Oval.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="578">
-          <caret line="36" column="9" selection-start-line="36" selection-start-column="9" selection-end-line="36" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/vector_editor/model/Shapes/ShapeObject.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="28" column="20" selection-start-line="28" selection-start-column="20" selection-end-line="28" selection-end-column="20" />
+        <state relative-caret-position="417">
+          <caret line="33" column="9" selection-start-line="33" selection-start-column="9" selection-end-line="33" selection-end-column="9" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/vector_editor/model/Shapes/Circle.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="612">
-          <caret line="38" column="28" selection-start-line="38" selection-start-column="28" selection-end-line="38" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/vector_editor/model/Workspace.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-388">
-          <caret line="11" column="43" selection-start-line="11" selection-start-column="43" selection-end-line="11" selection-end-column="43" />
+        <state relative-caret-position="54">
+          <caret line="34" column="34" selection-start-line="34" selection-start-column="34" selection-end-line="34" selection-end-column="34" />
         </state>
       </provider>
     </entry>
@@ -778,19 +678,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/vector_editor/model/Model.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/vector_editor/model/CurrentShape.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3">
-          <caret line="15" column="5" selection-start-line="15" selection-start-column="5" selection-end-line="15" selection-end-column="5" />
+        <state relative-caret-position="68">
+          <caret line="4" column="98" selection-start-line="4" selection-start-column="98" selection-end-line="4" selection-end-column="98" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/vector_editor/model/Shapes/Square.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="850">
-          <caret line="52" column="5" selection-start-line="52" selection-start-column="5" selection-end-line="52" selection-end-column="5" />
+        <state relative-caret-position="187">
+          <caret line="11" column="5" selection-start-line="11" selection-start-column="5" selection-end-line="11" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#392#393#0" expanded="true" />
+            <element signature="e#421#422#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -802,6 +704,20 @@
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/vector_editor/model/Shapes/Polyline.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="35" column="5" selection-start-line="35" selection-start-column="5" selection-end-line="35" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/vector_editor/view/ColorChooserButton.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="476">
+          <caret line="36" column="21" selection-start-line="36" selection-start-column="21" selection-end-line="36" selection-end-column="21" />
         </state>
       </provider>
     </entry>
@@ -819,90 +735,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/vector_editor/TikZGraphics2D.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="218">
-          <caret line="26" column="13" selection-start-line="26" selection-start-column="13" selection-end-line="26" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/vector_editor/Runner.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="7" column="2" selection-start-line="7" selection-start-column="2" selection-end-line="7" selection-end-column="2" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/vector_editor/model/CurrentShape.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="26" column="47" selection-start-line="26" selection-start-column="47" selection-end-line="26" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/vector_editor/view/ColorChooserButton.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="36" column="21" selection-start-line="36" selection-start-column="21" selection-end-line="36" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/vector_editor/view/ExportComponent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3366">
-          <caret line="219" column="24" selection-start-line="219" selection-start-column="24" selection-end-line="219" selection-end-column="24" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/vector_editor/view/ToolbarComponent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1377">
-          <caret line="95" column="9" selection-start-line="95" selection-start-column="9" selection-end-line="95" selection-end-column="9" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/vector_editor/model/Shapes/Polyline.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1139">
-          <caret line="76" selection-start-line="76" selection-end-line="76" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/vector_editor/view/WorkspaceComponent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="46" selection-start-line="46" selection-end-line="46" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/vector_editor/view/MainView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="319">
-          <caret line="121" column="15" lean-forward="true" selection-start-line="121" selection-start-column="15" selection-end-line="121" selection-end-column="44" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#5203#5204#0" expanded="true" />
-            <element signature="e#5253#5254#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/vector_editor/controller/MainFrameController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1186">
-          <caret line="392" column="26" selection-start-line="392" selection-start-column="26" selection-end-line="392" selection-end-column="26" />
+        <state relative-caret-position="119">
+          <caret line="9" column="34" selection-start-line="9" selection-start-column="34" selection-end-line="9" selection-end-column="34" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -911,11 +747,115 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/vector_editor/view/MenubarComponent.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="43" lean-forward="true" selection-start-line="43" selection-end-line="43" />
+        <state relative-caret-position="122">
+          <caret line="43" selection-start-line="43" selection-end-line="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/vector_editor/TikZGraphics2D.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="26" column="13" selection-start-line="26" selection-start-column="13" selection-end-line="26" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/vector-gfx-editor.iml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="128">
+          <caret line="8" column="9" selection-start-line="8" selection-start-column="9" selection-end-line="8" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/vector_editor/view/ToolbarComponent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1600">
+          <caret line="114" column="47" selection-start-line="114" selection-start-column="47" selection-end-line="114" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1664">
+          <caret line="104" column="16" selection-start-line="104" selection-start-column="16" selection-end-line="104" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/vector_editor/model/Shapes/ShapeObject.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1536">
+          <caret line="144" column="9" selection-start-line="144" selection-start-column="9" selection-end-line="144" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/vector_editor/model/Model.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="23" column="40" selection-start-line="23" selection-start-column="40" selection-end-line="23" selection-end-column="40" />
           <folding>
-            <element signature="e#322#323#0" expanded="true" />
-            <element signature="e#356#357#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/vector_editor/AbstractGraphicsInterface.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="928">
+          <caret line="77" column="13" selection-start-line="77" selection-start-column="13" selection-end-line="77" selection-end-column="13" />
+          <folding>
+            <element signature="e#2341#2342#0" expanded="true" />
+            <element signature="e#2373#2374#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/vector_editor/model/Workspace.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="416">
+          <caret line="34" column="10" selection-start-line="34" selection-start-column="10" selection-end-line="34" selection-end-column="10" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/vector_editor/view/WorkspaceComponent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="743">
+          <caret line="121" column="33" selection-start-line="121" selection-start-column="33" selection-end-line="121" selection-end-column="33" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/vector_editor/view/MainView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="695">
+          <caret line="107" column="12" selection-start-line="107" selection-start-column="12" selection-end-line="107" selection-end-column="12" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/vector_editor/view/ExportComponent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="743">
+          <caret line="262" column="10" selection-start-line="262" selection-start-column="4" selection-end-line="262" selection-end-column="10" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/vector_editor/controller/MainFrameController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="352">
+          <caret line="381" column="57" selection-start-line="381" selection-start-column="57" selection-end-line="381" selection-end-column="57" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1781#1782#0" expanded="true" />
+            <element signature="e#1866#1867#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -949,7 +889,6 @@
       </state>
       <state key="GlobalLibrariesConfigurable.UI">
         <settings>
-          <last-edited>org.freehep:freehep-graphicsio:2.4</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
@@ -978,6 +917,7 @@
             <option name="proportions">
               <list>
                 <option value="0.2" />
+                <option value="0.6" />
               </list>
             </option>
           </splitter-proportions>

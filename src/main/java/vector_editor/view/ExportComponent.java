@@ -2,14 +2,16 @@ package vector_editor.view;
 
 import org.freehep.graphics2d.VectorGraphics;
 import org.freehep.graphicsbase.swing.Headless;
-import org.freehep.graphicsio.pdf.PDFGraphics2D;
 import org.freehep.graphicsio.ps.EPSGraphics2D;
 import org.freehep.graphicsio.svg.SVGGraphics2D;
 import vector_editor.TikZGraphics2D;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
+import javax.swing.filechooser.FileSystemView;
 import java.awt.*;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -18,7 +20,6 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 public class ExportComponent extends JDialog {
-    private JFileChooser fileChooser;
 
     public JTextField getPathField() {
         return pathField;
@@ -71,11 +72,12 @@ public class ExportComponent extends JDialog {
     }
 
     public void initFileChooser() {
-        fileChooser = new JFileChooser();
+        JFileChooser fileChooser = new JFileChooser();
         fileChooser.setCurrentDirectory(new java.io.File("."));
         fileChooser.setDialogTitle("Choose directory to save file...");
         fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
         fileChooser.setAcceptAllFileFilterUsed(false);
+        fileChooser.setCurrentDirectory(FileSystemView.getFileSystemView().getHomeDirectory());
         if (fileChooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
             pathToDirectory = fileChooser.getCurrentDirectory();
             pathToDirectory = fileChooser.getSelectedFile();
@@ -115,7 +117,6 @@ public class ExportComponent extends JDialog {
         possibleFormats.add(".gif");
         possibleFormats.add(".svg");
         possibleFormats.add(".eps");
-        possibleFormats.add(".pdf");
         possibleFormats.add(".tex");
         for (String pf : possibleFormats
         ) {
@@ -193,34 +194,58 @@ public class ExportComponent extends JDialog {
         String format = Objects.requireNonNull(formatsCombobox.getSelectedItem()).toString();
 
         Headless headless = new Headless(component);
-        headless.pack();
         headless.setVisible(true);
-
         File out = new File(String.format("%s/%s%s", pathField.getText(), nameField.getText(), format));
+        BufferedImage bImg = new BufferedImage(headless.getWidth(), headless.getHeight(), BufferedImage.TYPE_INT_RGB);
+
+
         switch (format) {
             case ".jpg":
+                Graphics2D gJPG = bImg.createGraphics();
+                headless.paintAll(gJPG);
+                try {
+                    if (ImageIO.write(bImg, "jpg", out)) {
+                        showSuccess();
+                    }
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
                 break;
             case ".png":
+                Graphics2D gPNG = bImg.createGraphics();
+                headless.paintAll(gPNG);
+                try {
+                    if (ImageIO.write(bImg, "png", out)) {
+                        showSuccess();
+                    }
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
                 break;
             case ".gif":
+                Graphics2D gGIF = bImg.createGraphics();
+                headless.paintAll(gGIF);
+                try {
+                    if (ImageIO.write(bImg, "gif", out)) {
+                        showSuccess();
+                    }
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
                 break;
             case ".svg":
                 VectorGraphics vgSVG = new SVGGraphics2D(out, component);
                 vgSVG.startExport();
                 component.print(vgSVG);
                 vgSVG.endExport();
+                showSuccess();
                 break;
             case ".eps":
                 VectorGraphics vgEPS = new EPSGraphics2D(out, component);
                 vgEPS.startExport();
                 component.print(vgEPS);
                 vgEPS.endExport();
-                break;
-            case ".pdf":
-                VectorGraphics vgPDF = new PDFGraphics2D(out, headless);
-                vgPDF.startExport();
-                headless.print(vgPDF);
-                vgPDF.endExport();
+                showSuccess();
                 break;
             case ".tex":
                 OutputStream os = new FileOutputStream(out);
@@ -229,8 +254,23 @@ public class ExportComponent extends JDialog {
                     t.paintComponent(component);
                 });
                 thread.start();
+                showSuccess();
                 break;
         }
 
     }
+
+    public void showError(String error) {
+        JPanel errorPanel = new JPanel(new GridLayout(0, 1));
+        JLabel errorText = new JLabel(error);
+        errorPanel.add(errorText);
+
+        JOptionPane.showConfirmDialog(null, errorPanel, "Error occured...", JOptionPane.DEFAULT_OPTION);
+
+    }
+
+    private void showSuccess() {
+
+    }
 }
+
