@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f1b4416b-c0a1-4950-a9a3-55c026b85e34" name="Default" comment="Implementation of error dialog handling">
+    <list default="true" id="f1b4416b-c0a1-4950-a9a3-55c026b85e34" name="Default" comment="Error handling for export component">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/vector_editor/controller/MainFrameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/vector_editor/controller/MainFrameController.java" afterDir="false" />
     </list>
@@ -51,8 +51,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/vector_editor/controller/MainFrameController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="177">
-              <caret line="380" column="26" selection-start-line="380" selection-start-column="22" selection-end-line="380" selection-end-column="26" />
+            <state relative-caret-position="352">
+              <caret line="381" column="57" selection-start-line="381" selection-start-column="57" selection-end-line="381" selection-end-column="57" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1781#1782#0" expanded="true" />
@@ -306,7 +306,7 @@
     <property name="Git.Branch.Popup.ShowAllRemotes" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1547758828435" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1547759394155" />
     <property name="jdk.selected.JAVA_MODULE" value="1.8" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -406,7 +406,7 @@
       <workItem from="1547500737140" duration="604000" />
       <workItem from="1547507054739" duration="1898000" />
       <workItem from="1547509702919" duration="2548000" />
-      <workItem from="1547672146652" duration="1489000" />
+      <workItem from="1547672146652" duration="1895000" />
     </task>
     <task id="LOCAL-00001" summary="Created MenuBar">
       <created>1543766438813</created>
@@ -464,11 +464,18 @@
       <option name="project" value="LOCAL" />
       <updated>1547673183744</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Error handling for export component">
+      <created>1547758910212</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1547758910212</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="101199000" />
+    <option name="totallyTimeSpent" value="101605000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -484,7 +491,7 @@
     <editor active="true" />
     <layout>
       <window_info id="Learn" order="0" />
-      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.14572272" />
+      <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.14572272" />
       <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="3" />
       <window_info id="Designer" order="4" />
@@ -493,7 +500,7 @@
       <window_info id="Capture Tool" order="7" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32897604" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.47256637" visible="true" weight="0.25880924" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.47256637" visible="true" weight="0.25880924" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49793512" weight="0.39869282" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -587,21 +594,10 @@
     <MESSAGE value="Refactor and small functionalities in export dialog" />
     <MESSAGE value="Implementation of error dialog" />
     <MESSAGE value="Implementation of error dialog handling" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implementation of error dialog handling" />
+    <MESSAGE value="Error handling for export component" />
+    <option name="LAST_COMMIT_MESSAGE" value="Error handling for export component" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/vector_editor/controller/MainFrameController.java</url>
-          <line>144</line>
-          <properties />
-          <option name="timeStamp" value="5" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/main/java/gui_example/ui/view/MainFrame.java" />
@@ -854,8 +850,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/vector_editor/controller/MainFrameController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="177">
-          <caret line="380" column="26" selection-start-line="380" selection-start-column="22" selection-end-line="380" selection-end-column="26" />
+        <state relative-caret-position="352">
+          <caret line="381" column="57" selection-start-line="381" selection-start-column="57" selection-end-line="381" selection-end-column="57" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1781#1782#0" expanded="true" />
