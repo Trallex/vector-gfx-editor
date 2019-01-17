@@ -52,6 +52,7 @@ public class WorkspaceComponent extends JComponent {
         this.name = name;
         this.width = width;
         this.height = height;
+        this.setBackground(Color.white);
         this.setDoubleBuffered(false);
         this.setOpaque(false);
         this.setPreferredSize(this.getPreferredSize());

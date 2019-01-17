@@ -1,10 +1,10 @@
 package vector_editor.view;
 
 import org.freehep.graphics2d.VectorGraphics;
-import org.freehep.graphicsbase.swing.Headless;
 import org.freehep.graphicsio.ps.EPSGraphics2D;
 import org.freehep.graphicsio.svg.SVGGraphics2D;
 import vector_editor.TikZGraphics2D;
+import vector_editor.helpers.ScreenImage;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -193,19 +193,18 @@ public class ExportComponent extends JDialog {
     public void saveFile(JComponent component) throws IOException {
         String format = Objects.requireNonNull(formatsCombobox.getSelectedItem()).toString();
 
-        Headless headless = new Headless(component);
-        headless.setVisible(true);
         File out = new File(String.format("%s/%s%s", pathField.getText(), nameField.getText(), format));
-        BufferedImage bImg = new BufferedImage(headless.getWidth(), headless.getHeight(), BufferedImage.TYPE_INT_RGB);
+        BufferedImage bImg = ScreenImage.createImage(component);
 
 
         switch (format) {
             case ".jpg":
                 Graphics2D gJPG = bImg.createGraphics();
-                headless.paintAll(gJPG);
+                component.printAll(gJPG);
                 try {
                     if (ImageIO.write(bImg, "jpg", out)) {
                         showSuccess();
+                        gJPG.dispose();
                     }
                 } catch (IOException ex) {
                     ex.printStackTrace();
@@ -213,10 +212,11 @@ public class ExportComponent extends JDialog {
                 break;
             case ".png":
                 Graphics2D gPNG = bImg.createGraphics();
-                headless.paintAll(gPNG);
+                component.print(gPNG);
                 try {
                     if (ImageIO.write(bImg, "png", out)) {
                         showSuccess();
+                        gPNG.dispose();
                     }
                 } catch (IOException ex) {
                     ex.printStackTrace();
@@ -224,10 +224,11 @@ public class ExportComponent extends JDialog {
                 break;
             case ".gif":
                 Graphics2D gGIF = bImg.createGraphics();
-                headless.paintAll(gGIF);
+                component.print(gGIF);
                 try {
                     if (ImageIO.write(bImg, "gif", out)) {
                         showSuccess();
+                        gGIF.dispose();
                     }
                 } catch (IOException ex) {
                     ex.printStackTrace();
