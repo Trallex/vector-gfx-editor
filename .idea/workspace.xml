@@ -33,54 +33,14 @@
     <favorites_list name="vector-gfx-editor" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.5433186">
+    <splitter split-orientation="horizontal" split-proportion="0.5">
       <split-first>
         <leaf>
-          <file leaf-file-name="Circle.java" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/src/main/java/vector_editor/model/Shapes/Circle.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="68">
-                  <caret line="7" column="15" lean-forward="true" selection-start-line="7" selection-start-column="15" selection-end-line="7" selection-end-column="16" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="Oval.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/main/java/vector_editor/model/Shapes/Oval.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="68">
-                  <caret line="6" column="15" lean-forward="true" selection-start-line="6" selection-start-column="15" selection-end-line="6" selection-end-column="15" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="Polyline.java" pinned="false" current-in-tab="false">
+          <file leaf-file-name="Polyline.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/main/java/vector_editor/model/Shapes/Polyline.java">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="68">
-                  <caret line="7" column="17" lean-forward="true" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="Rectangle.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/main/java/vector_editor/model/Shapes/Rectangle.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="68">
-                  <caret line="6" column="26" selection-start-line="6" selection-start-column="26" selection-end-line="6" selection-end-column="26" />
-                  <folding>
-                    <element signature="e#1246#1247#0" expanded="true" />
-                    <element signature="e#1290#1291#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="Square.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/main/java/vector_editor/model/Shapes/Square.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="68">
-                  <caret line="6" column="16" selection-start-line="6" selection-start-column="16" selection-end-line="6" selection-end-column="16" />
+                  <caret line="7" column="16" lean-forward="true" selection-start-line="7" selection-start-column="16" selection-end-line="7" selection-end-column="16" />
                 </state>
               </provider>
             </entry>
@@ -89,31 +49,13 @@
       </split-first>
       <split-second>
         <leaf>
-          <file leaf-file-name="OvalTest.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/test/java/vector_editor/model/Shapes/OvalTest.java">
+          <file leaf-file-name="PolylineTest.java" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/test/java/vector_editor/model/Shapes/PolylineTest.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="102">
-                  <caret line="11" column="17" lean-forward="true" selection-start-line="10" selection-start-column="4" selection-end-line="11" selection-end-column="17" />
+                <state relative-caret-position="216">
+                  <caret line="24" column="26" selection-start-line="24" selection-start-column="26" selection-end-line="24" selection-end-column="26" />
                   <folding>
-                    <element signature="e#550#551#0" expanded="true" />
-                    <element signature="e#630#631#0" expanded="true" />
-                    <element signature="e#713#714#0" expanded="true" />
-                    <element signature="e#785#786#0" expanded="true" />
-                    <element signature="e#822#823#0" expanded="true" />
-                    <element signature="e#894#895#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="CircleTest.java" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/src/test/java/vector_editor/model/Shapes/CircleTest.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="170">
-                  <caret line="15" column="46" selection-start-line="15" selection-start-column="46" selection-end-line="15" selection-end-column="46" />
-                  <folding>
-                    <element signature="e#305#306#0" expanded="true" />
-                    <element signature="e#342#343#0" expanded="true" />
+                    <element signature="e#345#352#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
@@ -199,6 +141,7 @@
         <option value="$PROJECT_DIR$/src/test/java/vector_editor/model/Shapes/SquareTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/vector_editor/model/Shapes/OvalTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/vector_editor/model/Shapes/CircleTest.java" />
+        <option value="$PROJECT_DIR$/src/test/java/vector_editor/model/Shapes/PolylineTest.java" />
       </list>
     </option>
   </component>
@@ -248,6 +191,46 @@
               <item name="vector-gfx-editor" type="b2602c69:ProjectViewProjectNode" />
               <item name="vector-gfx-editor" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="vector-gfx-editor" type="b2602c69:ProjectViewProjectNode" />
+              <item name="vector-gfx-editor" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="vector-gfx-editor" type="b2602c69:ProjectViewProjectNode" />
+              <item name="vector-gfx-editor" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="vector_editor" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="vector-gfx-editor" type="b2602c69:ProjectViewProjectNode" />
+              <item name="vector-gfx-editor" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="vector_editor" type="462c0819:PsiDirectoryNode" />
+              <item name="model" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="vector-gfx-editor" type="b2602c69:ProjectViewProjectNode" />
+              <item name="vector-gfx-editor" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="vector_editor" type="462c0819:PsiDirectoryNode" />
+              <item name="model" type="462c0819:PsiDirectoryNode" />
+              <item name="Shapes" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="vector-gfx-editor" type="b2602c69:ProjectViewProjectNode" />
+              <item name="vector-gfx-editor" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="test" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -282,6 +265,7 @@
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.includeInheritedMembers" value="true" />
     <property name="jdk.selected.JAVA_MODULE" value="1.8" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -323,7 +307,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.CircleTest">
+  <component name="RunManager" selected="JUnit.PolylineTest">
     <configuration name="Unnamed" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="vector_editor.Runner" />
       <module name="vector-gfx-editor" />
@@ -380,6 +364,29 @@
       </option>
       <patterns />
     </configuration>
+    <configuration name="PolylineTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="vector-gfx-editor" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="vector_editor.model.Shapes.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="vector_editor.model.Shapes" />
+      <option name="MAIN_CLASS_NAME" value="vector_editor.model.Shapes.PolylineTest" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <patterns />
+    </configuration>
     <configuration name="RectangleTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="vector-gfx-editor" />
       <extension name="coverage">
@@ -394,29 +401,6 @@
       <option name="MAIN_CLASS_NAME" value="vector_editor.model.Shapes.RectangleTest" />
       <option name="METHOD_NAME" />
       <option name="TEST_OBJECT" value="class" />
-      <option name="VM_PARAMETERS" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <patterns />
-    </configuration>
-    <configuration name="RectangleTest.getX" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="vector-gfx-editor" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="vector_editor.model.Shapes.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="vector_editor.model.Shapes" />
-      <option name="MAIN_CLASS_NAME" value="vector_editor.model.Shapes.RectangleTest" />
-      <option name="METHOD_NAME" value="getX" />
-      <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" />
       <option name="PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
@@ -495,19 +479,19 @@
     </configuration>
     <list>
       <item itemvalue="Application.Unnamed" />
-      <item itemvalue="JUnit.RectangleTest.getX" />
       <item itemvalue="JUnit.RectangleTest" />
       <item itemvalue="JUnit.SquareTest" />
       <item itemvalue="JUnit.OvalTest" />
       <item itemvalue="JUnit.CircleTest" />
+      <item itemvalue="JUnit.PolylineTest" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.PolylineTest" />
         <item itemvalue="JUnit.CircleTest" />
         <item itemvalue="JUnit.OvalTest" />
         <item itemvalue="JUnit.SquareTest" />
         <item itemvalue="JUnit.RectangleTest" />
-        <item itemvalue="JUnit.RectangleTest.getX" />
       </list>
     </recent_temporary>
   </component>
@@ -546,7 +530,7 @@
       <workItem from="1547507054739" duration="1898000" />
       <workItem from="1547509702919" duration="2548000" />
       <workItem from="1547599477294" duration="205000" />
-      <workItem from="1547757177160" duration="13988000" />
+      <workItem from="1547757177160" duration="15714000" />
     </task>
     <task id="LOCAL-00001" summary="Created MenuBar">
       <created>1543766438813</created>
@@ -587,15 +571,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="RectangleTest_getX - 2019.01.17 at 21h 41m 37s.xml">
-      <configuration name="RectangleTest.getX" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="RectangleTest_getX - 2019.01.17 at 21h 42m 02s.xml">
-      <configuration name="RectangleTest.getX" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="RectangleTest_getX - 2019.01.17 at 22h 18m 09s.xml">
-      <configuration name="RectangleTest.getX" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="RectangleTest - 2019.01.17 at 22h 18m 19s.xml">
       <configuration name="RectangleTest" configurationId="JUnit" />
     </history-entry>
@@ -617,9 +592,18 @@
     <history-entry file="CircleTest - 2019.01.17 at 23h 34m 53s.xml">
       <configuration name="CircleTest" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="CircleTest - 2019.01.17 at 23h 35m 29s.xml">
+      <configuration name="CircleTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="PolylineTest - 2019.01.18 at 00h 44m 14s.xml">
+      <configuration name="PolylineTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="PolylineTest - 2019.01.18 at 00h 44m 47s.xml">
+      <configuration name="PolylineTest" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="110567000" />
+    <option name="totallyTimeSpent" value="112293000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -648,7 +632,7 @@
       <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.49970502" weight="0.32897604" />
       <window_info id="Capture Tool" order="7" />
       <window_info id="Designer" order="4" />
-      <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.2739872" />
+      <window_info content_ui="combo" id="Project" order="1" weight="0.2739872" />
       <window_info anchor="right" id="Database" order="6" weight="0.32995737" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32897604" />
       <window_info id="Learn" order="0" />
@@ -712,7 +696,7 @@
           <option name="timeStamp" value="5" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="8" />
+      <option name="time" value="9" />
     </breakpoint-manager>
   </component>
   <component name="debuggerHistoryManager">
@@ -727,7 +711,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/vector_editor/view/MainContainer.form" />
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/src.zip!/java/util/ArrayList.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/vector_editor/view/MainContainer.java" />
     <entry file="file://$PROJECT_DIR$/.idea/misc.xml">
@@ -942,24 +925,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/vector_editor/model/Shapes/Polyline.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="7" column="17" lean-forward="true" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/vector_editor/model/Shapes/Rectangle.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="6" column="26" selection-start-line="6" selection-start-column="26" selection-end-line="6" selection-end-column="26" />
-          <folding>
-            <element signature="e#1246#1247#0" expanded="true" />
-            <element signature="e#1290#1291#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk-10.0.1/lib/src.zip!/java.desktop/java/awt/Point.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1071">
@@ -988,31 +953,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/vector_editor/model/Shapes/Oval.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="6" column="15" lean-forward="true" selection-start-line="6" selection-start-column="15" selection-end-line="6" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/vector_editor/model/Shapes/Circle.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="7" column="15" lean-forward="true" selection-start-line="7" selection-start-column="15" selection-end-line="7" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/vector_editor/model/Shapes/SquareTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
           <caret line="9" column="21" selection-start-line="9" selection-start-column="21" selection-end-line="9" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/vector_editor/model/Shapes/RectangleTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="765">
-          <caret line="64" column="5" selection-start-line="35" selection-start-column="3" selection-end-line="64" selection-end-column="5" />
         </state>
       </provider>
     </entry>
@@ -1038,6 +982,55 @@
           <folding>
             <element signature="e#305#306#0" expanded="true" />
             <element signature="e#342#343#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/vector_editor/model/Shapes/Circle.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="7" column="15" lean-forward="true" selection-start-line="7" selection-start-column="15" selection-end-line="7" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/vector_editor/model/Shapes/Oval.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="6" column="15" lean-forward="true" selection-start-line="6" selection-start-column="15" selection-end-line="6" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/vector_editor/model/Shapes/Rectangle.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="6" column="26" selection-start-line="6" selection-start-column="26" selection-end-line="6" selection-end-column="26" />
+          <folding>
+            <element signature="e#1246#1247#0" expanded="true" />
+            <element signature="e#1290#1291#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/vector_editor/model/Shapes/RectangleTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="275">
+          <caret line="23" column="5" lean-forward="true" selection-start-line="20" selection-start-column="3" selection-end-line="23" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/vector_editor/model/Shapes/Polyline.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="7" column="16" lean-forward="true" selection-start-line="7" selection-start-column="16" selection-end-line="7" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/vector_editor/model/Shapes/PolylineTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="24" column="26" selection-start-line="24" selection-start-column="26" selection-end-line="24" selection-end-column="26" />
+          <folding>
+            <element signature="e#345#352#0" expanded="true" />
           </folding>
         </state>
       </provider>
