@@ -16,8 +16,8 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.nio.file.Files;
 import java.util.ArrayList;
-import java.util.Objects;
 
 public class ExportComponent extends JDialog {
 
@@ -31,6 +31,10 @@ public class ExportComponent extends JDialog {
 
     public void setFileName(String fileName) {
         this.fileName = fileName;
+    }
+
+    public JComboBox getFormatCombobox() {
+        return formatsCombobox;
     }
 
     private String fileName;
@@ -190,12 +194,12 @@ public class ExportComponent extends JDialog {
         dispose();
     }
 
-    public void saveFile(JComponent component) throws IOException {
-        String format = Objects.requireNonNull(formatsCombobox.getSelectedItem()).toString();
+    public void saveFile(JComponent component, File out, String format) throws IOException {
 
-        File out = new File(String.format("%s/%s%s", pathField.getText(), nameField.getText(), format));
         BufferedImage bImg = ScreenImage.createImage(component);
-
+        if (!Files.exists(out.toPath())) {
+            System.out.println("DUPA");
+        }
 
         switch (format) {
             case ".jpg":
@@ -271,6 +275,11 @@ public class ExportComponent extends JDialog {
     }
 
     private void showSuccess() {
+        JPanel successPanel = new JPanel(new GridLayout(0, 1));
+        JLabel text = new JLabel("The file was saved succesfully");
+        successPanel.add(text);
+        JOptionPane.showConfirmDialog(null, successPanel, "Error occured...", JOptionPane.DEFAULT_OPTION);
+        this.closeWindow();
 
     }
 }

@@ -12,8 +12,11 @@ import vector_editor.view.MainView;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class MainFrameController {
     private int selectedShape =-1; //index of shape in model
@@ -403,6 +406,7 @@ public class MainFrameController {
                     view.getExportComponent().initFileChooser();
                     break;
                 case "save":
+
                     try {
                         if (view.getExportComponent().getNameField().getText().isEmpty() || view.getExportComponent().getNameField().getText() == null) {
                             view.getExportComponent().showError("The name of file must not be empty!");
@@ -411,7 +415,14 @@ public class MainFrameController {
                         } else if (view.getWorkspaceComponent() == null || model.getWorkspace() == null) {
                             view.getExportComponent().showError("The Workspace must be created!");
                         } else {
-                            view.getExportComponent().saveFile(view.getWorkspaceComponent());
+                            String path = view.getExportComponent().getPathField().getText();
+                            String fileName = view.getExportComponent().getNameField().getText();
+                            String format = Objects.requireNonNull(view.getExportComponent().getFormatCombobox().getSelectedItem()).toString();
+                            File out = new File(String.format("%s/%s%s", path, fileName, format));
+                            if (Files.exists(out.toPath())) {
+                                view.getExportComponent().saveFile(view.getWorkspaceComponent(), out, format);
+                            } else
+                                view.getExportComponent().showError("The path does not exist or there is no permission");
                         }
                     } catch (IOException e1) {
                         e1.printStackTrace();
