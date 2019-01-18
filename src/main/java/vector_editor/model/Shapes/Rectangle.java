@@ -38,7 +38,6 @@ public class Rectangle extends ShapeObject {
 
     @Override
     public String toString() {
-        String str = "";
         return getX() + " " + getY();
     }
 
