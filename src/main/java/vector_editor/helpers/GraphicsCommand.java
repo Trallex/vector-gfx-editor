@@ -1,4 +1,4 @@
-package vector_editor;
+package vector_editor.helpers;
 
 import java.awt.*;
 

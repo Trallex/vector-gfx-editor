@@ -3,8 +3,8 @@ package vector_editor.view;
 import org.freehep.graphics2d.VectorGraphics;
 import org.freehep.graphicsio.ps.EPSGraphics2D;
 import org.freehep.graphicsio.svg.SVGGraphics2D;
-import vector_editor.TikZGraphics2D;
 import vector_editor.helpers.ScreenImage;
+import vector_editor.helpers.TikZGraphics2D;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;

@@ -1,4 +1,4 @@
-package vector_editor;
+package vector_editor.helpers;
 
 import java.awt.*;
 import java.awt.geom.AffineTransform;
@@ -317,7 +317,7 @@ public class TikZGraphics2D extends AbstractGraphicsInterface {
     /**
      * Sets the node anchor behavior for drawString commands
      *
-     * @param o a compatible value for vector_editor.TikzRenderingHints.KEY_NODE_ANCHOR
+     * @param o a compatible value for vector_editor.helpers.TikzRenderingHints.KEY_NODE_ANCHOR
      */
     public void setNodeAnchor(Object o) {
         if (TikzRenderingHints.KEY_NODE_ANCHOR.isCompatibleValue(o)) nodeAnchor = o;
