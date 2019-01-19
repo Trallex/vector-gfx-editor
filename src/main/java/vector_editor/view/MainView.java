@@ -1,19 +1,26 @@
 package vector_editor.view;
 
 
-import org.freehep.graphicsbase.util.export.ExportDialog;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ContainerListener;
-
 
 public class MainView {
     private JFrame frame;
     private Container container;
     private WorkspaceComponent workspaceComponent;
     private ToolbarComponent toolbarComponent;
+    private ExportComponent exportComponent;
+    public ExportComponent getExportComponent() {
+        return exportComponent;
+    }
+
     private JScrollPane scrollPane;
+
+    public MenubarComponent getMenuBar() {
+        return menuBar;
+    }
+
     private MenubarComponent menuBar;
     private int workspaceWidth, workspaceHeight; // It goes to WorkspaceModel
     private String workspaceName; // It goes to WorkspaceModel
@@ -43,19 +50,17 @@ public class MainView {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
-
         setupToolbarComponent();
         setupMenuBar();
+        setupExportComponent();
     }
     private void setupToolbarComponent() {
 
         toolbarComponent = new ToolbarComponent(150, frame.getMaximumSize().height);
         container.add(toolbarComponent, BorderLayout.LINE_START);
-
         refresh();
     }
-
-    private void setupWorkspaceComponent(int workspaceWidth, int workspaceHeight, String workspaceName) {
+    public void setupWorkspaceComponent() {
 
         if (scrollPane != null) container.remove(scrollPane);
 
@@ -68,17 +73,19 @@ public class MainView {
         }
         scrollPane.setBorder(BorderFactory.createEmptyBorder(25, 25, 25, 25));
         scrollPane.setOpaque(false);
+        exportComponent.setFileName(scrollPane.getName());
 
         container.add(scrollPane, BorderLayout.CENTER);
+
         refresh();
     }
 
-    private void refresh() {
+    public void refresh() {
         frame.validate();
         frame.repaint();
     }
 
-    private void displayNewFilePanel() {
+    public void displayNewFilePanel() {
         JTextField widthField = new JTextField("1280");
         JTextField nameField = new JTextField("test");
         JTextField heightField = new JTextField("720");
@@ -89,45 +96,63 @@ public class MainView {
         panel.add(widthField);
         panel.add(new JLabel("Height: [px]"));
         panel.add(heightField);
-        int result = JOptionPane.showConfirmDialog(null, panel, "New File...",
-                JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
-        if (result == JOptionPane.OK_OPTION) {
 
-            //HERE PASS THE NEW WORKSPACE TO THE CONTROLLER!
-            workspaceWidth = Integer.parseInt(widthField.getText().trim());
-            workspaceHeight = Integer.parseInt(heightField.getText().trim());
-            workspaceName = nameField.getText().trim();
+        while (true) {
+            int result = JOptionPane.showConfirmDialog(null, panel, "New File...",
+                    JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
 
-        } else {
-            System.out.println("Cancelled");
+            if (result == JOptionPane.OK_OPTION) {
+                if (verifyWorkspaceDimensions(widthField.getText()) && verifyWorkspaceDimensions(heightField.getText()) && !(nameField.getText().trim().isEmpty())) {
+                    workspaceWidth = Integer.parseInt(widthField.getText().trim());
+                    workspaceHeight = Integer.parseInt(heightField.getText().trim());
+                    workspaceName = nameField.getText().trim();
+                    setupWorkspaceComponent();
+                    menuBar.getSaveFileItem().setEnabled(true);
+                    break;
+                } else {
+                    JOptionPane.showMessageDialog(null, "Enter the correct name and dimensions");
+                }
+            } else {
+                break;
+            }
         }
     }
+
+    public int displayExitDialog() {
+        return JOptionPane.showConfirmDialog(
+                null,
+                "Are you sure you want to exit without saving?", "",
+                JOptionPane.YES_NO_OPTION);
+    }
+
+
+    private boolean verifyWorkspaceDimensions(String dimension) {
+        try {
+            int value = Integer.parseInt(dimension);
+            return (value > 0);
+        } catch (NumberFormatException e) {
+            return false;
+        }
+    }
+
     private void setupMenuBar() {
+
         menuBar = new MenubarComponent();
-
-        ((MenubarComponent) menuBar).getNewFileItem().addActionListener(e -> {
-            displayNewFilePanel();
-            setupWorkspaceComponent(workspaceWidth, workspaceHeight, workspaceName);
-        });
-        //Set listeners for saveItem
-        ((MenubarComponent) menuBar).getSaveFileItem().addActionListener(
-                e -> {
-                    ExportDialog export = new ExportDialog();
-                    export.showExportDialog(container, "Export view as...", workspaceComponent, "export");
-                }
-        );
-
         frame.setJMenuBar(menuBar);
-
         refresh();
 
     }
 
+    private void setupExportComponent() {
+        exportComponent = new ExportComponent(workspaceName);
+    }
+
     public void addListenerToContainer(ContainerListener listener) { //listener to observe if new items were added to the container
-        //helpful when adding new Workspace
         container.addContainerListener(listener);
     }
 
-
+    public void setWorkspaceName( String workspaceName){
+        this.workspaceName = workspaceName;
+    }
 }
 

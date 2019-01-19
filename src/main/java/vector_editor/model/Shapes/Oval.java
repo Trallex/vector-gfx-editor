@@ -10,6 +10,20 @@ public class Oval extends ShapeObject {
         super(x, y, x2, y2, backgroundColor, strokeColor, strokeThickness);
     }
 
+    public Oval(Oval oval) {
+        super(oval);
+    }
+    @Override
+    public boolean ifPointBelongToField(Point p) {
+
+        Point center = new Point();
+        center.setLocation((x+x2)/2, (y+y2)/2 );
+        double radiusX = Math.abs(x - x2) / 2;
+        double radiusY = Math.abs(y - y2) / 2;
+        this.setSelected(Math.pow(((p.getX() - center.getX()) / radiusX), 2) + Math.pow(((p.getY() - center.getY()) / radiusY), 2) <= 1);
+        return this.isSelected();
+    }
+
     @Override
     public void draw(Graphics g) {
         if (g == null) return;
@@ -21,6 +35,11 @@ public class Oval extends ShapeObject {
             vg.setStroke(new BasicStroke(strokeThickness));
             vg.drawOval(Math.min(x, x2), Math.min(y, y2), calcWidth(), calcHeight());
         }
+    }
+
+    @Override
+    public ShapeObject clone() {
+        return new Oval(this);
 
     }
 }

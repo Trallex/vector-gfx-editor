@@ -12,6 +12,10 @@ public class Rectangle extends ShapeObject {
         super(x, y, x2, y2, backgroundColor, strokeColor, strokeThickness);
     }
 
+    public Rectangle(Rectangle rectangle) {
+        super(rectangle);
+    }
+
     @Override
     public void draw(Graphics g) {
         if (g == null) return;
@@ -24,4 +28,23 @@ public class Rectangle extends ShapeObject {
             vg.drawRect(Math.min(x, x2), Math.min(y, y2), calcWidth(), calcHeight());
         }
     }
+    @Override
+    public boolean ifPointBelongToField(Point p)
+    {
+        this.setSelected(p.getX() <= Math.max(x, x2) && p.getX() >= Math.min(x, x2)
+                && p.getY() <= Math.max(y, y2) && p.getY() >= Math.min(y, y2));
+        return isSelected();
+    }
+
+    @Override
+    public String toString() {
+        return getX() + " " + getY();
+    }
+
+    @Override
+    public ShapeObject clone() {
+        return new Rectangle(this);
+
+    }
+
 }

@@ -2,16 +2,15 @@ package vector_editor.model;
 
 import vector_editor.model.Shapes.ShapeObject;
 
+import java.awt.*;
 import java.util.ArrayList;
 
 public class Workspace {
     private int height;
     private int width;
     private String name;
-    private ArrayList<ShapeObject> shapes;      //initially only shapes, without layer
-
-
-    public Workspace(int height, int width, String name){
+    private ArrayList<ShapeObject> shapes; 
+    public Workspace(int width, int height, String name) {
         this.height=height;
         this.width=width;
         this.name=name;
@@ -25,14 +24,48 @@ public class Workspace {
         shapes.remove(index);
     }
 
-    //to test
+    public void removeLastShape(){
+        if(!shapes.isEmpty())
+        {
+            shapes.remove(shapes.size()-1);
+        }
+    }
+
+    public ArrayList<ShapeObject> getShapes() {
+        return shapes;
+    }
+
+    public int findDrawnShapesId(Point p)
+    {
+        int index = 0;
+        int lastItem = -1;
+        for (ShapeObject obj: shapes) {
+            if(obj.ifPointBelongToField(p))
+                lastItem = index;
+            index++;
+        }
+        return lastItem;
+    }
+    public Workspace(Workspace workspace) {
+        this.height = workspace.height;
+        this.width = workspace.width;
+        this.name = workspace.name;
+        shapes = new ArrayList<>();
+        if (!workspace.shapes.isEmpty()) {
+            for (ShapeObject shape : workspace.shapes) {
+                this.shapes.add(shape.clone());
+            }
+        }
+    }
+
     @Override
     public String toString() {
-        return "Workspace{" +
-                "height=" + height +
-                ", width=" + width +
-                ", name='" + name + '\'' +
-                ", shapes=" + shapes +
-                '}';
+        String string = "";
+        for (ShapeObject shape : shapes
+                ) {
+            string += shape.toString() + " ";
+        }
+        return string;
     }
+
 }

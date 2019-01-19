@@ -12,7 +12,7 @@ import java.util.ArrayList;
 public class WorkspaceComponent extends JComponent {
     private VectorGraphics vg;
     private int currentX, currentY, oldX, oldY;
-    int width, height;
+    private int width, height;
 
     @Override
     public String getName() {
@@ -52,9 +52,11 @@ public class WorkspaceComponent extends JComponent {
         this.name = name;
         this.width = width;
         this.height = height;
+        this.setBackground(Color.white);
         this.setDoubleBuffered(false);
         this.setOpaque(false);
         this.setPreferredSize(this.getPreferredSize());
+
 
     }
 
@@ -64,11 +66,12 @@ public class WorkspaceComponent extends JComponent {
     }
 
 
-
-    private void clear() {
-        vg.setPaint(Color.white);
-        vg.fillRect(0, 0, getSize().width, getSize().height);
-        vg.setPaint(Color.black);
+    public void clear() {
+        for (ShapeObject shape : shapes) {
+            if (shape != null) {
+                shape.setSelected(false);
+            }
+        }
         repaint();
     }
 
@@ -87,10 +90,13 @@ public class WorkspaceComponent extends JComponent {
     {
         super.paintComponent(g);
 
-        for (ShapeObject s : shapes)
-        {
-            if (s != null)
+        for (ShapeObject s : shapes) {
+            int i = 0;
+            i++;
+            if (s != null) {
+                if (s.isSelected()) s.drawHighlight(g);
                 s.draw(g);
+            }
         }
 
         if (demoShape != null) demoShape.draw(g);   //paint component during drawing
@@ -115,4 +121,23 @@ public class WorkspaceComponent extends JComponent {
         this.demoShape = tmpShape;
     }
 
+    public void removeLastShape()
+    {
+        if(!shapes.isEmpty())
+        {
+            shapes.remove(shapes.size()-1);
+        }
+    }
+    public void removeShape(int index)
+    {
+        if(!shapes.isEmpty())
+        {
+            shapes.remove(index);
+        }
+    }
+    public void updateShapePlace(int index, double xDifferecne, double yDifference) {
+
+        shapes.get(index).updateShapePlace(xDifferecne, yDifference);
+
+    }
 }
