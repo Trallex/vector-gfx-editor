@@ -87,7 +87,7 @@ public class MainView {
 
     public void displayNewFilePanel() {
         JTextField widthField = new JTextField("1280");
-        JTextField nameField = new JTextField("test");
+        JTextField nameField = new JTextField("newFile");
         JTextField heightField = new JTextField("720");
         JPanel panel = new JPanel(new GridLayout(0, 2));
         panel.add(new JLabel("Name of your project: "));
