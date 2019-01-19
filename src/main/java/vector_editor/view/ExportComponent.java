@@ -16,7 +16,6 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.nio.file.Files;
 import java.util.ArrayList;
 
 public class ExportComponent extends JDialog {
@@ -197,10 +196,6 @@ public class ExportComponent extends JDialog {
     public void saveFile(JComponent component, File out, String format) throws IOException {
 
         BufferedImage bImg = ScreenImage.createImage(component);
-        if (!Files.exists(out.toPath())) {
-            System.out.println("DUPA");
-        }
-
         switch (format) {
             case ".jpg":
                 Graphics2D gJPG = bImg.createGraphics();

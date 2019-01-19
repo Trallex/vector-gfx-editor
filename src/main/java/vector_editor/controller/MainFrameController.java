@@ -15,6 +15,8 @@ import java.awt.event.*;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -415,11 +417,11 @@ public class MainFrameController {
                         } else if (view.getWorkspaceComponent() == null || model.getWorkspace() == null) {
                             view.getExportComponent().showError("The Workspace must be created!");
                         } else {
-                            String path = view.getExportComponent().getPathField().getText();
                             String fileName = view.getExportComponent().getNameField().getText();
                             String format = Objects.requireNonNull(view.getExportComponent().getFormatCombobox().getSelectedItem()).toString();
-                            File out = new File(String.format("%s/%s%s", path, fileName, format));
-                            if (Files.exists(out.toPath())) {
+                            Path path = Paths.get(view.getExportComponent().getPathField().getText());
+                            if (Files.exists(path) && Files.isWritable(path)) {
+                                File out = new File(String.format("%s/%s%s", path, fileName, format));
                                 view.getExportComponent().saveFile(view.getWorkspaceComponent(), out, format);
                             } else
                                 view.getExportComponent().showError("The path does not exist or there is no permission");
