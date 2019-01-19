@@ -87,7 +87,7 @@ public class MainView {
 
     public void displayNewFilePanel() {
         JTextField widthField = new JTextField("1280");
-        JTextField nameField = new JTextField("test");
+        JTextField nameField = new JTextField("newFile");
         JTextField heightField = new JTextField("720");
         JPanel panel = new JPanel(new GridLayout(0, 2));
         panel.add(new JLabel("Name of your project: "));
@@ -109,6 +109,7 @@ public class MainView {
                     setupWorkspaceComponent();
                     menuBar.getSaveFileItem().setEnabled(true);
                     break;
+                    
                 } else {
                     JOptionPane.showMessageDialog(null, "Enter the correct name and dimensions");
                 }
@@ -129,7 +130,7 @@ public class MainView {
     private boolean verifyWorkspaceDimensions(String dimension) {
         try {
             int value = Integer.parseInt(dimension);
-            return (value > 0);
+            return (value > 0 && value <= 12800);
         } catch (NumberFormatException e) {
             return false;
         }
