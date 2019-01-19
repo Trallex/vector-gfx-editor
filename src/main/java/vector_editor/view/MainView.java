@@ -109,6 +109,7 @@ public class MainView {
                     setupWorkspaceComponent();
                     menuBar.getSaveFileItem().setEnabled(true);
                     break;
+                    
                 } else {
                     JOptionPane.showMessageDialog(null, "Enter the correct name and dimensions");
                 }
