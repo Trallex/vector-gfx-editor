@@ -129,7 +129,7 @@ public class MainView {
     private boolean verifyWorkspaceDimensions(String dimension) {
         try {
             int value = Integer.parseInt(dimension);
-            return (value > 0);
+            return (value > 0 && value <= 12800);
         } catch (NumberFormatException e) {
             return false;
         }
