@@ -32,7 +32,7 @@ public class MainFrameController {
     private boolean isShiftKeyPressed = false;
     private Workspace newWorkspaceState;
 
-    public MainFrameController(MainView view, Model model) //temporary model..
+    public MainFrameController(MainView view, Model model)
     {
         this.view = view;
         this.model = model;
@@ -133,7 +133,6 @@ public class MainFrameController {
     }
 
     class ContainerListenerForMainFrame extends ContainerAdapter {
-        // initial solution when the new workspace is set
         @Override
         public void componentAdded(ContainerEvent e) {
             setNewWorkspace();
@@ -180,7 +179,7 @@ public class MainFrameController {
                     CurrentShape.setShapeType(ToolEnum.SELECT);
                     isNewShapePainted=false;
                     break;
-                case "strokeColor":  //REFACTOR needed
+                case "strokeColor":
                     CurrentShape.setShapeType(ToolEnum.STROKE_COLOR);
                     break;
                 case "backgroundColor":
@@ -210,7 +209,6 @@ public class MainFrameController {
         return drawShape;
     }
 
-    // This part need REFACTOR but this is one of ways how to deal with problem
     class ColorChangedListener implements ColorChooserButton.ColorChangedListener {
 
         @Override
@@ -368,7 +366,6 @@ public class MainFrameController {
                 model.setWorkspace(newWorkspaceState);
                 view.getWorkspaceComponent().setTmpShape(null);
                 view.getWorkspaceComponent().setShapes(model.getWorkspace().getShapes()); //because of that problem with ctr+z
-                //after moving, view changes the model..
             }
             draggingPoint = null;
         }
@@ -387,7 +384,6 @@ public class MainFrameController {
                     break;
                 case "close":
                     if (model.getWorkspace() != null) {
-                        // System.out.println(view.displayExitDialog());
                         if (view.displayExitDialog() == 1) {
                             view.getExportComponent().display();
                         } else {

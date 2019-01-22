@@ -144,7 +144,6 @@ public abstract class ShapeObject {
         this.strokeThickness = s.strokeThickness;
         this.isSelected = false;
     }
-//to test
     @Override
     public String toString() {
         return "ShapeObject{" +
