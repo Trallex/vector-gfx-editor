@@ -26,10 +26,8 @@ public class WorkspaceComponent extends JComponent {
 
     String name;
 
-    //new code
     private ArrayList<ShapeObject> shapes = new ArrayList<>();
     private ShapeObject demoShape;
-    //
     @Override
     public int getWidth() {
         return width;
