@@ -86,7 +86,6 @@ public class ExportComponent extends JDialog {
             pathToDirectory = fileChooser.getSelectedFile();
             pathField.setText(pathToDirectory.toString());
         } else {
-            System.out.println("No Selection ");
         }
     }
 
